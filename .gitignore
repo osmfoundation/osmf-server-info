@@ -1,2 +1,4 @@
+_data/*.gz
+_data/nodes.json
 _site
 .sass-cache
