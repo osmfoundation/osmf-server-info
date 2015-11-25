@@ -12,8 +12,33 @@ layout: default
 **Motherboard** |
 **Raid Controller** |
 **Disk** |
-**Network** |
 **Out-of-band Management** |
+
+## Network
+<table>
+  <thead>
+    <th>interface</th>
+    <th>mac</th>
+    <th>IPs</th>
+  </thead>
+  <tbody>
+  {% for interface in page.server.automatic.network.interfaces %}
+    {% if interface[0] != 'lo' %}
+      {% assign addresses = '' %}
+      {% for address in interface[1].addresses %}
+        {% if address[1].family == 'lladdr' %}
+          {% assign mac = address[0] %}
+        {% else %}
+          {% if address[1].scope != 'Link' %}
+            {% capture addresses %}{{ addresses }}, {{ address[0] }}{% endcapture %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <tr><td>{{ interface[0] }}</td><td>{{ mac }}</td><td>{{ addresses | remove_first: ',' }}</td></tr>
+    {% endif %}
+  {% endfor %}
+  </tbody>
+</table>
 
 ## Software
 
