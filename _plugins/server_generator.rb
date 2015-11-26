@@ -9,6 +9,7 @@ module Jekyll
       process(@name)
       read_yaml(File.join(base, '_layouts'), 'server.md')
       data['server'] = server
+      data['title'] = server['name']
     end
   end
 
