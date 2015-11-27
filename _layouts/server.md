@@ -6,13 +6,26 @@ layout: default
 
 ## Hardware
 
-**Chassis** | {{ page.server.automatic.dmi.system.manufacturer }} {{ page.server.automatic.dmi.system.product_name }}
-**CPU** | {{ page.server.automatic.cpu.real }}x {{ page.server.automatic.cpu.total |divided_by: page.server.automatic.cpu.real }}-core {{ page.server.automatic.cpu.0.model_name }}
-**Memory** | {{ page.server.automatic.memory.total }}
-**Motherboard** |
-**Raid Controller** |
-**Disk** |
-**Out-of-band Management** |
+**Chassis**
+: {{ page.server.automatic.dmi.system.manufacturer }} {{ page.server.automatic.dmi.system.product_name }}
+
+**CPU**
+: {{ page.server.automatic.cpu.real }}x {{ page.server.automatic.cpu.total |divided_by: page.server.automatic.cpu.real }}-core {{ page.server.automatic.cpu.0.model_name }}
+
+**Memory**
+: {{ page.server.automatic.memory.total }}
+
+**Motherboard**
+: N/A
+
+**Raid Controller**
+: N/A
+
+**Disk**
+: N/A
+
+**Out-of-band Management**
+: N/A
 
 ## Network
 <table>
@@ -42,7 +55,8 @@ layout: default
 
 ## Software
 
-**Operating System** | {{ page.server.automatic.lsb.description }}
+**Operating System**
+: {{ page.server.automatic.lsb.description }}
 
 ## Disk Partitions
 
