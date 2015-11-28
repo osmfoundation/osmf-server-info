@@ -2,18 +2,19 @@
 layout: default
 ---
 
-# {{ page.server.name }}
+# {{ page.title }}
 
 ## Hardware
 
 **Chassis**
-: {{ page.server.automatic.dmi.system.manufacturer }} {{ page.server.automatic.dmi.system.product_name }}
+: {{ page.server.chassis }}
 
 **CPU**
-: {{ page.server.automatic.cpu.real }}x {{ page.server.automatic.cpu.total |divided_by: page.server.automatic.cpu.real }}-core {{ page.server.automatic.cpu.0.model_name }}
+: {% for cpu in page.server.cpus %}* {{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model }}
+  {% endfor %}
 
 **Memory**
-: {{ page.server.automatic.memory.total }}
+: {{ page.server.memory }}
 
 **Motherboard**
 : N/A
@@ -28,35 +29,18 @@ layout: default
 : N/A
 
 ## Network
-<table>
-  <thead>
-    <th>interface</th>
-    <th>mac</th>
-    <th>IPs</th>
-  </thead>
-  <tbody>
-  {% for interface in page.server.automatic.network.interfaces %}
-    {% if interface[0] != 'lo' %}
-      {% assign addresses = '' %}
-      {% for address in interface[1].addresses %}
-        {% if address[1].family == 'lladdr' %}
-          {% assign mac = address[0] %}
-        {% else %}
-          {% if address[1].scope != 'Link' %}
-            {% capture addresses %}{{ addresses }}, {{ address[0] }}{% endcapture %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-      <tr><td>{{ interface[0] }}</td><td>{{ mac }}</td><td>{{ addresses | remove_first: ',' }}</td></tr>
-    {% endif %}
+
+{% for interface in page.server.interfaces %}
+**{{ interface.name }}**
+: {% for address in interface.addresses %}* {{ address }}
   {% endfor %}
-  </tbody>
-</table>
+
+{% endfor %}
 
 ## Software
 
 **Operating System**
-: {{ page.server.automatic.lsb.description }}
+: {{ page.server.os }}
 
 ## Disk Partitions
 
