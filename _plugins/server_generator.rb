@@ -88,8 +88,16 @@ module Jekyll
     end
 
     def extract_memory(ohai)
+      {
+        'total' => format_size(parse_size(ohai['memory']['total'])),
+        'devices' => extract_memory_devices(ohai)
+      }
+    end
+
+    def extract_memory_devices(ohai)
       if ohai['hardware']
         ohai['hardware']['memory']
+          .reject { |device| device['type'] == 'Flash' }
           .map { |device| { :size => parse_size(device['size']), :type => describe_memory_device(device) } }
           .group_by { |device| device[:type] }
           .map { |type, devices| { 'type' => type, 'size' => devices.first[:size], 'count' => devices.count } }

@@ -22,11 +22,10 @@ layout: default
   {% endfor %}
 {% endif %}
 
-{% if page.server.memory != empty %}
 **Memory**
-: {% for memory in page.server.memory %}* {{ memory.count }} x {{ memory.type }}s
+: * {{ page.server.memory.total }} Total
+  {% for device in page.server.memory.devices %}* {{ device.count }} x {{ device.type }}
   {% endfor %}
-{% endif %}
 
 **Raid Controller**
 : N/A
