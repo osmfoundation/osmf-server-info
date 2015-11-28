@@ -1,22 +1,22 @@
 systems:
   IBM System x3455 7986-CTO: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3455/7986
   IBM System x3550 7978-BCG: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3550/7978
-  Supermicro PDSMi: http://www.supermicro.co.uk/products/motherboard/PD/E7230/PDSMi.cfm
-  Supermicro SYS-1028U-TN10RT+: http://www.supermicro.co.uk/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
+  Supermicro PDSMi: http://www.supermicro.com.tw/products/motherboard/PD/E7230/PDSMi.cfm
+  Supermicro SYS-1028U-TN10RT+: http://www.supermicro.com.tw/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
 motherboards:
   ASUSTeK COMPUTER INC. P8H77-M PRO: https://www.asus.com/uk/Motherboards/P8H77M_PRO/
   ASUSTeK Computer INC. Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
   Gigabyte Technology Co., Ltd. GA-880GM-USB3: http://www.gigabyte.com/products/product-page.aspx?pid=3809
   MSI B85M-G43 (MS-7823): http://www.msi.com/product/motherboard/B85M-G43.html
-  Supermicro H8DGU: http://www.supermicro.co.uk/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
-  Supermicro PDSMi+: http://www.supermicro.co.uk/products/motherboard/Xeon3000/3000/PDSMi_.cfm
-  Supermicro X10DRU-i+: http://www.supermicro.co.uk/products/motherboard/Xeon/C600/X10DRU-i_.cfm
-  Supermicro X7DBU: http://www.supermicro.co.uk/products/motherboard/Xeon1333/5000P/X7DBU.cfm
-  Supermicro X9DR3-F: http://www.supermicro.co.uk/products/motherboard/Xeon/C600/X9DR3-F.cfm
-  Supermicro X9DR7/E-(J)LN4F: http://www.supermicro.co.uk/products/motherboard/xeon/c600/X9DR7-LN4F.cfm
-  Supermicro X9DRW: http://www.supermicro.co.uk/products/motherboard/Xeon/C600/X9DRW-iF.cfm
-  Supermicro X9SCD: http://www.supermicro.co.uk/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
-  Supermicro X9SRL-F: http://www.supermicro.co.uk/products/motherboard/Xeon/C600/X9SRL-F.cfm
+  Supermicro H8DGU: http://www.supermicro.com.tw/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
+  Supermicro PDSMi+: http://www.supermicro.com.tw/products/motherboard/Xeon3000/3000/PDSMi_.cfm
+  Supermicro X10DRU-i+: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X10DRU-i_.cfm
+  Supermicro X7DBU: http://www.supermicro.com.tw/products/motherboard/Xeon1333/5000P/X7DBU.cfm
+  Supermicro X9DR3-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DR3-F.cfm
+  Supermicro X9DR7/E-(J)LN4F: http://www.supermicro.com.tw/products/motherboard/xeon/c600/X9DR7-LN4F.cfm
+  Supermicro X9DRW: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DRW-iF.cfm
+  Supermicro X9SCD: http://www.supermicro.com.tw/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
+  Supermicro X9SRL-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9SRL-F.cfm
   TYAN S7010: http://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
 cpus:
   AMD Opteron(TM) Processor 6238: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_6200-series_.22Interlagos.22_.2832_nm.29
