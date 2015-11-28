@@ -6,8 +6,15 @@ layout: default
 
 ## Hardware
 
-**Chassis**
-: {{ page.server.chassis }}
+{% if page.server.system.name %}
+**System**
+: {{ page.server.system.name | linkify: 'systems' }}
+{% endif %}
+
+{% if page.server.system.motherboard %}
+**Motherboard**
+: {{ page.server.system.motherboard | linkify: 'motherboards' }}
+{% endif %}
 
 **CPU**
 : {% for cpu in page.server.cpus %}* {{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model | linkify: 'cpus' }}
@@ -15,9 +22,6 @@ layout: default
 
 **Memory**
 : {{ page.server.memory }}
-
-**Motherboard**
-: N/A
 
 **Raid Controller**
 : N/A
