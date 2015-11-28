@@ -10,7 +10,7 @@ layout: default
 : {{ page.server.chassis }}
 
 **CPU**
-: {% for cpu in page.server.cpus %}* {{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model }}
+: {% for cpu in page.server.cpus %}* {{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model | linkify: 'cpus' }}
   {% endfor %}
 
 **Memory**
