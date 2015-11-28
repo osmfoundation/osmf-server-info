@@ -22,8 +22,11 @@ layout: default
   {% endfor %}
 {% endif %}
 
+{% if page.server.memory != empty %}
 **Memory**
-: {{ page.server.memory }}
+: {% for memory in page.server.memory %}* {{ memory.count }} x {{ memory.type }}s
+  {% endfor %}
+{% endif %}
 
 **Raid Controller**
 : N/A

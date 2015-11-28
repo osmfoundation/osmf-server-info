@@ -88,16 +88,37 @@ module Jekyll
     end
 
     def extract_memory(ohai)
-      if ohai['memory']['total'] =~ /^(\d+)kB/
-        kblog2 = Math.log2($1.to_f).ceil
-      end
-
-      if kblog2 >= 20
-        sprintf "%dGB", 2 ** (kblog2 - 20)
-      elsif kblog2 >= 10
-        sprintf "%dMB", 2 ** (kblog2 - 10)
+      if ohai['hardware']
+        ohai['hardware']['memory']
+          .map { |device| { :size => parse_size(device['size']), :type => describe_memory_device(device) } }
+          .group_by { |device| device[:type] }
+          .map { |type, devices| { 'type' => type, 'size' => devices.first[:size], 'count' => devices.count } }
+          .sort_by { |device| device['size'] }
+          .reverse
       else
-        sprintf "%dKB", 2 ** (kblog2 - 0)
+        []
+      end
+    end
+
+    def describe_memory_device(device)
+      form_factor = device['form_factor']
+
+      if device['size'] == 'No Module Installed'
+        "Spare #{form_factor} slot"
+      else
+        size = format_size(parse_size(device['size']))
+        type = device['type']
+        speed = device['speed']
+
+        if type.end_with?(form_factor)
+          form_factor = ""
+        end
+
+        if speed == 'Unknown'
+          "#{size} #{type} #{form_factor}".strip
+        else
+          "#{size} #{speed} #{type} #{form_factor}".strip
+        end
       end
     end
 
@@ -117,6 +138,34 @@ module Jekyll
     def extract_bios(ohai)
       if bios = ohai['dmi']['bios']
         "#{bios['vendor']} version #{bios['version']}"
+      end
+    end
+
+    def parse_size(size)
+      if size =~ /^(\d+)\s*GB/i
+        $1.to_i * 1024 * 1024
+      elsif size =~ /^(\d+)\s*MB/i
+        $1.to_i * 1024
+      elsif size =~ /^(\d+)\s*KB/i
+        $1.to_i
+      else
+        0
+      end
+    end
+
+    def format_size(kb)
+      if kb == 0
+        ""
+      else
+        kblog2 = Math.log2(kb).ceil
+
+        if kblog2 >= 20
+          sprintf "%dGB", 2 ** (kblog2 - 20)
+        elsif kblog2 >= 10
+          sprintf "%dMB", 2 ** (kblog2 - 10)
+        else
+          sprintf "%dKB", 2 ** (kblog2 - 0)
+        end
       end
     end
   end
