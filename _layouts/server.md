@@ -45,6 +45,11 @@ layout: default
 
 ## Software
 
+{% if page.server.bios %}
+**BIOS**
+: {{ page.server.bios }}
+{% endif %}
+
 **Operating System**
 : {{ page.server.os }}
 

@@ -20,6 +20,7 @@ module Jekyll
         'cpus' => extract_cpus(ohai),
         'memory' => extract_memory(ohai),
         'interfaces' => extract_interfaces(ohai),
+        'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description']
       }
     end
@@ -111,6 +112,12 @@ module Jekyll
       interface['addresses']
         .reject { |address, properties| properties['scope'] == 'Link' }
         .map { |address, _| address }
+    end
+
+    def extract_bios(ohai)
+      if bios = ohai['dmi']['bios']
+        "#{bios['vendor']} version #{bios['version']}"
+      end
     end
   end
 
