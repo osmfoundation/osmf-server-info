@@ -16,9 +16,11 @@ layout: default
 : {{ page.server.system.motherboard | linkify: 'motherboards' }}
 {% endif %}
 
+{% if page.server.cpus != empty %}
 **CPU**
 : {% for cpu in page.server.cpus %}* {{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model | linkify: 'cpus' }}
   {% endfor %}
+{% endif %}
 
 **Memory**
 : {{ page.server.memory }}
