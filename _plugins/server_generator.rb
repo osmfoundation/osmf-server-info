@@ -19,6 +19,7 @@ module Jekyll
         'system' => extract_system(ohai),
         'cpus' => extract_cpus(ohai),
         'memory' => extract_memory(ohai),
+        'disk' => extract_disk(ohai),
         'interfaces' => extract_interfaces(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description']
@@ -130,6 +131,29 @@ module Jekyll
       end
     end
 
+    def extract_disk(ohai)
+      {
+        'controllers' => extract_disk_controllers(ohai)
+      }
+    end
+
+    def extract_disk_controllers(ohai)
+      if ohai['hardware']
+        ohai['hardware']['pci']
+          .select { |_, device| is_disk_controller(device) }
+          .map { |_, device| device_name(device) }
+          .sort
+      else
+        []
+      end
+    end
+
+    def is_disk_controller(device)
+      device['class_name'] == 'SATA controller' ||
+        device['class_name'] == 'RAID bus controller' ||
+        device['class_name'] == 'Serial Attached SCSI controller'
+    end
+
     def extract_interfaces(ohai)
       ohai['network']['interfaces']
         .select { |_, interface| interface['encapsulation'] == 'Ethernet' }
@@ -147,6 +171,20 @@ module Jekyll
       if bios = ohai['dmi']['bios']
         "#{bios['vendor']} version #{bios['version']}"
       end
+    end
+
+    def device_name(device)
+      if device['subsystem_device_name'] =~ /^Device \h{4}$/
+        vendor = device['vendor_name']
+        name = device['device_name']
+      else
+        vendor = device['subsystem_vendor_name']
+        name = device['subsystem_device_name']
+      end
+
+      vendor = @site.data['names']['vendors'][vendor] || vendor
+
+      "#{vendor} #{name}"
     end
 
     def parse_size(size)

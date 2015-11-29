@@ -27,8 +27,11 @@ layout: default
   {% for device in page.server.memory.devices %}* {{ device.count }} x {{ device.type }}
   {% endfor %}
 
-**Raid Controller**
-: N/A
+{% if page.server.disk.controllers != empty %}
+**Disk Controllers**
+: {% for controller in page.server.disk.controllers %}* {{ controller }}
+  {% endfor %}
+{% endif %}
 
 **Disk**
 : N/A
