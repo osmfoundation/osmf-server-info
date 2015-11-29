@@ -196,7 +196,8 @@ module Jekyll
     end
 
     def device_name(device)
-      if device['subsystem_device_name'] =~ /^Device \h{4}$/
+      if device['subsystem_device_name'] =~ /^Device \h{4}$/ ||
+         device['subsystem_vendor_name'] != device['vendor_name']
         vendor = device['vendor_name']
         name = device['device_name']
       else
