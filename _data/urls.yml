@@ -48,3 +48,10 @@ cpus:
   Intel(R) Xeon(R) CPU X5650 @ 2.67GHz: http://ark.intel.com/products/47922
   Intel(R) Xeon(R) CPU X5660 @ 2.80GHz: http://ark.intel.com/products/47921
   Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: http://ark.intel.com/products/47920
+hbas:
+  Adaptec Series 8 12G SAS/PCIe 3: http://www.adaptec.com/en-us/products/series/8/
+  LSI MegaRAID SAS-3 3108 [Invader]: http://www.avagotech.com/products/server-storage/raid-on-chip/sas-3108
+  LSI MegaRAID SAS 9271-8i: http://www.avagotech.com/products/server-storage/raid-controllers/megaraid-sas-9271-8i
+  LSI MegaRAID SAS 9271-8iCC: http://www.avagotech.com/products/server-storage/raid-controllers/megaraid-sas-9271-8icc
+  LSI SAS2308 PCI-Express Fusion-MPT SAS-2: http://www.avagotech.com/products/server-storage/io-controllers/sas-2308
+  LSI SAS3008 PCI-Express Fusion-MPT SAS-3: http://www.avagotech.com/products/server-storage/io-controllers/sas-3008

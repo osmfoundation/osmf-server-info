@@ -29,7 +29,7 @@ layout: default
 
 {% if page.server.disk.controllers != empty %}
 **Disk Controllers**
-: {% for controller in page.server.disk.controllers %}* {{ controller }}
+: {% for controller in page.server.disk.controllers %}* {{ controller | linkify: 'hbas' }}
   {% endfor %}
 {% endif %}
 
