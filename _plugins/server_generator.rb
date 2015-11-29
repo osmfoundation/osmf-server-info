@@ -62,6 +62,9 @@ module Jekyll
           system_product.sub!(/\s*-\[([0-9]{4})([A-Z]{3})\]-$/, ' \1-\2')
         end
 
+        system_manufacturer = @site.data['names']['vendors'][system_manufacturer] || system_manufacturer
+        base_board_manufacturer = @site.data['names']['vendors'][base_board_manufacturer] || base_board_manufacturer
+
         if system_manufacturer && system_product
           if system_manufacturer == 'HP' && system_sku != ''
             system['name'] = "#{system_manufacturer} #{system_product} (#{system_sku})"
