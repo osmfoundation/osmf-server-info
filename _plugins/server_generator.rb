@@ -20,7 +20,7 @@ module Jekyll
         'cpus' => extract_cpus(ohai),
         'memory' => extract_memory(ohai),
         'disk' => extract_disk(ohai),
-        'interfaces' => extract_interfaces(ohai),
+        'network' => extract_network(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description']
       }
@@ -154,7 +154,26 @@ module Jekyll
         device['class_name'] == 'Serial Attached SCSI controller'
     end
 
-    def extract_interfaces(ohai)
+    def extract_network(ohai)
+      {
+        'controllers' => extract_network_controllers(ohai),
+        'interfaces' => extract_network_interfaces(ohai)
+      }
+    end
+
+    def extract_network_controllers(ohai)
+      if ohai['hardware']
+        ohai['hardware']['pci']
+          .select { |_, device| device['class_name'] == 'Ethernet controller' }
+          .select { |_, device| device['function'] == '0' }
+          .map { |_, device| device_name(device) }
+          .sort
+      else
+        []
+      end
+    end
+
+    def extract_network_interfaces(ohai)
       ohai['network']['interfaces']
         .select { |_, interface| interface['encapsulation'] == 'Ethernet' }
         .map { |name, interface| { 'name' => name, 'addresses' => extract_addresses(interface) } }

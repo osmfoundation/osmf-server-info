@@ -36,12 +36,18 @@ layout: default
 **Disk**
 : N/A
 
+{% if page.server.network.controllers != empty %}
+**Network Controllers**
+: {% for controller in page.server.network.controllers %}* {{ controller }}
+  {% endfor %}
+{% endif %}
+
 **Out-of-band Management**
 : N/A
 
 ## Network
 
-{% for interface in page.server.interfaces %}
+{% for interface in page.server.network.interfaces %}
 **{{ interface.name }}**
 : {% for address in interface.addresses %}* {{ address }}
   {% endfor %}
