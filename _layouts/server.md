@@ -33,8 +33,11 @@ layout: default
   {% endfor %}
 {% endif %}
 
-**Disk**
-: N/A
+{% if page.server.disk.disks != empty %}
+**Disks**
+: {% for disk in page.server.disk.disks %}* {{ disk.count }} x {{ disk.type }}
+  {% endfor %}
+{% endif %}
 
 {% if page.server.network.controllers != empty %}
 **Network Controllers**
@@ -63,6 +66,15 @@ layout: default
 
 **Operating System**
 : {{ page.server.os }}
+
+{% if page.server.disk.arrays != empty %}
+## Disk Arrays
+{% for array in page.server.disk.arrays %}
+**{{ array.device }}**
+: {{ array.size }} RAID{{ array.level }} array over {{ array.disks }} disks
+
+{% endfor %}
+{% endif %}
 
 ## Disk Partitions
 

@@ -136,7 +136,9 @@ module Jekyll
 
     def extract_disk(ohai)
       {
-        'controllers' => extract_disk_controllers(ohai)
+        'controllers' => extract_disk_controllers(ohai),
+        'arrays' => extract_disk_arrays(ohai),
+        'disks' => extract_disk_disks(ohai)
       }
     end
 
@@ -154,7 +156,48 @@ module Jekyll
     def is_disk_controller(device)
       device['class_name'] == 'SATA controller' ||
         device['class_name'] == 'RAID bus controller' ||
-        device['class_name'] == 'Serial Attached SCSI controller'
+        device['class_name'] == 'Serial Attached SCSI controller' ||
+        device['class_name'] == 'Non-Volatile memory controller'
+    end
+
+    def extract_disk_arrays(ohai)
+      if ohai['hardware'] && ohai['hardware']['disk']
+        ohai['hardware']['disk']['arrays']
+          .map { |array| array_details(array) }
+          .sort_by { |array| array['device'] }
+      else
+        []
+      end
+    end
+
+    def array_details(array)
+      {
+        'device' => array['device'],
+        'size' => array['size'],
+        'level' => array['raid_level'],
+        'disks' => array['disks'].count
+      }
+    end
+
+    def extract_disk_disks(ohai)
+      if ohai['hardware'] && ohai['hardware']['disk']
+        ohai['hardware']['disk']['disks']
+          .map { |device| { :size => parse_size(device['size']), :type => describe_disk_device(device) } }
+          .group_by { |device| device[:type] }
+          .map { |type, devices| { 'type' => type, 'size' => devices.first[:size], 'count' => devices.count } }
+          .sort_by { |device| device['size'] }
+          .reverse
+      else
+        []
+      end
+    end
+
+    def describe_disk_device(device)
+      size = device['size']
+      vendor = device['vendor']
+      model = device['model']
+
+      "#{size} #{vendor} #{model}"
     end
 
     def extract_network(ohai)
@@ -211,11 +254,13 @@ module Jekyll
     end
 
     def parse_size(size)
-      if size =~ /^(\d+)\s*GB/i
+      if size =~ /^(\d+)(?:\.\d+)?\s*TB/i
+        $1.to_i * 1024 * 1024 * 1024
+      elsif size =~ /^(\d+)(?:\.\d+)?\s*GB/i
         $1.to_i * 1024 * 1024
-      elsif size =~ /^(\d+)\s*MB/i
+      elsif size =~ /^(\d+)(?:\.\d+)?\s*MB/i
         $1.to_i * 1024
-      elsif size =~ /^(\d+)\s*KB/i
+      elsif size =~ /^(\d+)(?:\.\d+)?\s*KB/i
         $1.to_i
       else
         0
@@ -228,7 +273,9 @@ module Jekyll
       else
         kblog2 = Math.log2(kb).ceil
 
-        if kblog2 >= 20
+        if kblog2 >= 30
+          sprintf "%dTB", 2 ** (kblog2 - 30)
+        elsif kblog2 >= 20
           sprintf "%dGB", 2 ** (kblog2 - 20)
         elsif kblog2 >= 10
           sprintf "%dMB", 2 ** (kblog2 - 10)
