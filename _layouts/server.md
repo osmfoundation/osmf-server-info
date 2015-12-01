@@ -35,7 +35,7 @@ layout: default
 
 {% if page.server.disk.disks != empty %}
 **Disks**
-: {% for disk in page.server.disk.disks %}* {{ disk.count }} x {{ disk.type }}
+: {% for disk in page.server.disk.disks %}* {{ disk.count }} x {{ disk.size }} {{ disk.type | linkify: 'disks' }}
   {% endfor %}
 {% endif %}
 

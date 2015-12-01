@@ -55,3 +55,32 @@ hbas:
   LSI MegaRAID SAS 9271-8iCC: http://www.avagotech.com/products/server-storage/raid-controllers/megaraid-sas-9271-8icc
   LSI SAS2308 PCI-Express Fusion-MPT SAS-2: http://www.avagotech.com/products/server-storage/io-controllers/sas-2308
   LSI SAS3008 PCI-Express Fusion-MPT SAS-3: http://www.avagotech.com/products/server-storage/io-controllers/sas-3008
+disks:
+  Fujitsu MBB2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
+  Fujitsu MBC2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
+  HGST HUS156060VLS600: https://www.hgst.com/sites/default/files/resources/US15K600_DS_final.pdf
+  Intel DC P3600 SSD [2.5" SFF]: http://ark.intel.com/products/series/81000/Intel-SSD-DC-P3600-Series
+  Intel SSDSC2BA40: http://ark.intel.com/products/71915
+  Intel SSDSA2CW600G3: http://ark.intel.com/products/56569
+  Seagate ST1000DM003: http://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf 
+  Seagate ST240FN0021: http://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
+  Seagate ST300MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST300MP0005: http://www.seagate.com/www-content/product-content/enterprise-performance-savvio-fam/enterprise-performance-15k-hdd/en-us/enterprise-performance-15k-hdd-ds1797-3-1406us.pdf
+  Seagate ST31000524AS: http://www.seagate.com/docs/pdf/en-GB/datasheet/disc/barracuda-7200-12-ds1668-6-1101gb.pdf
+  Seagate ST3160815AS: http://www.seagate.com/docs/pdf/datasheet/disc/ds_barracuda_7200_10.pdf
+  Seagate ST3450857SS: http://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
+  Seagate ST3600057SS: http://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
+  Seagate ST4000NM0033: http://www.seagate.com/files/www-content/product-content/constellation-fam/constellation-es/constellation-es-3/en-us/docs/constellation-es-3-data-sheet-ds1769-1-1210us.pdf
+  Seagate ST400FP0021: http://www.seagate.com/files/www-content/product-content/ssd-fam/600-pro-ssd/en-us/docs/600-pro-ssd-data-sheet-ds1790-2-1305us.pdf
+  Seagate ST600MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST900MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST91000640NS: http://www.seagate.com/www-content/product-content/constellation-fam/constellation/constellation-2/en-us/docs/constellation2-fips-ds1719-4-1207us.pdf
+  Western Digital WD1000CHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701282.pdf
+  Western Digital WD1000DHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701284.pdf
+  Western Digital WD1003FBYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+  Western Digital WD2000FYYZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771444.pdf
+  Western Digital WD2003FYYS: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+  Western Digital WD4001FYYG: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771386.pdf
+  Western Digital WD5000AAKS: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701277.pdf
+  Western Digital WD5002ABYS: http://www.wdc.com/en/library/spec/2879-701281.pdf
+  Western Digital WD5003ABYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf

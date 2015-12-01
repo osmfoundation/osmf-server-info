@@ -182,10 +182,10 @@ module Jekyll
     def extract_disk_disks(ohai)
       if ohai['hardware'] && ohai['hardware']['disk']
         ohai['hardware']['disk']['disks']
-          .map { |device| { :size => parse_size(device['size']), :type => describe_disk_device(device) } }
+          .map { |device| { :size => device['size'], :type => describe_disk_device(device) } }
           .group_by { |device| device[:type] }
           .map { |type, devices| { 'type' => type, 'size' => devices.first[:size], 'count' => devices.count } }
-          .sort_by { |device| device['size'] }
+          .sort_by { |device| parse_size(device['size']) }
           .reverse
       else
         []
@@ -193,11 +193,12 @@ module Jekyll
     end
 
     def describe_disk_device(device)
-      size = device['size']
       vendor = device['vendor']
       model = device['model']
 
-      "#{size} #{vendor} #{model}"
+      vendor = @site.data['names']['vendors'][vendor] || vendor
+
+      "#{vendor} #{model}"
     end
 
     def extract_network(ohai)
