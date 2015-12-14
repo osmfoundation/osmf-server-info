@@ -51,8 +51,10 @@ layout: default
   {% endfor %}
 {% endif %}
 
+{% if page.server.oob %}
 **Out-of-band Management**
-: N/A
+: {{ page.server.oob | linkify: 'oobs' }}
+{% endif %}
 
 ## Network
 

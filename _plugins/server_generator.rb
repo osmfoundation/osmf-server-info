@@ -22,6 +22,7 @@ module Jekyll
         'disk' => extract_disk(ohai),
         'network' => extract_network(ohai),
         'power' => extract_power(ohai),
+        'oob' => extract_oob(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description']
       }
@@ -259,6 +260,36 @@ module Jekyll
       vendor = @site.data['names']['vendors'][vendor] || vendor
 
       "#{vendor} #{model}"
+    end
+
+    def extract_oob(ohai)
+      if ohai['hardware'] && ohai['hardware']['mc'] && !ohai['hardware']['mc'].empty?
+        if ohai['hardware']['mc']['manufacturer_name'] == 'Unknown'
+          case ohai['hardware']['mc']['manufacturer_id']
+          when '2' then vendor = 'IBM'
+          when '4163' then vendor = 'ASUS'
+          when '47488' then vendor = 'Supermicro'
+          end
+        else
+          vendor = ohai['hardware']['mc']['manufacturer_name']
+        end
+
+        product = ohai['hardware']['mc']['product_id']
+
+        vendor = @site.data['names']['vendors'][vendor] || vendor
+
+        if vendor == 'HP'
+          pci = ohai['hardware']['pci'].select { |slot, device| device['driver'] == 'hpilo' }.values.first
+
+          product =  pci['subsystem_device_id']
+        end
+
+        if @site.data['names']['oobs']["#{vendor} #{product}"]
+          @site.data['names']['oobs']["#{vendor} #{product}"]
+        else
+          "OOB #{vendor} #{product}"
+        end
+      end
     end
 
     def extract_bios(ohai)

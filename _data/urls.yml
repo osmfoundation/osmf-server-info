@@ -1,4 +1,5 @@
 systems:
+  Fujitsu PRIMERGY RX300 S4: http://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
   IBM System x3455 7986-CTO: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3455/7986
   IBM System x3550 7978-BCG: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3550/7978
   Supermicro PDSMi: http://www.supermicro.com.tw/products/motherboard/PD/E7230/PDSMi.cfm
@@ -84,3 +85,7 @@ disks:
   Western Digital WD5000AAKS: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701277.pdf
   Western Digital WD5002ABYS: http://www.wdc.com/en/library/spec/2879-701281.pdf
   Western Digital WD5003ABYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+oobs:
+  ASPEED AST2050: http://tyan.com/manuals/AST2050_Manual_v101.pdf
+  ASPEED AST2400: http://www.aspeedtech.com/products.php?fPath=20&rId=376
+  ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/

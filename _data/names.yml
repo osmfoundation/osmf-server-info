@@ -5,8 +5,11 @@ vendors:
   Broadcom Corporation: Broadcom
   CRUCIAL: Crucial
   FUJITSU: Fujitsu
+  FUJITSU SIEMENS: Fujitsu
+  Fujitsu Siemens: Fujitsu
   Gigabyte Technology Co., Ltd: Gigabyte
   Gigabyte Technology Co., Ltd.: Gigabyte
+  Hewlett-Packard: HP
   Hewlett-Packard Company: HP
   HITACHI: HGST
   INTEL: Intel
@@ -14,7 +17,25 @@ vendors:
   LSI Logic / Symbios Logic: LSI
   Realtek Semiconductor Co., Ltd.: Realtek
   SEAGATE: Seagate
+  SUPERMICRO: Supermicro
   Super Micro Computer Inc: Supermicro
   TOSHIBA: Toshiba
+  TYAN: Tyan
+  Tyan Computer Corporation: Tyan
   WD: Western Digital
   WDC: Western Digital
+oobs:
+  Fujitsu 547: Fujitsu iRMC2
+  HP 3305: HP iLO 2
+  HP 3309: HP iLO 3
+  IBM 18: IBM H8S2166
+  IBM 192: IBM H82166
+  ASUS 2371: ASUS ASMB4-iKVM
+  Peppercon AG 4: Supermicro AOC-SIMSO
+  Supermicro 1576: Nuvoton WPCM450
+  Supermicro 1588: Nuvoton WPCM450
+  Supermicro 1797: Nuvoton WPCM450
+  Supermicro 2116: ASPEED AST2400
+  Supermicro 43025: Winbond WPCM450
+  Supermicro 43707: Renesas SH7757
+  Tyan 7010: ASPEED AST2050
