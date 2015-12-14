@@ -45,6 +45,12 @@ layout: default
   {% endfor %}
 {% endif %}
 
+{% if page.server.power.psus != empty %}
+**Power Supplies**
+: {% for psu in page.server.power.psus %}* {{ psu.count }} x {{ psu.capacity }}W {{ psu.type }}
+  {% endfor %}
+{% endif %}
+
 **Out-of-band Management**
 : N/A
 

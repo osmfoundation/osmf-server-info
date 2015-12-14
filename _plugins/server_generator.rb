@@ -21,6 +21,7 @@ module Jekyll
         'memory' => extract_memory(ohai),
         'disk' => extract_disk(ohai),
         'network' => extract_network(ohai),
+        'power' => extract_power(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description']
       }
@@ -233,6 +234,33 @@ module Jekyll
         .map { |address, _| address }
     end
 
+    def extract_power(ohai)
+      {
+        'psus' => extract_psus(ohai)
+      }
+    end
+
+    def extract_psus(ohai)
+      if ohai['hardware'] && ohai['hardware']['psu']
+        ohai['hardware']['psu']
+          .reject { |device| device['max_power_capacity'] == 'Unknown' }
+          .map { |device| { :capacity => parse_watts(device['max_power_capacity']), :type => describe_psu(device) } }
+          .group_by { |device| device[:type] }
+          .map { |type, devices| { 'type' => type, 'capacity' => devices.first[:capacity], 'count' => devices.count } }
+      else
+        []
+      end
+    end
+
+    def describe_psu(device)
+      vendor = device['manufacturer']
+      model = device['model_part_number']
+
+      vendor = @site.data['names']['vendors'][vendor] || vendor
+
+      "#{vendor} #{model}"
+    end
+
     def extract_bios(ohai)
       if bios = ohai['dmi']['bios']
         "#{bios['vendor']} version #{bios['version']}"
@@ -283,6 +311,14 @@ module Jekyll
         else
           sprintf "%dKB", 2 ** (kblog2 - 0)
         end
+      end
+    end
+
+    def parse_watts(power)
+      if power =~ /^\s*(\d+)\s*W\s*$/i
+        $1.to_i
+      else
+        0
       end
     end
   end
