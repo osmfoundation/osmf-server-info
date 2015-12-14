@@ -322,6 +322,8 @@ module Jekyll
         ohai['hardware']['lvm']['lvs']
           .map { |name, details| { 'name' => name, 'description' => describe_lv(details, ohai) } }
           .sort_by { |lv| lv['name'] }
+      else
+        []
       end
     end
 
