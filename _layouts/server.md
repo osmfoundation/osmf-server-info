@@ -84,6 +84,10 @@ layout: default
 {% endfor %}
 {% endif %}
 
-## Disk Partitions
+## Filesystems
 
-Mount Point | Device | Notes
+{% for fs in page.server.filesystems %}
+**{{ fs.mountpoint }}**
+: {{ fs.description }}
+
+{% endfor %}

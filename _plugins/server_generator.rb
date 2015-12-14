@@ -14,6 +14,11 @@ module Jekyll
 
     private
 
+    KB = 1024
+    MB = KB * 1024
+    GB = MB * 1024
+    TB = GB * 1024
+
     def extract_details(ohai)
       {
         'system' => extract_system(ohai),
@@ -24,7 +29,8 @@ module Jekyll
         'power' => extract_power(ohai),
         'oob' => extract_oob(ohai),
         'bios' => extract_bios(ohai),
-        'os' => ohai['lsb']['description']
+        'os' => ohai['lsb']['description'],
+        'filesystems' => extract_filesystems(ohai)
       }
     end
 
@@ -298,6 +304,21 @@ module Jekyll
       end
     end
 
+    def extract_filesystems(ohai)
+      ohai['filesystem']
+        .select { |device, _| device.start_with?('/') }
+        .select { |_, details| details.include?('kb_size') }
+        .map { |device, details| { 'mountpoint' => details['mount'], 'description' => describe_filesystem(device, details) } }
+        .sort_by { |filesystem| filesystem['mountpoint'] || "xxx" }
+    end
+
+    def describe_filesystem(device, details)
+      size = format_size(details['kb_size'].to_i)
+      fstype = details['fs_type']
+
+      "#{size} #{fstype} on #{device}"
+    end
+
     def device_name(device)
       if device['subsystem_device_name'] =~ /^Device \h{4}$/ ||
          device['subsystem_vendor_name'] != device['vendor_name']
@@ -327,11 +348,14 @@ module Jekyll
       end
     end
 
-    def format_size(kb)
+    def format_size(kb, granularity=MB)
       if kb == 0
         ""
       else
-        kblog2 = Math.log2(kb).ceil
+        granularity = granularity / 1024
+        kb = (kb.to_f / granularity).round * granularity
+
+        kblog2 = Math.log2(kb)
 
         if kblog2 >= 30
           sprintf "%dTB", 2 ** (kblog2 - 30)
