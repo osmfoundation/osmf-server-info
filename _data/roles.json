@@ -1,0 +1,7623 @@
+{
+  "results": 153,
+  "rows": [
+    {
+  "name": "delta",
+  "description": "Role applied to all servers at Delta Telecom",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "94.20.20.20",
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "dt"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.az.pool.ntp.org",
+        "1.az.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[az]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "git",
+  "description": "Role applied to all git servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "lonvia": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "translatewiki": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "yellowbkpk": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "git": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "grant",
+            "matt",
+            "lonvia",
+            "yellowbkpk",
+            "translatewiki"
+          ]
+        }
+      }
+    },
+    "git": {
+      "host": "git.openstreetmap.org",
+      "backup": "git"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[git::server]",
+    "recipe[git::web]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hp-g5",
+  "description": "Role applied to all HP G5 machines",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "hpasmcli2_temp": {
+          "temp1": {
+            "warning": 60
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ironbelly",
+  "description": "Master role applied to ironbelly",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "ubuntugis-unstable"
+      ]
+    },
+    "elasticsearch": {
+      "cluster": {
+        "routing": {
+          "allocation": {
+            "disk": {
+              "watermark": {
+                "low": "95%",
+                "high": "98%"
+              }
+            }
+          }
+        }
+      },
+      "path": {
+        "data": "/store/elasticsearch"
+      }
+    },
+    "git": {
+      "allowed_nodes": "*:*",
+      "user": "chefrepo",
+      "group": "chefrepo",
+      "backup": "chef-git"
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.177"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.107"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:225:90ff:fec4:f6ef"
+        }
+      }
+    },
+    "openvpn": {
+      "address": "10.0.16.2",
+      "tunnels": {
+        "ic2ucl": {
+          "port": "1194",
+          "mode": "server",
+          "peer": {
+            "host": "ridley.openstreetmap.org"
+          }
+        }
+      }
+    },
+    "rsyncd": {
+      "modules": {
+        "hosts": {
+          "comment": "Host data",
+          "path": "/home/hosts",
+          "read_only": true,
+          "write_only": false,
+          "list": false,
+          "uid": "tomh",
+          "gid": "tomh",
+          "transfer_logging": false,
+          "hosts_allow": [
+            "212.110.172.32",
+            "2001:41c9:1:400::32",
+            "212.159.112.221"
+          ]
+        },
+        "logs": {
+          "comment": "Log files",
+          "path": "/store/logs",
+          "read_only": false,
+          "write_only": true,
+          "list": false,
+          "uid": "www-data",
+          "gid": "www-data",
+          "transfer_logging": false,
+          "hosts_allow": [
+            "128.40.168.0/24",
+            "128.40.45.192/27",
+            "146.179.159.160/27",
+            "193.63.75.96/27",
+            "2001:630:12:500::/64",
+            "127.0.0.0/8",
+            "::1"
+          ],
+          "nodes_allow": "roles:tilecache"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[gateway]",
+    "role[chef-server]",
+    "role[chef-repository]",
+    "role[web-storage]",
+    "role[supybot]",
+    "role[backup]",
+    "role[stats]",
+    "role[planet]",
+    "role[planetdump]",
+    "role[logstash]",
+    "recipe[rsyncd]",
+    "recipe[openvpn]",
+    "recipe[git::server]",
+    "recipe[tilelog]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "thinkup",
+  "description": "Role applied to all ThinkUp servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "thinkup": {
+          "status": "role"
+        }
+      }
+    },
+    "apache": {
+      "mpm": "prefork"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[thinkup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "base",
+  "description": "Base role applied to all servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "grant": {
+          "status": "administrator"
+        },
+        "tomh": {
+          "status": "administrator"
+        },
+        "matt": {
+          "status": "administrator"
+        },
+        "jburgess": {
+          "status": "administrator"
+        }
+      }
+    },
+    "apt": {
+      "sources": [
+        "openstreetmap"
+      ]
+    },
+    "networking": {
+      "roles": {
+        "internal": {
+          "metric": 200,
+          "zone": "loc"
+        },
+        "external": {
+          "metric": 100
+        }
+      },
+      "search": [
+        "openstreetmap.org"
+      ]
+    },
+    "sysctl": {
+      "panic": {
+        "comment": "Reboot automatically after a panic",
+        "parameters": {
+          "kernel.panic": "60"
+        }
+      },
+      "blackhole": {
+        "comment": "Do TCP level MTU probing if we seem to have an ICMP blackhole",
+        "parameters": {
+          "net.ipv4.tcp_mtu_probing": "1"
+        }
+      },
+      "network_buffers": {
+        "comment": "Tune network buffers",
+        "parameters": {
+          "net.core.rmem_max": "16777216",
+          "net.core.wmem_max": "16777216",
+          "net.ipv4.tcp_rmem": "4096\t87380\t16777216",
+          "net.ipv4.tcp_wmem": "4096\t65536\t16777216"
+        }
+      },
+      "network_backlog": {
+        "comment": "Increase maximum backlog for incoming network packets",
+        "parameters": {
+          "net.core.netdev_max_backlog": "2500"
+        }
+      },
+      "network_conntrack_established": {
+        "comment": "Only track established connections for four hours",
+        "parameters": {
+          "net.netfilter.nf_conntrack_tcp_timeout_established": "14400"
+        }
+      },
+      "tcp_syncookies": {
+        "comment": "Turn on syncookies to protect against SYN floods",
+        "parameters": {
+          "net.ipv4.tcp_syncookies": "1"
+        }
+      }
+    },
+    "sysfs": {
+      "cpufreq_ondemand": {
+        "comment": "Tune the ondemand CPU frequency governor",
+        "parameters": {
+          "devices/system/cpu/cpufreq/ondemand/up_threshold": "25",
+          "devices/system/cpu/cpufreq/ondemand/sampling_down_factor": "100"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[accounts]",
+    "recipe[apt]",
+    "recipe[chef]",
+    "recipe[devices]",
+    "recipe[hardware]",
+    "recipe[munin]",
+    "recipe[networking]",
+    "recipe[exim]",
+    "recipe[ntp]",
+    "recipe[openssh]",
+    "recipe[sysctl]",
+    "recipe[sysfs]",
+    "recipe[tools]",
+    "recipe[fail2ban]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "carnet",
+  "description": "Role applied to all servers at CARNet",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "hbogner": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "roles": {
+        "external": {
+          "zone": "cnt"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.hr.pool.ntp.org",
+        "1.hr.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[hr]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "osuosl",
+  "description": "Role applied to all servers at OSUOSL",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "osuadmin": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "ool",
+          "inet": {
+            "prefix": "28",
+            "gateway": "140.211.167.97"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "ntp.osuosl.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[us]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "planetdump",
+  "description": "Role applied to all planetdump servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[planet::dump]",
+    "recipe[planet::notes]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hp-dl180-g6",
+  "description": "Role applied to all HP DL180 G6 machines",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "ipmi_temp": {
+          "Temp1": {
+            "label": "Air Inlet"
+          },
+          "Temp2CPU1": {
+            "warning": ":",
+            "label": "CPU 1"
+          },
+          "Temp3CPU2": {
+            "warning": ":",
+            "label": "CPU 2"
+          },
+          "Temp4": {
+            "warning": ":",
+            "label": "Memory 1"
+          },
+          "Temp5": {
+            "warning": ":",
+            "label": "Memory 2"
+          },
+          "Temp8MemB0": {
+            "warning": ":",
+            "label": "Memory 3"
+          },
+          "Temp9MemB0": {
+            "warning": ":",
+            "label": "Memory 4"
+          },
+          "Temp10MemB0": {
+            "warning": ":",
+            "label": "Memory 5"
+          },
+          "Temp12MemB1": {
+            "warning": ":",
+            "label": "Memory 6"
+          },
+          "Temp13MemB1": {
+            "warning": ":",
+            "label": "Memory 7"
+          },
+          "Temp14MemB1": {
+            "warning": ":",
+            "label": "Memory 8"
+          },
+          "Temp15": {
+            "warning": ":",
+            "label": "Main System Board 3"
+          },
+          "Temp16": {
+            "warning": ":",
+            "label": "Main System Board 4"
+          },
+          "Temp17": {
+            "warning": ":",
+            "label": "Main System Board 5"
+          },
+          "Temp18": {
+            "warning": ":",
+            "label": "Main System Board 6"
+          },
+          "Temp19": {
+            "warning": ":",
+            "label": "Main System Board 7"
+          },
+          "Temp20": {
+            "warning": ":",
+            "label": "Main System Board 8"
+          },
+          "Temp21": {
+            "warning": ":",
+            "label": "Main System Board 9"
+          },
+          "Temp26": {
+            "warning": ":",
+            "label": "Drive Backplane 1"
+          },
+          "Temp27": {
+            "warning": ":",
+            "label": "Drive Backplane 2"
+          },
+          "Temp28": {
+            "warning": ":",
+            "label": "Drive Backplane 3"
+          },
+          "Temp29": {
+            "warning": ":",
+            "label": "Drive Backplane 4"
+          },
+          "Temp30": {
+            "warning": ":",
+            "label": "Drive Backplane 5"
+          },
+          "Temp31": {
+            "warning": ":",
+            "label": "Drive Backplane 6"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "chef-server",
+  "description": "Role applied to all chef servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "chef_status": {
+          "ascalon": {
+            "warning": ":",
+            "critical": ":"
+          },
+          "idris": {
+            "warning": ":",
+            "critical": ":"
+          },
+          "norbert": {
+            "warning": ":",
+            "critical": ":"
+          },
+          "smaug": {
+            "warning": ":",
+            "critical": ":"
+          },
+          "zark": {
+            "warning": ":",
+            "critical": ":"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chef::server]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "noquiklos",
+  "description": "Master role applied to noquiklos",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.13"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.201"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-dl360-g6]",
+    "role[gps-tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "owl",
+  "description": "Role applied to all OWL servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "yellowbkpk": {
+          "status": "user"
+        },
+        "ppawel": {
+          "status": "user"
+        },
+        "owl": {
+          "status": "role",
+          "members": [
+            "yellowbkpk",
+            "ppawel"
+          ]
+        }
+      },
+      "groups": {
+        "adm": {
+          "members": [
+            "yellowbkpk",
+            "ppawel"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event"
+    },
+    "apt": {
+      "sources": [
+        "brightbox-ruby-ng",
+        "ubuntugis-stable",
+        "ubuntugis-unstable"
+      ]
+    },
+    "postgresql": {
+      "versions": [
+        "9.1"
+      ],
+      "settings": {
+        "defaults": {
+          "fsync": "off",
+          "checkpoint_segments": "30",
+          "checkpoint_completion_target": "0.9",
+          "random_page_cost": "2.0",
+          "log_min_duration_statement": "3000"
+        },
+        "9.1": {
+          "port": "5433"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 17179869184,
+          "kernel.shmall": 4194304
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[owl]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-gpximport",
+  "description": "Role applied to all web/api GPX import servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[web]",
+    "recipe[web::gpx]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-backend",
+  "description": "Role applied to all web/api backend servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache": {
+      "mpm": "worker",
+      "worker": {
+        "max_requests_per_child": 10000
+      }
+    },
+    "logstash": {
+      "forwarder": {
+        "files": [
+          {
+            "paths": [
+              "/var/log/apache2/access.log"
+            ],
+            "fields": {
+              "type": "apache"
+            }
+          },
+          {
+            "paths": [
+              "/var/log/web/rails-logstash.log"
+            ],
+            "fields": {
+              "type": "rails"
+            }
+          }
+        ]
+      }
+    },
+    "memcached": {
+      "memory_limit": 4096
+    },
+    "passenger": {
+      "max_pool_size": 12
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[web]",
+    "role[logstash-forwarder]",
+    "recipe[web::backend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "norbert",
+  "description": "Master role applied to norbert",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "yellowbkpk": {
+          "status": "administrator"
+        },
+        "pnorman": {
+          "status": "user"
+        }
+      }
+    },
+    "exim": {
+      "aliases": {
+        "root": "yellowbkpk"
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.5"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.202"
+        }
+      }
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/cciss!c0d0/queue/nr_requests": "512",
+          "block/cciss!c0d1/queue/nr_requests": "512",
+          "block/cciss!c0d0/queue/scheduler": "noop",
+          "block/cciss!c0d1/queue/scheduler": "noop",
+          "block/sda/queue/nr_requests": "512",
+          "block/sda/queue/scheduler": "deadline"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "roundup",
+  "description": "Role applied to all roundup servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[roundup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "fr",
+  "description": "Role applied to all servers located in France",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "fr"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "grindtooth",
+  "description": "Master role applied to grindtooth",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "em1",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.19"
+        },
+        "external_ipv4": {
+          "interface": "em2",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.199"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-dl360-g6]",
+    "role[taginfo]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "subversion",
+  "description": "Role applied to all subversion servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[subversion]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "yournavigation",
+  "description": "Role applied to all yournavigation servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "lambertus": {
+          "status": "administrator"
+        }
+      }
+    },
+    "apache": {
+      "mpm": "prefork",
+      "timeout": 60,
+      "keepalive": false,
+      "prefork": {
+        "start_servers": 20,
+        "min_spare_servers": 20,
+        "max_spare_servers": 50,
+        "max_clients": 256
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[yournavigation]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "gorynych",
+  "description": "Master role applied to gorynych",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "smart_sdc": {
+          "smartctl_exit_status": {
+            "warning": ":8"
+          }
+        },
+        "smart_sdd": {
+          "smartctl_exit_status": {
+            "warning": ":8"
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "130.193.62.73",
+          "prefix": "29",
+          "gateway": "130.193.62.78"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2a02:6b8:b010:5065::a001",
+          "prefix": "64",
+          "gateway": "2a02:6b8:b010:5065::1"
+        }
+      }
+    },
+    "sysfs": {
+      "md_tune": {
+        "comment": "Tune the md sync performance so as not to kill system performance",
+        "parameters": {
+          "block/md0/md/sync_speed_min": "1",
+          "block/md0/md/sync_speed_max": "100000"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "5800 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "moscow.render.openstreetmap.org",
+      "tile_siblings": [
+        "trogdor.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "ridgeback.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[yandex]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "taginfo",
+  "description": "Role applied to all taginfo servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "jochen": {
+          "status": "administrator"
+        },
+        "taginfo": {
+          "status": "role",
+          "members": [
+            "jochen",
+            "tomh"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "event": {
+        "server_limit": 40,
+        "max_clients": 1000,
+        "min_spare_threads": 50,
+        "max_spare_threads": 150,
+        "threads_per_child": 50,
+        "max_requests_per_child": 10000
+      }
+    },
+    "taginfo": {
+      "sites": [
+        {
+          "name": "taginfo.openstreetmap.org",
+          "description": "This is the main taginfo site. It contains OSM data for the whole planet and is updated daily.",
+          "about": "<p>This site is run by the <a href='http://www.osmfoundation.org/'>OSMF</a> and maintained by <a href='//www.openstreetmap.org/user/Jochen%20Topf'>Jochen Topf</a> and the <a href='//wiki.openstreetmap.org/wiki/System_Administrators'>Sysadmin team</a>.</p><p>Several <a class='extlink' href='//wiki.openstreetmap.org/wiki/Taginfo/Sites'>other taginfo sites</a> are operated by different people for different areas of the world.</p>",
+          "icon": "world",
+          "contact": "Jochen Topf <jochen@remote.org>"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[taginfo]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "thorn-03",
+  "description": "Master role applied to thorn-03",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.167"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-g5]",
+    "role[web-backend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "wiki",
+  "description": "Role applied to all wiki servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "wiki": {
+          "status": "role"
+        }
+      }
+    },
+    "elasticsearch": {
+      "cluster": {
+        "name": "wiki"
+      },
+      "script": {
+        "disable_dynamic": false
+      }
+    },
+    "exim": {
+      "trusted_users": [
+        "www-data"
+      ],
+      "aliases": {
+        "root": "grant"
+      },
+      "rewrites": [
+        {
+          "pattern": "www-data@openstreetmap.org",
+          "replacement": "wiki@noreply.openstreetmap.org",
+          "flags": "F"
+        }
+      ]
+    },
+    "memcached": {
+      "memory_limit": 1024,
+      "connection_limit": 8192,
+      "chunk_growth_factor": 1.05,
+      "min_item_size": 5
+    },
+    "apache": {
+      "mpm": "prefork",
+      "timeout": 30,
+      "event": {
+        "server_limit": 32,
+        "max_clients": 800,
+        "threads_per_child": 50,
+        "max_requests_per_child": 10000
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[elasticsearch]",
+    "recipe[wiki]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "zark",
+  "description": "Master role applied to zark",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.8"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.209"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "shared_buffers": "2GB",
+          "work_mem": "8MB",
+          "maintenance_work_mem": "32MB",
+          "effective_cache_size": "4GB"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[owl]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "firefishynet",
+  "description": "Role applied to all servers at Firefishy",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "internal": {
+          "inet": {
+            "prefix": "24",
+            "gateway": "10.89.121.1"
+          }
+        },
+        "external": {
+          "zone": "ff"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hr",
+  "description": "Role applied to all servers located in Croatia",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "hr"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "teleservice",
+  "description": "Role applied to all servers at Teleservice",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "ts"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.se.pool.ntp.org",
+        "1.se.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[se]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "tile-new",
+  "description": "Role applied to all tile servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "tile": {
+          "status": "role",
+          "members": [
+            "jburgess",
+            "tomh"
+          ]
+        }
+      }
+    },
+    "apt": {
+      "sources": [
+        "ubuntugis-stable"
+      ]
+    },
+    "postgresql": {
+      "versions": [
+        "9.1"
+      ],
+      "settings": {
+        "defaults": {
+          "temp_buffers": "32MB",
+          "work_mem": "128MB",
+          "wal_buffers": "1024kB",
+          "wal_writer_delay": "500ms",
+          "commit_delay": "10000",
+          "checkpoint_segments": "60"
+        }
+      }
+    },
+    "sysctl": {
+      "sockets": {
+        "comment": "Increase size of connection queue",
+        "parameters": {
+          "net.core.somaxconn": 10000
+        }
+      }
+    },
+    "tile": {
+      "database": {
+        "cluster": "9.1/main"
+      },
+      "data": {
+        "world_boundaries": {
+          "url": "http://tile.openstreetmap.org/world_boundaries-spherical.tgz"
+        },
+        "shoreline": {
+          "url": "http://tile.openstreetmap.org/shoreline_300.tar.bz2",
+          "directory": "shoreline_300"
+        },
+        "admin_boundaries": {
+          "url": "http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip",
+          "directory": "ne_110m_admin_0_boundary_lines_land"
+        },
+        "populated_places": {
+          "url": "http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip",
+          "directory": "ne_10m_populated_places",
+          "original": "ne_10m_populated_places.shp",
+          "processed": "ne_10m_populated_places_fixed.shp"
+        },
+        "processed": {
+          "url": "http://tile.openstreetmap.org/processed_p.tar.bz2",
+          "directory": "processed_p"
+        }
+      },
+      "styles": {
+        "default": {
+          "repository": "git://github.com/gravitystorm/openstreetmap-carto.git",
+          "revision": "v2.2.0"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "blog",
+  "description": "Role applied to blog servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[blog]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "saphira",
+  "description": "Master role applied to saphira",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "185.73.44.30",
+          "prefix": "22",
+          "gateway": "185.73.44.1"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:ba8:0:2c1e::",
+          "prefix": "64",
+          "gateway": "fe80::fcff:ffff:feff:ffff"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6100 MB",
+      "cache_dir": "coss /store/squid/coss-01 80000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "london.render.openstreetmap.org",
+      "tile_siblings": [
+        "trogdor.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[jump]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web",
+  "description": "Role applied to all web/api servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "rails": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "grant"
+          ]
+        }
+      }
+    },
+    "nfs": {
+      "/store/rails": {
+        "host": "ironbelly",
+        "path": "/store/rails"
+      }
+    },
+    "passenger": {
+      "pool_idle_time": 0
+    },
+    "web": {
+      "status": "online",
+      "database_host": "db",
+      "readonly_database_host": "db-slave"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nfs]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "logstash-forwarder",
+  "description": "Role applied to all logstash forwarders",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "logstash-forwarder"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[logstash::forwarder]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "dulcy",
+  "description": "Master role applied to dulcy\n",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "p18p1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.109",
+          "hwaddress": "0c:c4:7a:66:96:d2"
+        },
+        "external_ipv6": {
+          "interface": "p18p1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:ec4:7aff:fe66:96d2"
+        },
+        "internal_ipv4": {
+          "interface": "p18p2",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.179",
+          "hwaddress": "0c:c4:7a:66:96:d3"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "blix",
+  "description": "Role applied to all servers at Blix",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "blixadmin": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "bx"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "piwik",
+  "description": "Role applied to all Piwik servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache": {
+      "mpm": "prefork"
+    },
+    "mysql": {
+      "settings": {
+        "mysqld": {
+          "innodb_buffer_pool_instances": "8",
+          "innodb_buffer_pool_size": "16GB",
+          "innodb_flush_log_at_trx_commit": "2"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[piwik]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nadder-01",
+  "description": "Master role applied to nadder-01",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "192.163.219.36",
+          "prefix": "19",
+          "gateway": "192.163.192.1"
+        }
+      }
+    },
+    "sysctl": {
+      "kvm": {
+        "comment": "Tuning for KVM guest",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      }
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/vda/queue/nr_requests": "128",
+          "block/vdb/queue/nr_requests": "128",
+          "block/vda/queue/scheduler": "deadline",
+          "block/vdb/queue/scheduler": "deadline"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "provo.render.openstreetmap.org",
+      "tile_siblings": [
+        "nadder-02.openstreetmap.org",
+        "stormfly-02.openstreetmap.org",
+        "jakelong.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "lurien.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[bluehost]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "spike-01",
+  "description": "Master role applied to spike-01",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.162",
+          "hwaddress": "00:1a:4b:a5:0f:ca"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.99",
+          "hwaddress": "00:1a:4b:a5:fd:2a"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:21a:4bff:fea5:fd2a",
+          "hwaddress": "00:1a:4b:a5:fd:2a"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-dl360-g6]",
+    "role[web-frontend]",
+    "role[web-gpximport]",
+    "role[web-statistics]",
+    "role[web-cleanup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ramoth",
+  "description": "Master role applied to ramoth",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "db": {
+      "cluster": "9.1/main"
+    },
+    "devices": {
+      "store_openstreetmap": {
+        "comment": "RAID array mounted on /store/postgresql/openstreetmap",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "3600605b00599aa401c02b4f53bf5c805",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "975"
+        }
+      },
+      "store_system": {
+        "comment": "RAID array mounted on /store/postgresql/system",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "3600605b0039483a017092ff8fa5a6332",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "975"
+        }
+      }
+    },
+    "hardware": {
+      "watchdog": "w83627hf_wdt"
+    },
+    "munin": {
+      "plugins": {
+        "smart_sg0_33": {
+          "smartctl_exit_status": {
+            "warning": ":8"
+          }
+        },
+        "smart_sg0_34": {
+          "smartctl_exit_status": {
+            "warning": ":8"
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.170",
+          "hwaddress": "00:25:90:4b:05:9a"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "shared_buffers": "64GB",
+          "work_mem": "64MB",
+          "maintenance_work_mem": "1GB",
+          "effective_cache_size": "180GB"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 70866960384,
+          "kernel.shmall": 17301504
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[db-slave]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "dns",
+  "description": "Role applied to DNS management servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "dns": {
+      "repository": "/var/lib/git/dns.git"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[dns]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "katla",
+  "description": "Master role applied to katla",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "db": {
+      "cluster": "9.1/main"
+    },
+    "devices": {
+      "store_slow": {
+        "comment": "RAID array mounted on /store/arrays/slow",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "3600605b005a0609019290f178be8de77",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "975",
+          "queue/rq_affinity": "2"
+        }
+      },
+      "store_fast": {
+        "comment": "RAID array mounted on /store/arrays/fast",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "3600605b005a0726019d062ae23b426fd",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "975",
+          "queue/rq_affinity": "2"
+        }
+      },
+      "store_ssd_1": {
+        "comment": "First disk of RAID array mounted on /store/arrays/ssd",
+        "type": "block",
+        "bus": "ata",
+        "serial": "INTEL_SSDSC2BA400G3_BTTV3141041E400HGN",
+        "attrs": {
+          "queue/scheduler": "noop"
+        }
+      },
+      "store_ssd_2": {
+        "comment": "Second disk of RAID array mounted on /store/arrays/ssd",
+        "type": "block",
+        "bus": "ata",
+        "serial": "INTEL_SSDSC2BA400G3_BTTV3141044Q400HGN",
+        "attrs": {
+          "queue/scheduler": "noop"
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.173",
+          "hwaddress": "00:25:90:94:91:00"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "shared_buffers": "64GB",
+          "work_mem": "64MB",
+          "maintenance_work_mem": "1GB",
+          "effective_cache_size": "180GB"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 70866960384,
+          "kernel.shmall": 17301504
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[db-master]",
+    "role[db-backup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "trogdor",
+  "description": "Master role applied to trogdor",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "134.90.146.26",
+          "prefix": "30",
+          "gateway": "134.90.146.25"
+        }
+      }
+    },
+    "sysfs": {
+      "md_tune": {
+        "comment": "Tune the md sync performance so as not to kill system performance",
+        "parameters": {
+          "block/md0/md/sync_speed_min": "1",
+          "block/md0/md/sync_speed_max": "100000",
+          "block/md1/md/sync_speed_min": "1",
+          "block/md1/md/sync_speed_max": "100000"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6400 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "amsterdam.render.openstreetmap.org",
+      "tile_siblings": [
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "gorynych.openstreetmap.org",
+        "simurgh.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[blix-nl]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "viserion",
+  "description": "Master role applied to viserion",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "anovak": {
+          "status": "administrator"
+        }
+      }
+    },
+    "munin": {
+      "allow": [
+        "193.198.233.210"
+      ]
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "193.198.233.211",
+          "prefix": "27",
+          "gateway": "193.198.233.209"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:b68:4cff:3::3",
+          "prefix": "64",
+          "gateway": "2001:b68:4cff:3::1"
+        }
+      },
+      "nameservers": [
+        "161.53.2.66",
+        "2001:b68:ff:1::2",
+        "2001:b68:ff:2::2",
+        "2001:4860:4860::8888"
+      ]
+    },
+    "squid": {
+      "cache_mem": "12500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "pula.render.openstreetmap.org",
+      "tile_siblings": [
+        "drogon.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[carnet]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-frontend",
+  "description": "Role applied to all web/api frontend servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache": {
+      "mpm": "event",
+      "event": {
+        "server_limit": 40,
+        "max_clients": 1000,
+        "min_spare_threads": 50,
+        "max_spare_threads": 150,
+        "threads_per_child": 50,
+        "max_requests_per_child": 10000
+      }
+    },
+    "logstash": {
+      "forwarder": {
+        "files": [
+          {
+            "paths": [
+              "/var/log/apache2/access.log"
+            ],
+            "fields": {
+              "type": "apache"
+            }
+          },
+          {
+            "paths": [
+              "/var/log/web/rails-logstash.log"
+            ],
+            "fields": {
+              "type": "rails"
+            }
+          }
+        ]
+      }
+    },
+    "passenger": {
+      "max_pool_size": 50
+    },
+    "exim": {
+      "local_domains": [
+        "messages.openstreetmap.org"
+      ],
+      "trusted_users": [
+        "rails"
+      ],
+      "routes": {
+        "messages": {
+          "comment": "messages.openstreetmap.org",
+          "domains": [
+            "messages.openstreetmap.org"
+          ],
+          "command": "/usr/local/bin/passenger-ruby /srv/www.openstreetmap.org/rails/script/deliver-message $local_part",
+          "user": "rails",
+          "group": "rails",
+          "home_directory": "/srv/www.openstreetmap.org/rails",
+          "path": "/bin:/usr/bin:/usr/local/bin"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[web]",
+    "role[logstash-forwarder]",
+    "recipe[web::frontend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "chef-repository",
+  "description": "Role applied to all chef repositories",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "jochen": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "lonvia": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "yellowbkpk": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        },
+        "chefrepo": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "grant",
+            "matt",
+            "jburgess",
+            "lonvia",
+            "yellowbkpk",
+            "bretth",
+            "jochen"
+          ]
+        }
+      }
+    },
+    "chef": {
+      "repository": "/var/lib/git/chef.git"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chef::repository]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "db-master",
+  "description": "Role applied to all the master database server",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "versions": [
+        "9.1"
+      ],
+      "settings": {
+        "defaults": {
+          "wal_level": "hot_standby",
+          "archive_mode": "on",
+          "archive_command": "/bin/cp %p /store/postgresql/archive/%f",
+          "max_wal_senders": "2",
+          "late_authentication_rules": [
+            {
+              "database": "replication",
+              "user": "replication",
+              "address": "146.179.159.168/32"
+            },
+            {
+              "database": "replication",
+              "user": "replication",
+              "address": "146.179.159.170/32"
+            }
+          ]
+        }
+      }
+    },
+    "rsyncd": {
+      "modules": {
+        "archive": {
+          "comment": "WAL Archive",
+          "path": "/store/arrays/slow/postgresql-archive",
+          "read_only": true,
+          "write_only": false,
+          "list": false,
+          "uid": "postgres",
+          "gid": "postgres",
+          "transfer_logging": false,
+          "hosts_allow": [
+            "146.179.159.168",
+            "146.179.159.170"
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[db]",
+    "recipe[db::master]",
+    "recipe[rsyncd]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "forum",
+  "description": "Role applied to all forum servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "lambertus": {
+          "status": "administrator"
+        },
+        "forum": {
+          "status": "role",
+          "members": [
+            "lambertus",
+            "grant"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "prefork",
+      "timeout": 60,
+      "keepalive": false,
+      "prefork": {
+        "start_servers": 20,
+        "min_spare_servers": 20,
+        "max_spare_servers": 50,
+        "max_clients": 256
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[forum]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "yandex",
+  "description": "Role applied to all servers at Yandex",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "yx"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.ru.pool.ntp.org",
+        "1.ru.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ru]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "kessie",
+  "description": "Master role applied to kessie",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "em1",
+          "role": "external",
+          "family": "inet",
+          "address": "10.42.0.98",
+          "hwaddress": "d8:d3:85:5d:87:5e",
+          "prefix": "24",
+          "gateway": "10.42.0.1"
+        }
+      },
+      "nameservers": [
+        "10.42.0.1"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[exonetric]",
+    "role[hp-dl180-g6]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "db-backup",
+  "description": "Role applied to the server responsible for database backups",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "osmbackup": {
+          "status": "role"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "user_name_maps": {
+            "backup": [
+              {
+                "system": "osmbackup",
+                "postgres": "backup"
+              }
+            ]
+          },
+          "early_authentication_rules": [
+            {
+              "type": "local",
+              "database": "all",
+              "user": "backup",
+              "method": "peer",
+              "options": {
+                "map": "backup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[db::backup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "osqa",
+  "description": "Role applied to all OSQA servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "osqa": {
+          "status": "role"
+        }
+      }
+    },
+    "osqa": {
+      "sites": [
+        {
+          "name": "help.openstreetmap.org",
+          "backup": "osqa"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[osqa]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "no",
+  "description": "Role applied to all servers located in Norway",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "no"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "dev",
+  "description": "Role applied to all development servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "edgemaster": {
+          "status": "administrator"
+        },
+        "emacsen": {
+          "status": "administrator"
+        },
+        "twain": {
+          "status": "user"
+        },
+        "bretth": {
+          "status": "user"
+        },
+        "richard": {
+          "status": "user"
+        },
+        "shaunmcdonald": {
+          "status": "user"
+        },
+        "random": {
+          "status": "user"
+        },
+        "steve8": {
+          "status": "user"
+        },
+        "blackadder": {
+          "status": "user"
+        },
+        "timsc": {
+          "status": "user"
+        },
+        "bobkare": {
+          "status": "user"
+        },
+        "daveh": {
+          "status": "user"
+        },
+        "gravitystorm": {
+          "status": "user"
+        },
+        "fred": {
+          "status": "user"
+        },
+        "nick": {
+          "status": "user"
+        },
+        "deelkar": {
+          "status": "user"
+        },
+        "simone": {
+          "status": "user"
+        },
+        "mitjak": {
+          "status": "user"
+        },
+        "htonl": {
+          "status": "user"
+        },
+        "russ": {
+          "status": "user"
+        },
+        "merio": {
+          "status": "user"
+        },
+        "chippy": {
+          "status": "user"
+        },
+        "joerichards": {
+          "status": "user"
+        },
+        "pafciu17": {
+          "status": "user"
+        },
+        "ojw": {
+          "status": "user"
+        },
+        "harrywood": {
+          "status": "user"
+        },
+        "yellowbkpk": {
+          "status": "user"
+        },
+        "apmon": {
+          "status": "user"
+        },
+        "mackerski": {
+          "status": "user"
+        },
+        "ldp": {
+          "status": "user"
+        },
+        "mdaines": {
+          "status": "user"
+        },
+        "dan": {
+          "status": "user"
+        },
+        "ris": {
+          "status": "user"
+        },
+        "nroets": {
+          "status": "user"
+        },
+        "ollie": {
+          "status": "user"
+        },
+        "mvexel": {
+          "status": "user"
+        },
+        "tomchance": {
+          "status": "user"
+        },
+        "lfrancke": {
+          "status": "user"
+        },
+        "davidearl": {
+          "status": "user"
+        },
+        "rweait": {
+          "status": "user"
+        },
+        "ant": {
+          "status": "user"
+        },
+        "milliams": {
+          "status": "user"
+        },
+        "pierzen": {
+          "status": "user"
+        },
+        "gregory": {
+          "status": "user"
+        },
+        "bsupnik": {
+          "status": "user"
+        },
+        "derick": {
+          "status": "user"
+        },
+        "joshd": {
+          "status": "user"
+        },
+        "maba": {
+          "status": "user"
+        },
+        "pnorman": {
+          "status": "user"
+        },
+        "csmale": {
+          "status": "user"
+        },
+        "jgc": {
+          "status": "user"
+        },
+        "cobra": {
+          "status": "user"
+        },
+        "ppawel": {
+          "status": "user"
+        },
+        "simon04": {
+          "status": "user"
+        },
+        "jfire": {
+          "status": "user"
+        },
+        "malenki": {
+          "status": "user"
+        },
+        "lonvia": {
+          "status": "user"
+        },
+        "nicolas17": {
+          "status": "user"
+        },
+        "zverik": {
+          "status": "user"
+        },
+        "dodobas": {
+          "status": "user"
+        },
+        "mhohmann": {
+          "status": "user"
+        },
+        "enelson": {
+          "status": "user"
+        },
+        "ooc": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "blackadder",
+            "timsc",
+            "ollie"
+          ]
+        },
+        "apis": {
+          "status": "role",
+          "members": [
+            "tomh"
+          ]
+        },
+        "os": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "grant",
+            "ollie"
+          ]
+        },
+        "gpsmid": {
+          "status": "role",
+          "members": [
+            "apmon",
+            "maba"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "timeout": 30,
+      "event": {
+        "server_limit": 32,
+        "max_clients": 800,
+        "threads_per_child": 50,
+        "max_requests_per_child": 10000
+      }
+    },
+    "dev": {
+      "rails": {
+        "master": {
+          "repository": "git://git.openstreetmap.org/rails.git",
+          "revision": "master",
+          "aliases": [
+            "api06.dev.openstreetmap.org"
+          ]
+        },
+        "tomh": {
+          "repository": "git://github.com/tomhughes/openstreetmap-website.git",
+          "revision": "next"
+        },
+        "owl": {
+          "repository": "git://github.com/ppawel/openstreetmap-website.git",
+          "revision": "owl-activity-tab"
+        },
+        "groups": {
+          "repository": "git://github.com/osmlab/openstreetmap-website.git",
+          "revision": "groups-sketch"
+        },
+        "comments": {
+          "repository": "git://github.com/ukasiu/openstreetmap-website.git",
+          "revision": "comments_list"
+        },
+        "moderation": {
+          "repository": "git://github.com/sbagroy986/openstreetmap-website.git",
+          "revision": "moderation_queue"
+        }
+      }
+    },
+    "postgresql": {
+      "versions": [
+        "9.1",
+        "9.3"
+      ],
+      "settings": {
+        "defaults": {
+          "shared_buffers": "1GB",
+          "work_mem": "32MB",
+          "maintenance_work_mem": "64MB",
+          "max_stack_depth": "4MB",
+          "effective_cache_size": "4GB"
+        },
+        "9.1": {
+          "port": "5433"
+        },
+        "9.3": {
+          "port": "5432"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmall": "4194304",
+          "kernel.shmmax": "17179869184"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[dev]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "kibana",
+  "description": "Role applied to all kibana servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "kibana": {
+          "status": "role"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[kibana]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ascalon",
+  "description": "Master role applied to ascalon",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.18"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.193"
+        }
+      }
+    },
+    "accounts": {
+      "users": {
+        "emacsen": {
+          "status": "administrator"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]",
+    "role[roundup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "xapi",
+  "description": "Role applied to all xapi servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "etienne": {
+          "status": "user"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ucl-wates",
+  "description": "Role applied to all servers at UCL which are in Wates House",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "roles": {
+        "internal": {
+          "inet": {
+            "prefix": "20",
+            "gateway": "10.0.0.3"
+          }
+        },
+        "external": {
+          "zone": "ucl",
+          "inet": {
+            "prefix": "24",
+            "gateway": "128.40.168.126"
+          }
+        }
+      }
+    },
+    "sysctl": {
+      "sack": {
+        "comment": "Disable SACK as the UCL firewall breaks it",
+        "parameters": {
+          "net.ipv4.tcp_sack": "0"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "networking": {
+      "nameservers": [
+        "10.0.0.3",
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "search": [
+        "ucl.openstreetmap.org",
+        "openstreetmap.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "tile",
+  "description": "Role applied to all tile servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "tile": {
+          "status": "role",
+          "members": [
+            "jburgess",
+            "tomh"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "timeout": 60,
+      "event": {
+        "server_limit": 60,
+        "max_clients": 1200,
+        "threads_per_child": 20,
+        "min_spare_threads": 30,
+        "max_spare_threads": 180,
+        "max_requests_per_child": 100000
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "temp_buffers": "32MB",
+          "work_mem": "128MB",
+          "wal_buffers": "1024kB",
+          "wal_writer_delay": "500ms",
+          "commit_delay": "10000",
+          "checkpoint_segments": "60"
+        }
+      }
+    },
+    "sysctl": {
+      "sockets": {
+        "comment": "Increase size of connection queue",
+        "parameters": {
+          "net.core.somaxconn": 10000
+        }
+      },
+      "kernel_scheduler_tune": {
+        "comment": "Tune kernel scheduler preempt",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      }
+    },
+    "tile": {
+      "data": {
+        "world_boundaries": {
+          "url": "http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz"
+        },
+        "simplified_land_polygons": {
+          "url": "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip",
+          "refresh": true
+        },
+        "admin_boundaries": {
+          "url": "http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip",
+          "directory": "ne_110m_admin_0_boundary_lines_land"
+        },
+        "populated_places": {
+          "url": "http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip",
+          "directory": "ne_10m_populated_places",
+          "original": "ne_10m_populated_places.shp",
+          "processed": "ne_10m_populated_places_fixed.shp"
+        },
+        "land_polygons": {
+          "url": "http://data.openstreetmapdata.com/land-polygons-split-3857.zip",
+          "refresh": true
+        },
+        "antarctica_icesheet_polygons": {
+          "url": "http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip",
+          "refresh": true
+        },
+        "antarctica_icesheet_outlines": {
+          "url": "http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip",
+          "refresh": true
+        }
+      },
+      "styles": {
+        "default": {
+          "repository": "git://github.com/gravitystorm/openstreetmap-carto.git",
+          "revision": "v2.37.1",
+          "max_zoom": 19
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nominatim",
+  "description": "Role applied to all nominatim servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "lonvia": {
+          "status": "administrator"
+        },
+        "twain": {
+          "status": "administrator"
+        },
+        "nominatim": {
+          "status": "role",
+          "members": [
+            "lonvia",
+            "tomh",
+            "twain"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "timeout": 60,
+      "keepalive": false,
+      "event": {
+        "server_limit": 32,
+        "max_clients": 1600,
+        "threads_per_child": 50
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "max_connections": "450",
+          "synchronous_commit": "off",
+          "checkpoint_segments": "32",
+          "checkpoint_timeout": "10min",
+          "checkpoint_completion_target": "0.9",
+          "autovacuum_max_workers": "1"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 27917287424,
+          "kernel.shmall": 6815744
+        }
+      },
+      "kernel_scheduler_tune": {
+        "comment": "Tune kernel scheduler preempt",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      },
+      "swappiness": {
+        "comment": "Reduce swap usage",
+        "parameters": {
+          "vm.swappiness": 10
+        }
+      },
+      "network_conntrack_time_wait": {
+        "comment": "Only track completed connections for 30 seconds",
+        "parameters": {
+          "net.netfilter.nf_conntrack_tcp_timeout_time_wait": "30"
+        }
+      },
+      "network_conntrack_max": {
+        "comment": "Increase max number of connections tracked",
+        "parameters": {
+          "net.netfilter.nf_conntrack_max": "131072"
+        }
+      }
+    },
+    "nominatim": {
+      "enabled": false,
+      "repository": "git://git.openstreetmap.org/nominatim.git",
+      "tablespaces": {
+        "Osm2pgsql_Data": "data",
+        "Osm2pgsql_Index": "data",
+        "Place_Data": "data",
+        "Place_Index": "ssd2",
+        "Address_Data": "data",
+        "Address_Index": "ssd2",
+        "Search_Data": "ssd1",
+        "Search_Index": "ssd1",
+        "Aux_Data": "aux",
+        "Aux_Index": "aux"
+      },
+      "redirects": {
+
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ca",
+  "description": "Role applied to all servers located in Canada",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "ca"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "lyonix",
+  "description": "Role applied to all servers at LyonIX",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "lyonix": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "nameservers": [
+        "77.95.64.205",
+        "77.95.64.206",
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "ly"
+        }
+      }
+    },
+    "snmpd": {
+      "clients": [
+        "77.95.64.0/24",
+        "77.95.70.0/24"
+      ],
+      "community": "lyonix",
+      "location": "LYON",
+      "contact": "noc@lyonix.net"
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.fr.pool.ntp.org",
+        "1.fr.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[fr]",
+    "recipe[snmpd]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ovh",
+  "description": "Role applied to all servers at OVH",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.4.4",
+        "213.186.33.99",
+        "8.8.8.8"
+      ],
+      "roles": {
+        "external": {
+          "zone": "ov"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "sarkany",
+  "description": "Master role applied to sarkany",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "37.17.173.8",
+          "prefix": "24",
+          "gateway": "37.17.173.254"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:4c48:2:bf04:250:56ff:fe8f:5c81",
+          "prefix": "64",
+          "gateway": "fe80::224:14ff:fe84:5000"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6100 MB",
+      "cache_dir": "coss /store/squid/coss-01 80000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "london.render.openstreetmap.org",
+      "tile_siblings": [
+        "trogdor.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[szerverem]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "stormfly-02",
+  "description": "Master role applied to stormfly-02",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "em1",
+          "role": "external",
+          "family": "inet",
+          "address": "140.211.167.105"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "21000 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "corvallis.render.openstreetmap.org",
+      "tile_siblings": [
+        "nadder-01.openstreetmap.org",
+        "nadder-02.openstreetmap.org",
+        "jakelong.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "lurien.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[osuosl]",
+    "role[hp-dl360-g6]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "otrs",
+  "description": "Role applied to all OTRS servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "otrs": {
+          "status": "role"
+        }
+      }
+    },
+    "exim": {
+      "local_domains": [
+        "otrs.openstreetmap.org"
+      ],
+      "routes": {
+        "otrs_otrs": {
+          "comment": "otrs@otrs.openstreetmap.org",
+          "domains": [
+            "otrs.openstreetmap.org"
+          ],
+          "local_parts": [
+            "otrs"
+          ],
+          "command": "/opt/otrs/bin/otrs.PostMaster.pl",
+          "user": "otrs",
+          "group": "www-data",
+          "home_directory": "/opt/otrs"
+        },
+        "otrs_data": {
+          "comment": "data@otrs.openstreetmap.org",
+          "domains": [
+            "otrs.openstreetmap.org"
+          ],
+          "local_parts": [
+            "data"
+          ],
+          "command": "/opt/otrs/bin/otrs.PostMaster.pl -q 'Data Working Group'",
+          "user": "otrs",
+          "group": "www-data",
+          "home_directory": "/opt/otrs"
+        },
+        "otrs_support": {
+          "comment": "support@otrs.openstreetmap.org",
+          "domains": [
+            "otrs.openstreetmap.org"
+          ],
+          "local_parts": [
+            "support"
+          ],
+          "command": "/opt/otrs/bin/otrs.PostMaster.pl -q 'Technical Support'",
+          "user": "otrs",
+          "group": "www-data",
+          "home_directory": "/opt/otrs"
+        }
+      }
+    },
+    "otrs": {
+      "site": "otrs.openstreetmap.org",
+      "database_cluster": "8.4/main",
+      "database_name": "otrs",
+      "database_user": "otrs",
+      "database_password": "otrs"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[otrs]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "euserv",
+  "description": "Role applied to all servers at EUserv",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "85.31.184.60",
+        "85.31.184.61",
+        "85.31.185.60",
+        "85.31.185.61"
+      ],
+      "roles": {
+        "external": {
+          "zone": "es"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.de.pool.ntp.org",
+        "1.de.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[de]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nadder-02",
+  "description": "Master role applied to nadder-02",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "192.163.219.40",
+          "prefix": "19",
+          "gateway": "192.163.192.1"
+        }
+      }
+    },
+    "sysctl": {
+      "kvm": {
+        "comment": "Tuning for KVM guest",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      }
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/vda/queue/nr_requests": "128",
+          "block/vdb/queue/nr_requests": "128",
+          "block/vda/queue/scheduler": "deadline",
+          "block/vdb/queue/scheduler": "deadline"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "provo.render.openstreetmap.org",
+      "tile_siblings": [
+        "nadder-01.openstreetmap.org",
+        "stormfly-02.openstreetmap.org",
+        "jakelong.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "lurien.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[bluehost]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ovh-ca",
+  "description": "Role applied to all servers at OVH CA",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.ca.pool.ntp.org",
+        "1.ca.pool.ntp.org",
+        "north-america.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ca]",
+    "role[ovh]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "drogon",
+  "description": "Master role applied to drogon",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "zelja": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "161.53.30.107",
+          "prefix": "27",
+          "gateway": "161.53.30.97"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:b68:c0ff:0:221:5eff:fe40:c7c4",
+          "prefix": "64",
+          "gateway": "fe80::161:53:30:97"
+        }
+      },
+      "nameservers": [
+        "161.53.30.100",
+        "8.8.8.8"
+      ]
+    },
+    "squid": {
+      "cache_mem": "4000 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "pula.render.openstreetmap.org",
+      "tile_siblings": [
+        "viserion.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[carnet]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "clifford",
+  "description": "Master role applied to clifford",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.17"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.194"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]",
+    "role[forum]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "draco",
+  "description": "Master role applied to draco",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.11"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.195"
+        }
+      }
+    },
+    "sysctl": {
+      "tune_cpu_scheduler": {
+        "comment": "Tune CPU scheduler for server scheduling",
+        "parameters": {
+          "kernel.sched_migration_cost": 50000000,
+          "kernel.sched_autogroup_enabled": 0
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hetzner",
+  "description": "Role applied to all servers at Hetzner",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "213.133.98.98",
+        "213.133.99.99",
+        "213.133.100.100",
+        "2a01:4f8:0:a111::add:9898",
+        "2a01:4f8:0:a102::add:9999",
+        "2a01:4f8:0:a0a1::add:1010"
+      ],
+      "roles": {
+        "external": {
+          "zone": "hz"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.de.pool.ntp.org",
+        "1.de.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[de]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "sarel",
+  "description": "Master role applied to sarel",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.12"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.206"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]",
+    "role[yournavigation]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nominatim-slave",
+  "description": "Role applied to all slave nominatim servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "versions": [
+        "9.3"
+      ],
+      "settings": {
+        "defaults": {
+          "hot_standby": "on",
+          "hot_standby_feedback": "on",
+          "standby_mode": "on",
+          "primary_conninfo": "host=pummelzacken.ucl.openstreetmap.org port=5432 user=replication password=CBq5JyTkmc1oxwfhJFvv",
+          "restore_command": "/usr/bin/rsync pummelzacken.ucl.openstreetmap.org::archive/%f %p"
+        }
+      }
+    },
+    "nominatim": {
+      "enable_backup": false
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[nominatim]",
+    "recipe[nominatim::slave]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "gateway",
+  "description": "Role applied to all network gateways",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "sysctl": {
+      "network_forwarding": {
+        "comment": "Enable forwarding",
+        "parameters": {
+          "net.ipv4.ip_forward": "1"
+        }
+      }
+    },
+    "exim": {
+      "relay_from_hosts": [
+        "10.0.0.0/8"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[bind]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "tyan-s7010",
+  "description": "Role applied to machines using the Tyan S710 motherboard",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "hardware": {
+      "modules": [
+        "i2c_i801",
+        "jc42",
+        "w83793"
+      ],
+      "sensors": {
+        "jc42-*": {
+          "temps": {
+            "temp1": {
+              "max": 75
+            }
+          }
+        },
+        "w83793-i2c-*-2f": {
+          "volts": {
+            "in0": {
+              "min": 0.696,
+              "max": 1.424
+            },
+            "in1": {
+              "min": 0.696,
+              "max": 1.424
+            },
+            "in5": {
+              "min": 2.992,
+              "max": 3.536
+            },
+            "in9": {
+              "min": 2.608,
+              "max": 3.536
+            }
+          },
+          "fans": {
+            "fan1": {
+              "min": 1500
+            },
+            "fan2": {
+              "min": 1500
+            },
+            "fan3": {
+              "ignore": true
+            },
+            "fan4": {
+              "ignore": true
+            },
+            "fan5": {
+              "ignore": true
+            },
+            "fan6": {
+              "ignore": true
+            },
+            "fan7": {
+              "ignore": true
+            },
+            "fan8": {
+              "ignore": true
+            },
+            "fan9": {
+              "ignore": true
+            },
+            "fan10": {
+              "ignore": true
+            },
+            "fan11": {
+              "ignore": true
+            },
+            "fan12": {
+              "ignore": true
+            }
+          },
+          "temps": {
+            "temp5": {
+              "max": 78,
+              "max_hyst": 73
+            },
+            "temp6": {
+              "max": 78,
+              "max_hyst": 73
+            }
+          }
+        }
+      }
+    },
+    "munin": {
+      "plugins": {
+        "ipmi_fans": {
+          "Sys3Front1": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys4Front2": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys5Rear1": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys6": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys7": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys8": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys9": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Sys10": {
+            "graph": "no",
+            "warning": "0:"
+          }
+        },
+        "ipmi_temp": {
+          "CPU0belowTmax": {
+            "critical": "10:"
+          },
+          "CPU1belowTmax": {
+            "critical": "10:"
+          }
+        },
+        "sensors_volt": {
+          "VCoreA": {
+            "warning": "0.70:1.42",
+            "critical": "0.70:1.42"
+          },
+          "VCoreB": {
+            "warning": "0.70:1.42",
+            "critical": "0.70:1.42"
+          },
+          "in2": {
+            "warning": "0.00:2.05",
+            "critical": "0.00:2.05"
+          },
+          "in3": {
+            "warning": "0.00:4.08",
+            "critical": "0.00:4.08"
+          },
+          "in4": {
+            "warning": "0.00:4.08",
+            "critical": "0.00:4.08"
+          },
+          "in5": {
+            "warning": "2.99:3.54",
+            "critical": "2.99:3.54"
+          },
+          "in6": {
+            "warning": "0.00:2.04",
+            "critical": "0.00:2.04"
+          },
+          "+5V": {
+            "warning": "4.52:5.50",
+            "critical": "4.52:5.50"
+          },
+          "5VSB": {
+            "warning": "4.52:5.50",
+            "critical": "4.52:5.50"
+          },
+          "Vbat": {
+            "warning": "2.70:3.30",
+            "critical": "2.70:3.30"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "irc",
+  "description": "Role applied to all IRC gateways",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[cgiirc]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "errol",
+  "description": "Master role applied to errol",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "devices": {
+      "osdsk": {
+        "comment": "First os disk",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff800",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512"
+        }
+      },
+      "homedsk": {
+        "comment": "First home disk",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff801",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512"
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.14"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.196"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[tyan-s7010]",
+    "role[dev]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ru",
+  "description": "Role applied to all servers located in Russia",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "ru"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "az",
+  "description": "Role applied to all servers located in Azerbaijan",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "az"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "au",
+  "description": "Role applied to all servers located in Australia",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "au"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "paulla",
+  "description": "Role applied to all servers at PauLLA",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "redfox": {
+          "status": "administrator"
+        },
+        "jpcw": {
+          "status": "administrator"
+        }
+      }
+    },
+    "munin": {
+      "allow": [
+        "10.64.1.11"
+      ]
+    },
+    "networking": {
+      "nameservers": [
+        "10.64.1.42",
+        "194.167.156.13",
+        "10.64.1.3"
+      ],
+      "roles": {
+        "external": {
+          "zone": "pa"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "cannelle.paulla.asso.fr"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[fr]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "logstash",
+  "description": "Role applied to all logstash servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "logstash"
+      ]
+    },
+    "elasticsearch": {
+      "cluster": {
+        "name": "logstash"
+      }
+    },
+    "kibana": {
+      "sites": {
+        "logstash": {
+          "site": "logstash.openstreetmap.org",
+          "port": 5601,
+          "elasticsearch_url": "http://127.0.0.1:9200/"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[elasticsearch]",
+    "role[kibana]",
+    "recipe[logstash]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "exonetric",
+  "description": "Role applied to all servers at Exonetric",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "hatter": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "roles": {
+        "external": {
+          "zone": "ex"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "de",
+  "description": "Role applied to all servers located in Germany",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "de"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ouroboros",
+  "description": "Master role applied to ouroboros",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.172",
+          "hwaddress": "00:23:7d:ea:81:38"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.106",
+          "hwaddress": "00:23:7d:ea:81:3a"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:223:7dff:feea:813a"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-dl360-g6]",
+    "role[wiki]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "trac",
+  "description": "Role applied to all trac servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "trac": {
+          "status": "role"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[trac]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "thorn-01",
+  "description": "Master role applied to thorn-01",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.165"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-g5]",
+    "role[web-backend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ucl-wolfson",
+  "description": "Role applied to all servers at UCL which are in Wolfson House",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "roles": {
+        "internal": {
+          "inet": {
+            "prefix": "20",
+            "gateway": "10.0.0.3"
+          }
+        },
+        "external": {
+          "zone": "ucl",
+          "inet": {
+            "prefix": "27",
+            "gateway": "128.40.45.222"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "networking": {
+      "nameservers": [
+        "10.0.0.3",
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "search": [
+        "ucl.openstreetmap.org",
+        "openstreetmap.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "bluehost",
+  "description": "Role applied to all servers at Bluehost",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "bh"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "ntp.bluehost.com"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[us]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "jump",
+  "description": "Role applied to all servers at Jump Networks",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "185.73.44.3",
+        "2001:ba8:0:2c02::",
+        "2001:ba8:0:2c03::",
+        "2001:ba8:0:2c04::"
+      ],
+      "roles": {
+        "external": {
+          "zone": "jn"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.uk.pool.ntp.org",
+        "1.uk.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "spike-02",
+  "description": "Master role applied to spike-02",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.163",
+          "hwaddress": "00:1b:78:04:76:c0"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.100",
+          "hwaddress": "00:1b:78:04:a5:5a"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:219:bbff:fe39:3d9e",
+          "hwaddress": "00:1b:78:04:a5:5a"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-dl360-g6]",
+    "role[web-frontend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "stats",
+  "description": "Role applied to stats.openstreetmap.org",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "stats": {
+      "sites": [
+        {
+          "name": "planet.openstreetmap.org",
+          "log_pattern": "%YYYY-168-%MM-168-%DD-168.gz",
+          "days": "7"
+        },
+        {
+          "name": "www.openstreetmap.org",
+          "log_pattern": "*-%YYYY-48-%MM-48-%DD-48.gz",
+          "days": "*"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[stats]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "supybot",
+  "description": "Role applied to all supybot servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "supybot": {
+          "status": "role"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[supybot]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "blix-no",
+  "description": "Role applied to all servers at Blix NO",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.no.pool.ntp.org",
+        "1.no.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[no]",
+    "role[blix]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "backup",
+  "description": "Role applied to backup.openstreetmap.org",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "osmbackup": {
+          "status": "role"
+        }
+      }
+    },
+    "rsyncd": {
+      "modules": {
+        "backup": {
+          "comment": "Backups",
+          "path": "/store/backup",
+          "read_only": false,
+          "write_only": true,
+          "list": false,
+          "uid": "osmbackup",
+          "gid": "osmbackup",
+          "transfer_logging": false,
+          "hosts_allow": [
+            "128.40.168.0/24",
+            "128.40.45.192/27",
+            "146.179.159.160/27",
+            "193.63.75.96/27",
+            "2001:630:12:500::/64",
+            "212.110.172.32",
+            "2001:41c9:1:400::32",
+            "127.0.0.0/8",
+            "::1"
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[rsyncd]",
+    "recipe[backup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "planet",
+  "description": "Role applied to all planet servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "bretth": {
+          "status": "user"
+        },
+        "planet": {
+          "status": "administrator",
+          "members": [
+            "bretth"
+          ]
+        }
+      }
+    },
+    "rsyncd": {
+      "modules": {
+        "planet": {
+          "comment": "Semi public planet.osm archive",
+          "path": "/store/planet",
+          "read_only": true,
+          "write_only": false,
+          "list": true,
+          "uid": "nobody",
+          "gid": "nogroup",
+          "transfer_logging": false,
+          "exclude": [
+            ".*"
+          ],
+          "max_connections": 10,
+          "ignore_errors": true,
+          "ignore_nonreadable": true,
+          "timeout": 3600,
+          "refuse_options": [
+            "checksum"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "keepalive": true,
+      "event": {
+        "server_limit": 20,
+        "max_clients": 1000,
+        "threads_per_child": 50
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[planet]",
+    "recipe[planet::replication]",
+    "recipe[nfs::server]",
+    "recipe[rsyncd]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "spike-03",
+  "description": "Master role applied to spike-03",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.171",
+          "hwaddress": "00:19:bb:39:8a:bc"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.103",
+          "hwaddress": "00:19:bb:39:8a:ba"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:219:bbff:fe39:8aba",
+          "hwaddress": "00:19:bb:39:8a:ba"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-dl360-g6]",
+    "role[web-frontend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "switch2osm",
+  "description": "Role applied to switch2osm servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[switch2osm]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-cleanup",
+  "description": "Role applied to all web/api database cleanup servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[web]",
+    "recipe[web::cleanup]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "db-slave",
+  "description": "Role applied to all slave database servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "versions": [
+        "9.1"
+      ],
+      "settings": {
+        "defaults": {
+          "hot_standby": "on",
+          "hot_standby_feedback": "on",
+          "standby_mode": "on",
+          "primary_conninfo": "host=katla port=5432 user=replication password=aem7roo8Sey`ah9b",
+          "restore_command": "/usr/bin/rsync katla::archive/%f %p"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[db]",
+    "recipe[db::slave]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ridley",
+  "description": "Master role applied to ridley",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache": {
+      "ssl": {
+        "certificate": "osmfoundation",
+        "certificate_chain": "startcom"
+      }
+    },
+    "dhcpd": {
+      "first_address": "10.0.15.1",
+      "last_address": "10.0.15.254"
+    },
+    "exim": {
+      "aliases": {
+        "root": "grant"
+      }
+    },
+    "munin": {
+      "graphs": {
+        "apcpdu_ucl": {
+          "title": "Current for UCL",
+          "vlabel": "Amps",
+          "category": "Ups",
+          "values": {
+            "load": {
+              "sum": [
+                "apcpdu_apc1.load",
+                "apcpdu_apc2.load",
+                "apcpdu_apc3.load"
+              ],
+              "label": "Load"
+            }
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.205"
+        },
+        "internal_ipv4": {
+          "interface": "eth1",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.3"
+        }
+      }
+    },
+    "openvpn": {
+      "address": "10.0.16.1",
+      "tunnels": {
+        "ic2ucl": {
+          "port": "1194",
+          "mode": "client",
+          "peer": {
+            "host": "ironbelly.openstreetmap.org",
+            "port": "1194"
+          }
+        },
+        "shenron2ucl": {
+          "port": "1195",
+          "mode": "client",
+          "peer": {
+            "host": "shenron.openstreetmap.org",
+            "port": "1194"
+          }
+        },
+        "firefishy": {
+          "port": "1196",
+          "mode": "client",
+          "peer": {
+            "host": "home.firefishy.com",
+            "port": "1194",
+            "address": "10.0.16.201"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-dl360-g6]",
+    "role[gateway]",
+    "role[foundation]",
+    "role[stateofthemap]",
+    "role[switch2osm]",
+    "role[blog]",
+    "role[otrs]",
+    "role[thinkup]",
+    "recipe[dhcpd]",
+    "recipe[openvpn]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "gps-tile",
+  "description": "Role applied to all GPS tile servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "enf": {
+          "status": "administrator"
+        },
+        "gpstile": {
+          "status": "role",
+          "members": [
+            "enf",
+            "tomh"
+          ]
+        }
+      }
+    },
+    "apache": {
+      "ssl": {
+        "certificate": "tile.openstreetmap"
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[memcached]",
+    "recipe[gps-tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "yevaud",
+  "description": "Master role applied to yevaud",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "postgresql"
+      ]
+    },
+    "devices": {
+      "osdisktune1": {
+        "comment": "Tune os disk",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff800",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512"
+        }
+      },
+      "disktune2": {
+        "comment": "Tune database array",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff802",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512"
+        }
+      },
+      "disktune3": {
+        "comment": "Tune os disk",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff803",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512"
+        }
+      },
+      "ssdtune1": {
+        "comment": "Tune ssd disk",
+        "type": "block",
+        "bus": "ata",
+        "serial": "INTEL_SSDSA2CW600G3_CVPR111401HP600FGN",
+        "attrs": {
+          "queue/scheduler": "noop",
+          "queue/nr_requests": "512",
+          "queue/read_ahead_kb": "2048"
+        }
+      }
+    },
+    "munin": {
+      "plugins": {
+        "cpu": {
+          "system": {
+            "warning": 500,
+            "critical": 600
+          }
+        },
+        "load": {
+          "load": {
+            "warning": 400,
+            "critical": 500
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.208"
+        }
+      }
+    },
+    "postgresql": {
+      "versions": [
+        "9.4"
+      ],
+      "settings": {
+        "defaults": {
+          "shared_buffers": "8GB",
+          "maintenance_work_mem": "7144MB",
+          "effective_cache_size": "16GB"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 9663676416,
+          "kernel.shmall": 2359296
+        }
+      }
+    },
+    "tile": {
+      "database": {
+        "cluster": "9.4/main"
+      },
+      "node_file": "/store/database/nodes",
+      "styles": {
+        "default": {
+          "tile_directories": [
+            {
+              "name": "/store/tiles/default-low",
+              "min_zoom": 0,
+              "max_zoom": 16
+            },
+            {
+              "name": "/store/tiles/default-high",
+              "min_zoom": 17,
+              "max_zoom": 19
+            }
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[tyan-s7010]",
+    "role[tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "geodns",
+  "description": "Role applied to all geographic DNS servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[geodns]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "smaug",
+  "description": "Master role applied to smaug",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "gravitystorm": {
+          "status": "user"
+        }
+      }
+    },
+    "apt": {
+      "sources": [
+        "brightbox-ruby-ng"
+      ]
+    },
+    "db": {
+      "cluster": "9.1/main"
+    },
+    "munin": {
+      "plugins": {
+        "ipmi_fans": {
+          "Fan4": {
+            "graph": "no"
+          },
+          "Fan7CPU1": {
+            "graph": "no"
+          },
+          "Fan8CPU2": {
+            "graph": "no"
+          }
+        },
+        "sensors_volt": {
+          "contacts": "null",
+          "volt10": {
+            "warning": "3.11:3.50",
+            "critical": "2.98:3.63"
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.168"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "shared_buffers": "16GB",
+          "work_mem": "32MB",
+          "maintenance_work_mem": "512MB",
+          "effective_cache_size": "45GB"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 18253611008,
+          "kernel.shmall": 4456448
+        }
+      }
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/sda/queue/nr_requests": "512",
+          "block/sdb/queue/nr_requests": "512",
+          "block/sda/queue/scheduler": "noop",
+          "block/sdb/queue/scheduler": "noop"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[db-slave]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "us",
+  "description": "Role applied to all servers located in the USA",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "us"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "urmel",
+  "description": "Master role applied to urmel",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.6"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.207"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-dl360-g6]",
+    "role[munin]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "konqi",
+  "description": "Master role applied to konqi",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "p4p1",
+          "role": "external",
+          "family": "inet",
+          "address": "81.7.11.83",
+          "prefix": "24",
+          "gateway": "81.7.11.1"
+        },
+        "external_ipv6": {
+          "interface": "p4p1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2a02:180:1:1::517:b53",
+          "prefix": "64",
+          "gateway": "2a02:180:1:1::1"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "12500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "germany.render.openstreetmap.org",
+      "tile_siblings": [
+        "katie.openstreetmap.org",
+        "trogdor.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org",
+        "simurgh.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[euserv]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "longma",
+  "description": "Master role applied to longma",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "140.110.240.7",
+          "prefix": "24",
+          "gateway": "140.110.240.254"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:e10:2000:240::7",
+          "prefix": "64",
+          "gateway": "2001:e10:2000:240::254"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "12500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "hsinchu.render.openstreetmap.org"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[nchc]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "se",
+  "description": "Role applied to all servers located in Sweden",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "se"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "thorn-02",
+  "description": "Master role applied to thorn-02",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.166"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-g5]",
+    "role[web-backend]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "elasticsearch",
+  "description": "Role applied to all elasticsearch servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "elasticsearch"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[elasticsearch]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "foundation",
+  "description": "Role applied to all OSMF servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apache": {
+      "mpm": "prefork",
+      "timeout": 60,
+      "keepalive": false
+    },
+    "apt": {
+      "sources": [
+        "passenger"
+      ]
+    },
+    "elasticsearch": {
+      "cluster": {
+        "name": "foundation"
+      },
+      "script": {
+        "disable_dynamic": false
+      }
+    },
+    "memcached": {
+      "memory_limit": 400,
+      "chunk_growth_factor": 1.05,
+      "min_item_size": 5
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[crm]",
+    "role[elasticsearch]",
+    "recipe[foundation::wiki]",
+    "recipe[foundation::board]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "idris",
+  "description": "Master role applied to idris",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.4"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.200"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-g5]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "katie",
+  "description": "Master role applied to katie",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "144.76.70.77",
+          "prefix": "27",
+          "gateway": "144.76.70.65"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2a01:4f8:191:834c::2",
+          "prefix": "64",
+          "gateway": "fe80::1"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "12500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "germany.render.openstreetmap.org",
+      "tile_siblings": [
+        "konqi.openstreetmap.org",
+        "trogdor.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org",
+        "simurgh.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[hetzner]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nepomuk",
+  "description": "Master role applied to nepomuk",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "77.95.70.166",
+          "prefix": "27",
+          "gateway": "77.95.70.161"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2a03:9180:1:21::a6",
+          "prefix": "64",
+          "gateway": "2a03:9180:1:21::a1"
+        }
+      }
+    },
+    "sysctl": {
+      "kvm": {
+        "comment": "Tuning for KVM guest",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "7500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/vda/queue/nr_requests": "128",
+          "block/vda/queue/scheduler": "deadline"
+        }
+      }
+    },
+    "tilecache": {
+      "tile_parent": "lyon.render.openstreetmap.org",
+      "tile_siblings": [
+        "trogdor.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[lyonix]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "simurgh",
+  "description": "Master role applied to simurgh",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "94.20.20.55",
+          "prefix": "24",
+          "gateway": "94.20.20.1"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "6400 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "baku.render.openstreetmap.org",
+      "tile_siblings": [
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "trogdor.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[delta]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "poldi",
+  "description": "Master role applied to poldi",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "devices": {
+      "areca_ld_tune": {
+        "comment": "RAID arrays on areca",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "20004d927fffff*",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/read_ahead_kb": "2048"
+        }
+      },
+      "ssd_samsung_tune": {
+        "comment": "Tune Samsung SSD",
+        "type": "block",
+        "bus": "ata",
+        "serial": "Samsung_SSD_840_PRO_Series_*",
+        "attrs": {
+          "queue/scheduler": "noop",
+          "queue/nr_requests": "256",
+          "queue/read_ahead_kb": "2048"
+        }
+      }
+    },
+    "sysfs": {
+      "md_tune": {
+        "comment": "Tune the md sync performance so as not to kill system performance",
+        "parameters": {
+          "block/md0/md/sync_speed_min": "1",
+          "block/md0/md/sync_speed_max": "100000"
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.164"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.101"
+        },
+        "external_ipv6": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:2e0:81ff:fec5:333e"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "shared_buffers": "10GB",
+          "work_mem": "160MB",
+          "maintenance_work_mem": "10GB",
+          "random_page_cost": "1.5",
+          "effective_cache_size": "40GB",
+          "fsync": "on"
+        }
+      }
+    },
+    "nominatim": {
+      "flatnode_file": "/ssd-old/nominatim/nodes.store",
+      "database": {
+        "cluster": "9.3/main",
+        "dbname": "nominatim",
+        "postgis": "2.1"
+      },
+      "fpm_pools": {
+        "www": {
+          "port": "8000",
+          "pm": "dynamic",
+          "max_children": "60"
+        },
+        "bulk": {
+          "port": "8001",
+          "pm": "static",
+          "max_children": "10"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[tyan-s7010]",
+    "role[nominatim-slave]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "eustace",
+  "description": "Master role applied to eustace",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.9"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.197"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[hp-dl360-g6]",
+    "role[piwik]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nl",
+  "description": "Role applied to all servers located in the Netherlands",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "nl"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "pummelzacken",
+  "description": "Master role applied to pummelzacken",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "em1",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.0.0.20"
+        },
+        "external_ipv4": {
+          "interface": "em2",
+          "role": "external",
+          "family": "inet",
+          "address": "128.40.45.204"
+        }
+      }
+    },
+    "postgresql": {
+      "settings": {
+        "defaults": {
+          "listen_addresses": "10.0.0.20",
+          "shared_buffers": "10GB",
+          "work_mem": "160MB",
+          "maintenance_work_mem": "10GB",
+          "random_page_cost": "1.5",
+          "effective_cache_size": "60GB"
+        }
+      }
+    },
+    "nominatim": {
+      "flatnode_file": "/ssd/nominatim/nodes.store",
+      "database": {
+        "cluster": "9.3/main",
+        "dbname": "nominatim",
+        "postgis": "2.1"
+      },
+      "fpm_pools": {
+        "www": {
+          "port": "8000",
+          "pm": "dynamic",
+          "max_children": "60"
+        },
+        "bulk": {
+          "port": "8001",
+          "pm": "static",
+          "max_children": "10"
+        }
+      },
+      "redirects": {
+        "reverse": "poldi.openstreetmap.org"
+      }
+    },
+    "hardware": {
+      "grub": {
+        "kernel": "3.16.0-46"
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ucl-wolfson]",
+    "role[nominatim-master]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "crm",
+  "description": "Role applied to CRM server",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "exim": {
+      "local_domains": [
+        "join.osmfoundation.org"
+      ],
+      "routes": {
+        "join_return": {
+          "comment": "return@join.osmfoundation.org",
+          "domains": [
+            "join.osmfoundation.org"
+          ],
+          "local_parts": [
+            "return"
+          ],
+          "maildir": "/var/mail/crm-return",
+          "user": "www-data",
+          "group": "mail"
+        },
+        "join_mail": {
+          "comment": "mail@join.osmfoundation.org",
+          "domains": [
+            "join.osmfoundation.org"
+          ],
+          "local_parts": [
+            "mail"
+          ],
+          "maildir": "/var/mail/crm-mail",
+          "user": "www-data",
+          "group": "mail"
+        }
+      },
+      "trusted_users": [
+        "www-data"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[civicrm]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hp-dl360-g6",
+  "description": "Role applied to all HP DL360 G6 machines",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "ipmi_temp": {
+          "Temp1": {
+            "label": "External Environment"
+          },
+          "Temp2": {
+            "warning": ":",
+            "label": "CPU 1"
+          },
+          "Temp3": {
+            "warning": ":",
+            "label": "CPU 2"
+          },
+          "Temp4": {
+            "warning": ":",
+            "label": "Memory 1"
+          },
+          "Temp5": {
+            "warning": ":",
+            "label": "Memory 2"
+          },
+          "Temp6": {
+            "warning": ":",
+            "label": "Memory 3"
+          },
+          "Temp7": {
+            "warning": ":",
+            "label": "Memory 4"
+          },
+          "Temp8": {
+            "warning": ":",
+            "label": "Memory 5"
+          },
+          "Temp9": {
+            "warning": ":",
+            "label": "Memory 6"
+          },
+          "Temp10": {
+            "warning": ":",
+            "label": "Memory 7"
+          },
+          "Temp11": {
+            "warning": ":",
+            "label": "Memory 8"
+          },
+          "Temp12": {
+            "warning": ":",
+            "label": "PSU 1"
+          },
+          "Temp13": {
+            "warning": ":",
+            "label": "PSU 2"
+          },
+          "Temp14": {
+            "warning": ":",
+            "label": "Memory 9"
+          },
+          "Temp15": {
+            "warning": ":",
+            "label": "CPU Zone 1"
+          },
+          "Temp16": {
+            "warning": ":",
+            "label": "CPU Zone 2"
+          },
+          "Temp17": {
+            "warning": ":",
+            "label": "Memory 10"
+          },
+          "Temp18": {
+            "warning": ":",
+            "label": "CPU Zone 3"
+          },
+          "Temp19": {
+            "warning": ":",
+            "label": "Peripheral Bay 1"
+          },
+          "Temp20": {
+            "warning": ":",
+            "label": "Peripheral Bay 2"
+          },
+          "Temp21": {
+            "warning": ":",
+            "label": "Peripheral Bay 3"
+          },
+          "Temp22": {
+            "warning": ":",
+            "label": "Peripheral Bay 4"
+          },
+          "Temp23": {
+            "warning": ":",
+            "label": "Peripheral Bay 5"
+          },
+          "Temp24": {
+            "warning": ":",
+            "label": "Peripheral Bay 6"
+          },
+          "Temp25": {
+            "warning": ":",
+            "label": "Peripheral Bay 7"
+          },
+          "Temp26": {
+            "warning": ":",
+            "label": "Peripheral Bay 8"
+          },
+          "Temp27": {
+            "warning": ":",
+            "label": "Drive Backplane"
+          },
+          "Temp28": {
+            "warning": ":",
+            "label": "System Board"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "bytemark",
+  "description": "Role applied to all servers at Bytemark",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "roles": {
+        "external": {
+          "zone": "bm"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.uk.pool.ntp.org",
+        "1.uk.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "lists",
+  "description": "Role applied to all mailing list servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[mailman]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "stateofthemap",
+  "description": "Role applied to State of the Map servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[stateofthemap]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ucl",
+  "description": "Role applied to all servers at UCL",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "bind": {
+      "forwarders": [
+        "144.82.100.1",
+        "144.82.100.41"
+      ]
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "ntp1.ucl.ac.uk",
+        "ntp2.ucl.ac.uk"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nominatim-standalone",
+  "description": "Role applied to all stand-alone nominatim servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "versions": [
+        "9.3"
+      ]
+    },
+    "nominatim": {
+      "enable_backup": false
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[nominatim]",
+    "recipe[nominatim::standalone]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "db",
+  "description": "Role applied to all database servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "rails": {
+          "status": "role",
+          "members": [
+            "tomh",
+            "grant"
+          ]
+        }
+      }
+    },
+    "munin": {
+      "plugins": {
+        "postgres_connections_openstreetmap": {
+          "waiting": {
+            "warning": 10,
+            "critical": 20
+          }
+        },
+        "postgres_locks_openstreetmap": {
+          "accesssharelock": {
+            "warning": 900,
+            "critical": 1000
+          },
+          "rowexclusivelock": {
+            "warning": 250,
+            "critical": 300
+          }
+        }
+      }
+    },
+    "nfs": {
+      "/store/rails": {
+        "host": "ironbelly",
+        "path": "/store/rails"
+      }
+    },
+    "postgresql": {
+      "versions": [
+        "9.1"
+      ],
+      "settings": {
+        "defaults": {
+          "listen_addresses": "*",
+          "max_connections": "500",
+          "max_stack_depth": "7MB",
+          "checkpoint_segments": "32",
+          "checkpoint_completion_target": "0.8",
+          "cpu_tuple_cost": "0.1",
+          "late_authentication_rules": [
+            {
+              "address": "146.179.159.160/27"
+            }
+          ]
+        }
+      }
+    },
+    "sysctl": {
+      "swappiness": {
+        "comment": "Only swap in an emergency",
+        "parameters": {
+          "vm.swappiness": 0
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nfs]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ic",
+  "description": "Role applied to all servers at Imperial College",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "icladmin": {
+          "status": "user"
+        }
+      }
+    },
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "146.179.159.177"
+      ],
+      "roles": {
+        "internal": {
+          "inet": {
+            "prefix": "27",
+            "gateway": "146.179.159.177"
+          }
+        },
+        "external": {
+          "zone": "ic",
+          "inet": {
+            "prefix": "27",
+            "gateway": "193.63.75.97"
+          },
+          "inet6": {
+            "prefix": "64",
+            "gateway": "fe80::5:73ff:fea0:1"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "networking": {
+      "search": [
+        "ic.openstreetmap.org",
+        "openstreetmap.org"
+      ]
+    },
+    "ntp": {
+      "servers": [
+        "0.uk.pool.ntp.org",
+        "1.uk.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[gb]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "shenron",
+  "description": "Master role applied to shenron",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "bretth": {
+          "status": "user",
+          "shell": "/usr/bin/git-shell"
+        }
+      }
+    },
+    "apache": {
+      "mpm": "event",
+      "event": {
+        "max_requests_per_child": 2000
+      }
+    },
+    "hardware": {
+      "modules": [
+        "it87"
+      ]
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "212.110.172.32",
+          "prefix": "26",
+          "gateway": "212.110.172.1"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:41c9:1:400::32",
+          "prefix": "64",
+          "gateway": "fe80::1"
+        }
+      }
+    },
+    "openvpn": {
+      "address": "10.0.16.3",
+      "tunnels": {
+        "shenron2ucl": {
+          "port": "1194",
+          "mode": "server",
+          "peer": {
+            "host": "ridley.openstreetmap.org"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[bytemark]",
+    "role[mail]",
+    "role[lists]",
+    "role[git]",
+    "role[subversion]",
+    "role[trac]",
+    "role[osqa]",
+    "role[irc]",
+    "role[dns]",
+    "role[geodns]",
+    "role[chef-repository]",
+    "recipe[openvpn]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "tilecache",
+  "description": "Role applied to all tile cache servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "groups": {
+        "proxy": {
+          "members": [
+            "tomh",
+            "grant",
+            "matt",
+            "jburgess"
+          ]
+        }
+      }
+    },
+    "apt": {
+      "sources": [
+        "nginx"
+      ]
+    },
+    "sysctl": {
+      "network_conntrack_time_wait": {
+        "comment": "Only track completed connections for 30 seconds",
+        "parameters": {
+          "net.netfilter.nf_conntrack_tcp_timeout_time_wait": "30"
+        }
+      },
+      "network_conntrack_max": {
+        "comment": "Increase max number of connections tracked",
+        "parameters": {
+          "net.netfilter.nf_conntrack_max": "131072"
+        }
+      },
+      "squid_swappiness": {
+        "comment": "Prefer not to swapout to free memory",
+        "parameters": {
+          "vm.swappiness": "30"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[geodns]",
+    "recipe[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "mail",
+  "description": "Role applied to all mail servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "exim": {
+      "local_domains": [
+        "openstreetmap.org",
+        "osm.org",
+        "noreply.openstreetmap.org",
+        "openstreetmap.co.uk",
+        "openstreetmap.org.uk",
+        "openstreetmap.com",
+        "openstreetmap.io",
+        "openstreetmap.pro",
+        "openstreetmaps.org",
+        "osm.io"
+      ],
+      "daemon_smtp_ports": [
+        25,
+        26
+      ],
+      "smarthost_name": "mail.openstreetmap.org",
+      "smarthost_via": false,
+      "dns_blacklists": [
+        "sbl-xbl.spamhaus.org"
+      ],
+      "routes": {
+        "messages": {
+          "comment": "messages.openstreetmap.org",
+          "domains": [
+            "messages.openstreetmap.org"
+          ],
+          "host": [
+            "spike-01.openstreetmap.org",
+            "spike-02.openstreetmap.org",
+            "spike-03.openstreetmap.org"
+          ]
+        },
+        "otrs": {
+          "comment": "otrs.openstreetmap.org",
+          "domains": [
+            "otrs.openstreetmap.org"
+          ],
+          "host": "ridley.ucl.openstreetmap.org"
+        },
+        "tickets": {
+          "comment": "tickets.openstreetmap.org",
+          "domains": [
+            "tickets.openstreetmap.org"
+          ],
+          "host": "ridley.ucl.openstreetmap.org"
+        },
+        "join": {
+          "comment": "join.osmfoundation.org",
+          "domains": [
+            "join.osmfoundation.org"
+          ],
+          "host": "ridley.ucl.openstreetmap.org"
+        }
+      },
+      "aliases": {
+        "abuse": "root",
+        "postmaster": "root",
+        "webmaster": "support",
+        "clamav": "root",
+        "rails": "root",
+        "trac": "root",
+        "munin": "root",
+        "thinkup": "root",
+        "www-data": "root",
+        "osmbackup": "root",
+        "noreply": "/dev/null",
+        "bounces": "/dev/null",
+        "wishlist": "/dev/null",
+        "treasurer": "treasurer@osmfoundation.org",
+        "donations": "treasurer@osmfoundation.org",
+        "secretary": "secretary@osmfoundation.org",
+        "chairman": "chairman@osmfoundation.org",
+        "accountant": "accountant@osmfoundation.org",
+        "data": "data@otrs.openstreetmap.org",
+        "otrs": "otrs@otrs.openstreetmap.org",
+        "support": "support@otrs.openstreetmap.org",
+        "memorial": "communication@osmfoundation.org",
+        "legal": "legal@osmfoundation.org",
+        "dmca": "dmca@osmfoundation.org"
+      },
+      "private_aliases": "mail"
+    },
+    "munin": {
+      "plugins": {
+        "exim_mailqueue": {
+          "mails": {
+            "warning": 500,
+            "critical": 1000
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[clamav]",
+    "recipe[spamassassin]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "blix-nl",
+  "description": "Role applied to all servers at Blix NL",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.nl.pool.ntp.org",
+        "1.nl.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[nl]",
+    "role[blix]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "gb",
+  "description": "Role applied to all servers located in the UK",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "gb"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "jakelong",
+  "description": "Master role applied to jakelong",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "64.62.205.202",
+          "prefix": "26",
+          "gateway": "64.62.205.193"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:470:1:41:a800:ff:fe3e:cdca",
+          "prefix": "64",
+          "gateway": "fe80::21b:21ff:fead:e886"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "700 MB",
+      "cache_dir": "coss /store/squid/coss-01 10000 block-size=8192 max-size=262144 membufs=30"
+    },
+    "sysctl": {
+      "kvm": {
+        "comment": "Tuning for KVM guest",
+        "parameters": {
+          "kernel.sched_min_granularity_ns": 10000000,
+          "kernel.sched_wakeup_granularity_ns": 15000000
+        }
+      }
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/xvda/queue/nr_requests": "128",
+          "block/xvda/queue/scheduler": "deadline"
+        }
+      }
+    },
+    "tilecache": {
+      "tile_parent": "sanfrancisco.render.openstreetmap.org",
+      "tile_siblings": [
+        "nadder-01.openstreetmap.org",
+        "nadder-02.openstreetmap.org",
+        "stormfly-02.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[prgmr]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "prgmr",
+  "description": "Role applied to all servers at prgmr.com",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.4.4",
+        "65.19.174.2",
+        "65.19.175.2"
+      ],
+      "roles": {
+        "external": {
+          "zone": "pr"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.us.pool.ntp.org",
+        "1.us.pool.ntp.org",
+        "2.us.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[us]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "orm",
+  "description": "Master role applied to orm",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "apt": {
+      "sources": [
+        "postgresql"
+      ]
+    },
+    "devices": {
+      "ssd_samsung": {
+        "comment": "Tune scheduler for SSD",
+        "type": "block",
+        "bus": "ata",
+        "serial": "Samsung_SSD_840_PRO_Series_*",
+        "attrs": {
+          "queue/scheduler": "noop",
+          "queue/nr_requests": "256",
+          "queue/read_ahead_kb": "2048"
+        }
+      },
+      "arecavoltune": {
+        "comment": "Tune scheduler for Areca",
+        "type": "block",
+        "bus": "scsi",
+        "serial": "2001b4d20*",
+        "attrs": {
+          "queue/scheduler": "deadline",
+          "queue/nr_requests": "512",
+          "queue/read_ahead_kb": "2048"
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.98"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:2e0:81ff:fec5:2a8c"
+        }
+      }
+    },
+    "postgresql": {
+      "versions": [
+        "9.4"
+      ],
+      "settings": {
+        "defaults": {
+          "shared_buffers": "8GB",
+          "maintenance_work_mem": "7144MB",
+          "effective_cache_size": "16GB"
+        }
+      }
+    },
+    "sysctl": {
+      "postgres": {
+        "comment": "Increase shared memory for postgres",
+        "parameters": {
+          "kernel.shmmax": 9663676416,
+          "kernel.shmall": 2359296
+        }
+      }
+    },
+    "tile": {
+      "database": {
+        "cluster": "9.4/main"
+      },
+      "node_file": "/store/database/nodes",
+      "styles": {
+        "default": {
+          "tile_directories": [
+            {
+              "name": "/store/tiles/default-low",
+              "min_zoom": 0,
+              "max_zoom": 17
+            },
+            {
+              "name": "/store/tiles/default-high",
+              "min_zoom": 18,
+              "max_zoom": 19
+            }
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[tyan-s7010]",
+    "role[tile]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "fume",
+  "description": "Master role applied to fume",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "df": {
+          "_dev_cciss_c0d1p1": {
+            "warning": ":95"
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "85.30.190.241",
+          "prefix": "29",
+          "gateway": "85.30.190.246"
+        },
+        "external_ipv6": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet6",
+          "address": "2a02:80:0:3ff8:222:64ff:fe2a:2714",
+          "prefix": "64"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "16000 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "sysfs": {
+      "hdd_tune": {
+        "comment": "Tune the queue for improved performance",
+        "parameters": {
+          "block/cciss!c0d0/queue/nr_requests": "512",
+          "block/cciss!c0d1/queue/nr_requests": "512",
+          "block/cciss!c0d0/queue/scheduler": "noop",
+          "block/cciss!c0d1/queue/scheduler": "noop"
+        }
+      }
+    },
+    "tilecache": {
+      "tile_parent": "sjobo.render.openstreetmap.org",
+      "tile_siblings": [
+        "trogdor.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "gorynych.openstreetmap.org",
+        "nepomuk.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[teleservice]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "hu",
+  "description": "Role applied to all servers located in Hungary",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "hu"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "szerverem",
+  "description": "Role applied to all servers at szerverem.hu",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "sz"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.hu.pool.ntp.org",
+        "1.hu.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[hu]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "tw",
+  "description": "Role applied to all servers located in Taiwan",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "country": "tw"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[base]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nominatim-master",
+  "description": "Role applied to the master nominatim server",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "versions": [
+        "9.3"
+      ],
+      "settings": {
+        "defaults": {
+          "wal_level": "hot_standby",
+          "archive_mode": "on",
+          "archive_command": "/bin/cp %p /data/postgresql-archive/%f",
+          "max_wal_senders": "5",
+          "late_authentication_rules": [
+            {
+              "database": "replication",
+              "user": "replication",
+              "address": "146.179.159.164/32"
+            }
+          ]
+        }
+      }
+    },
+    "nominatim": {
+      "enabled": true,
+      "enable_backup": true
+    },
+    "rsyncd": {
+      "modules": {
+        "archive": {
+          "comment": "WAL Archive",
+          "path": "/data/postgresql-archive",
+          "read_only": true,
+          "write_only": false,
+          "list": false,
+          "uid": "postgres",
+          "gid": "postgres",
+          "transfer_logging": false,
+          "hosts_allow": [
+            "146.179.159.164"
+          ]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[nominatim]",
+    "recipe[nominatim::master]",
+    "recipe[rsyncd]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "nchc",
+  "description": "Role applied to all servers at NCHC",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "steven": {
+          "status": "administrator"
+        },
+        "ceasar": {
+          "status": "administrator"
+        }
+      }
+    },
+    "networking": {
+      "nameservers": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "roles": {
+        "external": {
+          "zone": "nc"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+    "ntp": {
+      "servers": [
+        "0.tw.pool.ntp.org",
+        "1.tw.pool.ntp.org",
+        "europe.pool.ntp.org"
+      ]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[tw]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "ridgeback",
+  "description": "Master role applied to ridgeback",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "ipmi_fans": {
+          "Fan4": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Fan5": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Fan6": {
+            "graph": "no",
+            "warning": "0:"
+          },
+          "Fan7CPU1": {
+            "graph": "no",
+            "warning": "0:"
+          }
+        },
+        "smart_sda": {
+          "smartctl_exit_status": {
+            "warning": 8
+          }
+        },
+        "smart_sdb": {
+          "smartctl_exit_status": {
+            "warning": 8
+          }
+        }
+      }
+    },
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "eth0",
+          "role": "external",
+          "family": "inet",
+          "address": "31.169.50.10",
+          "prefix": "30",
+          "gateway": "31.169.50.9"
+        }
+      }
+    },
+    "sysfs": {
+      "md_tune": {
+        "comment": "Tune the md sync performance so as not to kill system performance",
+        "parameters": {
+          "block/md0/md/sync_speed_min": "1",
+          "block/md0/md/sync_speed_max": "100000",
+          "block/md1/md/sync_speed_min": "1",
+          "block/md1/md/sync_speed_max": "100000"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "5500 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "oslo.render.openstreetmap.org",
+      "tile_siblings": [
+        "fume.openstreetmap.org",
+        "trogdor.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "nepomuk.openstreetmap.org",
+        "gorynych.openstreetmap.org",
+        "simurgh.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[blix-no]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "stormfly-01",
+  "description": "Master role applied to stormfly-01",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "em1",
+          "role": "external",
+          "family": "inet",
+          "address": "140.211.167.104"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[osuosl]",
+    "role[hp-dl360-g6]",
+    "role[taginfo]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-storage",
+  "description": "Base role applied to all web/api storage servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "accounts": {
+      "users": {
+        "rails": {
+          "status": "role"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nfs::server]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "grisu",
+  "description": "Master role applied to grisu",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "external_ipv4": {
+          "interface": "em1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.63.75.108",
+          "hwaddress": "d8:d3:85:5d:87:a0"
+        },
+        "external_ipv6": {
+          "interface": "em1",
+          "role": "external",
+          "family": "inet6",
+          "address": "2001:630:12:500:dad3:85ff:fe5d:87a0"
+        },
+        "internal_ipv4": {
+          "interface": "em2",
+          "role": "internal",
+          "family": "inet",
+          "address": "146.179.159.168",
+          "hwaddress": "d8:d3:85:5d:87:a1"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[ic]",
+    "role[hp-dl180-g6]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "munin",
+  "description": "Role applied to all munin servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "munin": {
+      "plugins": {
+        "munin_update": {
+          "contacts": "null"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[munin::server]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "lurien",
+  "description": "Master role applied to lurien",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "networking": {
+      "interfaces": {
+        "internal_ipv4": {
+          "interface": "eth0",
+          "role": "internal",
+          "family": "inet",
+          "address": "10.64.1.22",
+          "prefix": "24",
+          "mtu": "9000"
+        },
+        "external_ipv4": {
+          "interface": "eth1",
+          "role": "external",
+          "family": "inet",
+          "address": "193.55.222.229",
+          "prefix": "24",
+          "gateway": "193.55.222.1"
+        }
+      }
+    },
+    "squid": {
+      "cache_mem": "9000 MB",
+      "cache_dir": "coss /store/squid/coss-01 128000 block-size=8192 max-size=262144 membufs=80"
+    },
+    "tilecache": {
+      "tile_parent": "pau.render.openstreetmap.org",
+      "tile_siblings": [
+        "nepomuk.openstreetmap.org",
+        "katie.openstreetmap.org",
+        "konqi.openstreetmap.org",
+        "ridgeback.openstreetmap.org",
+        "fume.openstreetmap.org",
+        "gorynych.openstreetmap.org"
+      ]
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[paulla]",
+    "role[tilecache]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+,
+    {
+  "name": "web-statistics",
+  "description": "Role applied to all web/api statistics generation servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[web]",
+    "recipe[web::statistics]"
+  ],
+  "env_run_lists": {
+
+  }
+}
+
+  ]
+}

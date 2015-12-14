@@ -30,6 +30,7 @@ module Jekyll
         'oob' => extract_oob(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description'],
+        'roles' => extract_roles(ohai),
         'lvs' => extract_lvs(ohai),
         'filesystems' => extract_filesystems(ohai)
       }
@@ -303,6 +304,17 @@ module Jekyll
       if bios = ohai['dmi']['bios']
         "#{bios['vendor']} version #{bios['version']}"
       end
+    end
+
+    def extract_roles(ohai)
+      ohai['roles']
+        .map { |role| { 'name' => role, 'description' => describe_role(role) } }
+    end
+
+    def describe_role(name)
+      role = @site.data['roles']['rows']
+             .find { |role| role['name'] == name }
+      role ? role['description'] : ""
     end
 
     def extract_lvs(ohai)

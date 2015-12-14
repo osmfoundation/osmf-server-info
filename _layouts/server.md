@@ -75,6 +75,14 @@ layout: default
 **Operating System**
 : {{ page.server.os }}
 
+## Roles
+
+{% for role in page.server.roles %}
+**{{ role.name }}**
+: {{ role.description }}
+
+{% endfor %}
+
 {% if page.server.disk.arrays != empty %}
 ## Disk Arrays
 {% for array in page.server.disk.arrays %}
