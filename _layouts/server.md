@@ -84,6 +84,17 @@ layout: default
 {% endfor %}
 {% endif %}
 
+{% if page.server.lvs != empty %}
+## Logical Volumes
+
+{% for lv in page.server.lvs %}
+**{{ lv.name }}**
+: {{ lv.description }}
+
+{% endfor %}
+{% endif %}
+
+{% if page.server.filesystems != empty %}
 ## Filesystems
 
 {% for fs in page.server.filesystems %}
@@ -91,3 +102,4 @@ layout: default
 : {{ fs.description }}
 
 {% endfor %}
+{% endif %}

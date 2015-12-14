@@ -30,6 +30,7 @@ module Jekyll
         'oob' => extract_oob(ohai),
         'bios' => extract_bios(ohai),
         'os' => ohai['lsb']['description'],
+        'lvs' => extract_lvs(ohai),
         'filesystems' => extract_filesystems(ohai)
       }
     end
@@ -304,6 +305,23 @@ module Jekyll
       end
     end
 
+    def extract_lvs(ohai)
+      if ohai['hardware'] && ohai['hardware']['lvm']
+        ohai['hardware']['lvm']['lvs']
+          .map { |name, details| { 'name' => name, 'description' => describe_lv(details, ohai) } }
+          .sort_by { |lv| lv['name'] }
+      end
+    end
+
+    def describe_lv(lv, ohai)
+      size = format_size(lv['lv_size'].to_i / 2)
+      pvs =  ohai['hardware']['lvm']['pvs']
+            .select { |_, pv| pv['vg'] == lv['vg'] }
+            .map { |device, _| device }
+
+      "#{size} on #{pvs.join(', ')}"
+    end
+
     def extract_filesystems(ohai)
       ohai['filesystem']
         .select { |device, _| device.start_with?('/') }
@@ -358,13 +376,13 @@ module Jekyll
         kblog2 = Math.log2(kb)
 
         if kblog2 >= 30
-          sprintf "%dTB", 2 ** (kblog2 - 30)
+          sprintf "%dTB", (2 ** (kblog2 - 30)).round
         elsif kblog2 >= 20
-          sprintf "%dGB", 2 ** (kblog2 - 20)
+          sprintf "%dGB", (2 ** (kblog2 - 20)).round
         elsif kblog2 >= 10
-          sprintf "%dMB", 2 ** (kblog2 - 10)
+          sprintf "%dMB", (2 ** (kblog2 - 10)).round
         else
-          sprintf "%dKB", 2 ** (kblog2 - 0)
+          sprintf "%dKB", (2 ** (kblog2 - 0)).round
         end
       end
     end
