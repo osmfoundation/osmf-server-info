@@ -1,0 +1,8 @@
+from "git://github.com/aucor/jekyll-plugins.git" do
+  file "_plugins/strip_tag.rb", "strip.rb"
+end
+
+from "git://github.com/lipis/flag-icon-css.git" do
+  file "_sass/_flags.scss", "css/flag-icon.css"
+  folder "flags", "flags"
+end
