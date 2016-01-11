@@ -166,6 +166,7 @@ module Jekyll
     def is_disk_controller(device)
       device['class_name'] == 'SATA controller' ||
         device['class_name'] == 'RAID bus controller' ||
+        device['class_name'] == 'SCSI storage controller' ||
         device['class_name'] == 'Serial Attached SCSI controller' ||
         device['class_name'] == 'Non-Volatile memory controller'
     end
