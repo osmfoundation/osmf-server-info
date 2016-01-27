@@ -40,7 +40,7 @@ Server | Description | Country |Stats | Last Contact
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "tilecache" %}
 {% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | <span class="flag-icon flag-icon-{{ node.override.country }}"></span> | [munin](http://munin.openstreetmap.org/openstreetmap/{{ node_name }}.openstreetmap/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | Tile cache server in {{ node.automatic.location }} | <span class="flag-icon flag-icon-{{ node.override.country }}"></span> | [munin](http://munin.openstreetmap.org/openstreetmap/{{ node_name }}.openstreetmap/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
