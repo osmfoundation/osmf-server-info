@@ -1,15 +1,13 @@
 # OSMF Server Info
 
-This is an attempt to automate the generation of high-level information about
-the OSMF servers. Previously this was maintained on the wiki, but this is
+This project automates the generation of high-level information about
+the OSMF servers. Previously this was maintained on the wiki, but this was
 both time-consuming and error-prone.
 
-This project takes the information that is gathered on each Chef run, and
-parses it to gain the relevant information for the pages. The information is
-reported from the chef server using `knife search node "*:*" -l -Fj` and is
-located at `_data/nodes.json`
+This project takes the node and role information that is gathered on each Chef
+run, and parses it to gain the relevant information for the pages. The data
+is exported from the chef server using the ["serverinfo" cookbook](https://github.com/openstreetmap/chef/tree/master/cookbooks/serverinfo)
 
 This is a jekyll project, so it can be run locally using `jekyll serve -w`.
-Since it uses custom plugins it can't be run directly by github pages, and so
-the site needs to be generated locally and the results pushed to the `gh-pages`
-branch. Use `rake site:generate` or the all-in-one `rake site:publish`.
+Since it uses custom plugins it can't be run directly by github pages. Currently
+the `_data/nodes.json` and `_data/roles.json` are not publicly available.
