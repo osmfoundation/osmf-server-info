@@ -1,0 +1,25 @@
+db-slave: Read only database mirror for www.openstreetmap.org
+db-master: Primary database server for www.openstreetmap.org
+dev:  Development and "tool" server
+forum: Forum server
+foundation:  Foundation related sites
+gps-tile: GPS tile server 
+imagery: Aerial imagery server
+lists: Mailing lists server
+logstash: Logstash server
+mail: Mail server
+munin: Munin server
+nominatim: Nominatim geocoding server
+osqa: OSQA server for help.openstreetmap.org
+owl: OWL server
+piwik: Piwik server for web site statistics
+planet: Web server for planet.openstreetmap.org
+planetdump: Planet file generation server
+subversion: Subversion server
+taginfo: Taginfo server
+tile: Tile server
+yournavigation: Gosmore routing server
+web-frontend: Frontend web server for www.openstreetmap.org
+web-backend: Backend application server for www.openstreetmap.org
+web-storage: NFS storage server for www.openstreetmap.org
+wiki: Wiki server
