@@ -10,6 +10,7 @@ module Jekyll
       read_yaml(File.join(base, '_layouts'), 'server.md')
       data['server'] = extract_details(attributes['automatic'])
       data['title'] = attributes['name']
+      data['roles'] = attributes['automatic']['roles']
     end
 
     private

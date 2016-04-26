@@ -4,6 +4,8 @@ layout: default
 
 # {{ page.title }}
 
+{{ page.roles | server_description }}
+
 ## Hardware
 
 {% if page.server.system.name %}

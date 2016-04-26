@@ -18,6 +18,7 @@ planetdump: Planet file generation server
 subversion: Subversion server
 taginfo: Taginfo server
 tile: Tile server
+tilecache: Tile cache server
 yournavigation: Gosmore routing server
 web-frontend: Frontend web server for www.openstreetmap.org
 web-backend: Backend application server for www.openstreetmap.org
