@@ -110,7 +110,7 @@ module Jekyll
     end
 
     def extract_memory_devices(ohai)
-      if ohai['hardware']
+      if ohai['hardware'] && ohai['hardware']['memory']
         ohai['hardware']['memory']
           .reject { |device| device['type'] == 'Flash' }
           .map { |device| { :size => parse_size(device['size']), :type => describe_memory_device(device) } }
