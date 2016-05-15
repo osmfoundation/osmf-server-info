@@ -339,11 +339,15 @@ module Jekyll
     end
 
     def extract_filesystems(ohai)
-      ohai['filesystem']
-        .select { |device, _| device.start_with?('/') }
-        .select { |_, details| details.include?('kb_size') }
-        .map { |device, details| { 'mountpoint' => details['mount'], 'description' => describe_filesystem(device, details) } }
-        .sort_by { |filesystem| filesystem['mountpoint'] || "xxx" }
+      if ohai['filesystem']
+        ohai['filesystem']
+          .select { |device, _| device.start_with?('/') }
+          .select { |_, details| details.include?('kb_size') }
+          .map { |device, details| { 'mountpoint' => details['mount'], 'description' => describe_filesystem(device, details) } }
+          .sort_by { |filesystem| filesystem['mountpoint'] || "xxx" }
+      else
+        []
+      end
     end
 
     def describe_filesystem(device, details)
