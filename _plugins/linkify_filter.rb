@@ -9,6 +9,10 @@ module Jekyll
         input
       end
     end
+
+    def linkify_all(input, group)
+      input.map {|i| linkify(i, group) }
+    end
   end
 end
 
