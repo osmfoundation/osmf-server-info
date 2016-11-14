@@ -1,7 +1,5 @@
 module Jekyll
   class ServerPage < Page
-    include Jekyll::ThanksToFilter
-
     def initialize(site, base, dir, attributes)
       @site = site
       @base = base
@@ -13,7 +11,7 @@ module Jekyll
       data['server'] = extract_details(attributes['automatic'])
       data['title'] = attributes['name']
       data['roles'] = attributes['automatic']['roles']
-      data['thanks_to'] = thanks_to(attributes)
+      data['thanks_to'] = ThanksTo::thanks_to(attributes, @site)
     end
 
     private
