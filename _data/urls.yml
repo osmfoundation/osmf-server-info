@@ -52,11 +52,11 @@ cpus:
   Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: http://ark.intel.com/products/47920
 hbas:
   Adaptec Series 8 12G SAS/PCIe 3: http://www.adaptec.com/en-us/products/series/8/
-  LSI MegaRAID SAS-3 3108 [Invader]: http://www.avagotech.com/products/server-storage/raid-on-chip/sas-3108
-  LSI MegaRAID SAS 9271-8i: http://www.avagotech.com/products/server-storage/raid-controllers/megaraid-sas-9271-8i
-  LSI MegaRAID SAS 9271-8iCC: http://www.avagotech.com/products/server-storage/raid-controllers/megaraid-sas-9271-8icc
-  LSI SAS2308 PCI-Express Fusion-MPT SAS-2: http://www.avagotech.com/products/server-storage/io-controllers/sas-2308
-  LSI SAS3008 PCI-Express Fusion-MPT SAS-3: http://www.avagotech.com/products/server-storage/io-controllers/sas-3008
+  LSI MegaRAID SAS-3 3108 [Invader]: http://www.broadcom.com/products/server-storage/raid-on-chip/sas-3108
+  LSI MegaRAID SAS 9271-8i: http://www.broadcom.com/products/server-storage/raid-controllers/megaraid-sas-9271-8i
+  LSI MegaRAID SAS 9271-8iCC: http://www.broadcom.com/products/server-storage/raid-controllers/megaraid-sas-9271-8icc
+  LSI SAS2308 PCI-Express Fusion-MPT SAS-2: http://www.broadcom.com/products/server-storage/io-controllers/sas-2308
+  LSI SAS3008 PCI-Express Fusion-MPT SAS-3: http://www.broadcom.com/products/server-storage/io-controllers/sas-3008
 disks:
   Fujitsu MBB2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
   Fujitsu MBC2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
