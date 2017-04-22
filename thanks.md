@@ -10,7 +10,7 @@ Hosting OpenStreetMap wouldn't be possible without the support of many people an
 
 ## University College London
 
-We would like to thank [University College London](http://www.ucl.ac.uk/)'s [Bartlett centre](http://www.bartlett.ucl.ac.uk/) for their many years of support. They have been supporting OpenStreetMap since its beginning and we are very grateful.
+We would like to thank [University College London](http://www.ucl.ac.uk/) for their many years of support. They have been supporting OpenStreetMap since its beginning at the [Bartlett centre](http://www.bartlett.ucl.ac.uk/) and we are very grateful.
 
 ## Bytemark
 
