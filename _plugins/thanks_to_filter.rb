@@ -1,7 +1,7 @@
 class ThanksTo
   def self.thanks_to(node, site)
     node_name = node['name'].split('.')[0]
-    roles = node['automatic']['roles']
+    roles = node['automatic']['roles'] || []
     thanks_override = site.data['thanks']
 
     if roles.include? "ic"
