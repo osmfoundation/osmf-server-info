@@ -31,7 +31,7 @@ module Jekyll
         'power' => extract_power(ohai),
         'oob' => extract_oob(ohai),
         'bios' => extract_bios(ohai),
-        'os' => ohai['lsb']['description'],
+        'os' => extract_os(ohai),
         'roles' => extract_roles(ohai),
         'lvs' => extract_lvs(ohai),
         'filesystems' => extract_filesystems(ohai)
@@ -327,9 +327,19 @@ module Jekyll
       end
     end
 
+    def extract_os(ohai)
+      if ohai['lsb'] && ohai['lsb']['description']
+        ohai['lsb']['description']
+      end
+    end
+
     def extract_roles(ohai)
-      ohai['roles']
-        .map { |role| { 'name' => role, 'description' => describe_role(role) } }
+      if ohai['roles']
+        ohai['roles']
+          .map { |role| { 'name' => role, 'description' => describe_role(role) } }
+      else
+        []
+      end
     end
 
     def describe_role(name)
