@@ -322,7 +322,7 @@ module Jekyll
     end
 
     def extract_bios(ohai)
-      if bios = ohai['dmi']['bios']
+      if ohai['dmi'] && bios = ohai['dmi']['bios']
         "#{bios['vendor']} version #{bios['version']}"
       end
     end
