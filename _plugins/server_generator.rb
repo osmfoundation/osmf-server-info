@@ -50,7 +50,8 @@ module Jekyll
         else system['name'] = "Virtual Machine"
         end
       else
-        if ohai['dmi']['system'] &&
+        if ohai['dmi'] &&
+           ohai['dmi']['system'] &&
            ohai['dmi']['system']['manufacturer'] != 'empty' &&
            ohai['dmi']['system']['manufacturer'] != 'System manufacturer'
           system_manufacturer = ohai['dmi']['system']['manufacturer'].squeeze(' ').strip
@@ -58,7 +59,8 @@ module Jekyll
           system_sku = ohai['dmi']['system']['sku_number'].squeeze(' ').strip
         end
 
-        if ohai['dmi']['base_board'] &&
+        if ohai['dmi'] &&
+           ohai['dmi']['base_board'] &&
            ohai['dmi']['base_board']['product_name']
           base_board_manufacturer = ohai['dmi']['base_board']['manufacturer'].squeeze(' ').strip
           base_board_product = ohai['dmi']['base_board']['product_name'].squeeze(' ').strip
@@ -96,11 +98,15 @@ module Jekyll
     end
 
     def extract_cpus(ohai)
-      ohai['cpu']
-        .select { |_, cpu| cpu.is_a?(Hash) && cpu['core_id'] == '0' }
-        .map { |_, cpu| { :id => cpu['physical_id'], :model => cpu['model_name'].squeeze(' ').strip, :cores => cpu['cores'] } }
-        .group_by { |cpu| cpu[:model] }
-        .map { |model, cpus| { 'model' => model, 'cores' => cpus.first[:cores], 'count' => cpus.uniq.count } }
+      if ohai['cpu']
+        ohai['cpu']
+          .select { |_, cpu| cpu.is_a?(Hash) && cpu['core_id'] == '0' }
+          .map { |_, cpu| { :id => cpu['physical_id'], :model => cpu['model_name'].squeeze(' ').strip, :cores => cpu['cores'] } }
+          .group_by { |cpu| cpu[:model] }
+          .map { |model, cpus| { 'model' => model, 'cores' => cpus.first[:cores], 'count' => cpus.uniq.count } }
+      else
+        []
+      end
     end
 
     def extract_memory(ohai)
@@ -234,10 +240,14 @@ module Jekyll
     end
 
     def extract_network_interfaces(ohai)
-      ohai['network']['interfaces']
-        .select { |_, interface| interface['encapsulation'] == 'Ethernet' }
-        .map { |name, interface| { 'name' => name, 'addresses' => extract_addresses(interface) } }
-        .sort_by { |interface| interface['name'] }
+      if ohai['network'] && ohai['network']['interfaces']
+        ohai['network']['interfaces']
+          .select { |_, interface| interface['encapsulation'] == 'Ethernet' }
+          .map { |name, interface| { 'name' => name, 'addresses' => extract_addresses(interface) } }
+          .sort_by { |interface| interface['name'] }
+      else
+        []
+      end
     end
 
     def extract_addresses(interface)
