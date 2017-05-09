@@ -110,10 +110,18 @@ module Jekyll
     end
 
     def extract_memory(ohai)
-      {
-        'total' => format_size(parse_size(ohai['memory']['total'])),
-        'devices' => extract_memory_devices(ohai)
-      }
+        {
+          'total' => extract_memory_total(ohai),
+          'devices' => extract_memory_devices(ohai)
+        }
+    end
+
+    def extract_memory_total(ohai)
+      if ohai['memory'] && ohai['memory']['total']
+        format_size(parse_size(ohai['memory']['total']))
+      else
+        0
+      end
     end
 
     def extract_memory_devices(ohai)
