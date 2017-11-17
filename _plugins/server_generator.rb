@@ -12,6 +12,7 @@ module Jekyll
       data['title'] = attributes['name']
       data['roles'] = attributes['automatic']['roles']
       data['thanks_to'] = ThanksTo::thanks_to(attributes, @site)
+      data['additional_thanks'] = ThanksTo::additional_thanks(attributes, @site)
     end
 
     private

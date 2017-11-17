@@ -116,4 +116,4 @@ layout: default
 
 ## Thanks
 
-Many thanks to {{ page.thanks_to | linkify: 'isps' }} for supporting this server.
+Many thanks to {{ page.thanks_to | linkify: 'isps' }} for supporting this server. {{ page.additional_thanks }}

@@ -16,6 +16,11 @@ class ThanksTo
       node['default']['hosted_by']
     end
   end
+
+  def self.additional_thanks(node, site)
+    node_name = node['name'].split('.')[0]
+    site.data['additional_thanks'][node_name]
+  end
 end
 
 module Jekyll
