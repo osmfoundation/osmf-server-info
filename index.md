@@ -4,13 +4,13 @@ layout: default
 
 {% assign sorted_nodes = site.data.nodes.rows | sort: 'name' %}
 
-## Imperial College London
+## Equinix Amsterdam
 
 {% strip %}
 Server | Description | Stats | Last Contact
 -------|-------------|-------|-------------
 {% for node in sorted_nodes %}
-{% if node.automatic.roles contains "ic" %}
+{% if node.automatic.roles contains "equinix" %}
 {% assign node_name = node.name | split: '.' | first %}
 [{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [munin](http://munin.openstreetmap.org/openstreetmap/{{ node_name }}.openstreetmap/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
