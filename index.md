@@ -63,7 +63,7 @@ Server | Location | Country |Stats | Last Contact
 Server | Description | Location | Stats | Last Contact
 -------|-------------|----------|-------|-------------
 {% for node in sorted_nodes %}
-{% unless node.automatic.roles contains "ic" or node.automatic.roles contains "ucl" or node.automatic.roles contains "bytemark" or node.automatic.roles contains "tilecache" %}
+{% unless node.automatic.roles contains "equinix" or node.automatic.roles contains "ucl" or node.automatic.roles contains "bytemark" or node.automatic.roles contains "tilecache" %}
 {% assign node_name = node.name | split: '.' | first %}
 [{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | [munin](http://munin.openstreetmap.org/openstreetmap/{{ node_name }}.openstreetmap/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endunless %}
