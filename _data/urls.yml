@@ -24,32 +24,37 @@ cpus:
   AMD Opteron(TM) Processor 6238: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_6200-series_.22Interlagos.22_.2832_nm.29
   AMD Phenom(tm) II X6 1055T Processor: https://en.wikipedia.org/wiki/List_of_AMD_Phenom_microprocessors#.22Thuban.22_.28E0.2C_45_nm.2C_Hexa-core.29
   Dual-Core AMD Opteron(tm) Processor 2216: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_2200-series_.22Santa_Rosa.22_.2890_nm.29
-  Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz: http://ark.intel.com/products/65719
-  Intel(R) Xeon(R) CPU 3060 @ 2.40GHz: http://ark.intel.com/products/27205
-  Intel(R) Xeon(R) CPU E3-1220L V2 @ 2.30GHz: http://ark.intel.com/products/65735
-  Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz: http://ark.intel.com/products/80917
-  Intel(R) Xeon(R) CPU E31260L @ 2.40GHz: http://ark.intel.com/products/52275
-  Intel(R) Xeon(R) CPU E5-2609 0 @ 2.40GHz: http://ark.intel.com/products/64588
-  Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz: http://ark.intel.com/products/75789
-  Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz: http://ark.intel.com/products/64593
-  Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz: http://ark.intel.com/products/75790
-  Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz: http://ark.intel.com/products/83356
-  Intel(R) Xeon(R) CPU E5-2665 0 @ 2.40GHz: http://ark.intel.com/products/64597
-  Intel(R) Xeon(R) CPU E5320 @ 1.86GHz: http://ark.intel.com/products/28031
-  Intel(R) Xeon(R) CPU E5335 @ 2.00GHz: http://ark.intel.com/products/28443
-  Intel(R) Xeon(R) CPU E5405 @ 2.00GHz: http://ark.intel.com/products/33079
-  Intel(R) Xeon(R) CPU E5420 @ 2.50GHz: http://ark.intel.com/products/33927
-  Intel(R) Xeon(R) CPU E5450 @ 3.00GHz: http://ark.intel.com/products/33083
-  Intel(R) Xeon(R) CPU E5520 @ 2.27GHz: http://ark.intel.com/products/40200
-  Intel(R) Xeon(R) CPU E5530 @ 2.40GHz: http://ark.intel.com/products/37103
-  Intel(R) Xeon(R) CPU L5410 @ 2.33GHz: http://ark.intel.com/products/33090
-  Intel(R) Xeon(R) CPU L5630 @ 2.13GHz: http://ark.intel.com/products/47927
-  Intel(R) Xeon(R) CPU L5639 @ 2.13GHz: http://ark.intel.com/products/47927
-  Intel(R) Xeon(R) CPU L5640 @ 2.27GHz: http://ark.intel.com/products/47926
-  Intel(R) Xeon(R) CPU X5560 @ 2.80GHz: http://ark.intel.com/products/37109
-  Intel(R) Xeon(R) CPU X5650 @ 2.67GHz: http://ark.intel.com/products/47922
-  Intel(R) Xeon(R) CPU X5660 @ 2.80GHz: http://ark.intel.com/products/47921
-  Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: http://ark.intel.com/products/47920
+  Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz: https://ark.intel.com/products/65719
+  Intel(R) Xeon(R) CPU 3060 @ 2.40GHz: https://ark.intel.com/products/27205
+  Intel(R) Xeon(R) CPU E3-1220L V2 @ 2.30GHz: https://ark.intel.com/products/65735
+  Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz: https://ark.intel.com/products/80917
+  Intel(R) Xeon(R) CPU E31260L @ 2.40GHz: https://ark.intel.com/products/52275
+  Intel(R) Xeon(R) CPU E3-1270 v3 @ 3.50GHz: https://ark.intel.com/products/75056
+  Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz: https://ark.intel.com/products/82765
+  Intel(R) Xeon(R) CPU E5-1660 v3 @ 3.00GHz: https://ark.intel.com/products/82766
+  Intel(R) Xeon(R) CPU E5-2609 0 @ 2.40GHz: https://ark.intel.com/products/64588
+  Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz: https://ark.intel.com/products/75789
+  Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz: https://ark.intel.com/products/64593
+  Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz: https://ark.intel.com/products/75790
+  Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz: https://ark.intel.com/products/83356
+  Intel(R) Xeon(R) CPU E5-2660 v3 @ 2.60GHz: https://ark.intel.com/products/81706
+  Intel(R) Xeon(R) CPU E5-2665 0 @ 2.40GHz: https://ark.intel.com/products/64597
+  Intel(R) Xeon(R) CPU E5320 @ 1.86GHz: https://ark.intel.com/products/28031
+  Intel(R) Xeon(R) CPU E5335 @ 2.00GHz: https://ark.intel.com/products/28443
+  Intel(R) Xeon(R) CPU E5405 @ 2.00GHz: https://ark.intel.com/products/33079
+  Intel(R) Xeon(R) CPU E5420 @ 2.50GHz: https://ark.intel.com/products/33927
+  Intel(R) Xeon(R) CPU E5450 @ 3.00GHz: https://ark.intel.com/products/33083
+  Intel(R) Xeon(R) CPU E5520 @ 2.27GHz: https://ark.intel.com/products/40200
+  Intel(R) Xeon(R) CPU E5530 @ 2.40GHz: https://ark.intel.com/products/37103
+  Intel(R) Xeon(R) CPU L5410 @ 2.33GHz: https://ark.intel.com/products/33090
+  Intel(R) Xeon(R) CPU L5630 @ 2.13GHz: https://ark.intel.com/products/47927
+  Intel(R) Xeon(R) CPU L5639 @ 2.13GHz: https://ark.intel.com/products/47927
+  Intel(R) Xeon(R) CPU L5640 @ 2.27GHz: https://ark.intel.com/products/47926
+  Intel(R) Xeon(R) CPU X5560 @ 2.80GHz: https://ark.intel.com/products/37109
+  Intel(R) Xeon(R) CPU X5650 @ 2.67GHz: https://ark.intel.com/products/47922
+  Intel(R) Xeon(R) CPU X5660 @ 2.80GHz: https://ark.intel.com/products/47921
+  Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: https://ark.intel.com/products/47920
+  Intel(R) Xeon(R) CPU X5675 @ 3.07GHz: https://ark.intel.com/products/52577
 hbas:
   Adaptec Series 8 12G SAS/PCIe 3: http://www.adaptec.com/en-us/products/series/8/
   LSI MegaRAID SAS-3 3108 [Invader]: http://www.broadcom.com/products/server-storage/raid-on-chip/sas-3108
@@ -61,9 +66,10 @@ disks:
   Fujitsu MBB2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
   Fujitsu MBC2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
   HGST HUS156060VLS600: https://www.hgst.com/sites/default/files/resources/US15K600_DS_final.pdf
-  Intel DC P3600 SSD [2.5" SFF]: http://ark.intel.com/products/series/81000/Intel-SSD-DC-P3600-Series
-  Intel SSDSC2BA40: http://ark.intel.com/products/71915
-  Intel SSDSA2CW600G3: http://ark.intel.com/products/56569
+  Intel DC P3600 SSD [2.5" SFF]: https://ark.intel.com/products/series/81000
+  Intel DC P3700 SSD [2.5” SFF]: https://ark.intel.com/products/series/79628
+  Intel SSDSC2BA40: https://ark.intel.com/products/71915
+  Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
   Seagate ST1000DM003: http://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf 
   Seagate ST240FN0021: http://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
   Seagate ST300MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
