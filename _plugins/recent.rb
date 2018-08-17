@@ -5,7 +5,7 @@ module Jekyll
       cutoff = Time.now - (30 * 24 * 60 * 60)
 
       nodes.select do |node|
-        time = node['automatic']['ohai_time']
+        time = node['automatic']['ohai_time'] || 0
         time > cutoff.to_f
       end
     end
