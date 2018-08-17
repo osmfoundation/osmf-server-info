@@ -1,7 +1,7 @@
 module Jekyll
   module DateToPrettyFilter
     def date_to_pretty(input)
-      if date.nil?
+      if input.nil?
         ""
       else
         date = Time.at(input)
