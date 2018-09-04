@@ -81,9 +81,7 @@ module Jekyll
         base_board_manufacturer = @site.data['names']['vendors'][base_board_manufacturer] || base_board_manufacturer
 
         if system_manufacturer && system_product
-          if system_manufacturer == 'HP' && system_sku != ''
-            system['name'] = "#{system_manufacturer} #{system_product} (#{system_sku})"
-          elsif system_product.start_with?(system_manufacturer)
+          if system_product.start_with?(system_manufacturer)
             system['name'] = "#{system_product}"
           else
             system['name'] = "#{system_manufacturer} #{system_product}"
