@@ -1,3 +1,4 @@
+chef-server: Chef server
 db-slave: Read only database mirror for www.openstreetmap.org
 db-master: Primary database server for www.openstreetmap.org
 dev:  Development and "tool" server
