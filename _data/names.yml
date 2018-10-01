@@ -26,6 +26,7 @@ vendors:
   WD: Western Digital
   WDC: Western Digital
 oobs:
+  DELL Inc 256: Dell iDRAC7
   Fujitsu 547: Fujitsu iRMC2
   HP 3305: HP iLO 2
   HP 3309: HP iLO 3

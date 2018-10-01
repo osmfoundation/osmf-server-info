@@ -1,4 +1,5 @@
 systems:
+  Dell Inc. PowerEdge R320: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r320/manuals
   Fujitsu PRIMERGY RX300 S4: http://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
   IBM System x3455 7986-CTO: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3455/7986
   IBM System x3550 7978-BCG: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3550/7978
@@ -76,6 +77,7 @@ disks:
   Intel DC P3700 SSD [2.5" SFF]: https://ark.intel.com/products/series/79628
   Intel SSDSC2BA40: https://ark.intel.com/products/71915
   Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
+  Samsung SSD 860: https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_860_PRO_Data_Sheet_Rev1_1.pdf
   Seagate ST1000DM003: http://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf
   Seagate ST240FN0021: http://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
   Seagate ST300MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
@@ -89,6 +91,7 @@ disks:
   Seagate ST600MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
   Seagate ST900MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
   Seagate ST91000640NS: http://www.seagate.com/www-content/product-content/constellation-fam/constellation/constellation-2/en-us/docs/constellation2-fips-ds1719-4-1207us.pdf
+  Seagate ST9146852SS: https://www.seagate.com/www-content/product-content/savvio-fam/enterprise-performance-15k-hdd/savvio-15k-2/en-gb/docs/savvio-15k-2-data-sheet-ds-1665-3-1007gb.pdf
   Western Digital WD1000CHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701282.pdf
   Western Digital WD1000DHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701284.pdf
   Western Digital WD1003FBYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
@@ -103,6 +106,7 @@ oobs:
   ASPEED AST2050: http://tyan.com/manuals/AST2050_Manual_v101.pdf
   ASPEED AST2400: http://www.aspeedtech.com/products.php?fPath=20&rId=376
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
+  Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
 isps:
   AltaVoz: https://www.altavoz.net/
   AWS: https://aws.amazon.com/
