@@ -1,4 +1,5 @@
 systems:
+  Dell Inc. PowerEdge R230: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r230/manuals
   Dell Inc. PowerEdge R320: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r320/manuals
   Fujitsu PRIMERGY RX300 S4: http://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
   IBM System x3455 7986-CTO: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3455/7986
@@ -119,7 +120,7 @@ isps:
   Dorian: https://twitter.com/DorianGaliana
   dotsrc.org: https://dotsrc.org/
   EUserv: https://www.euserv.com/
-  Exonetric: http://www.exonetric.com/
+  Exonetric: https://www.exonetric.com/
   Freerk Ohling: https://www.ohling.org/
   Freifunk Rheinland: https://www.freifunk-rheinland.net/
   G5 Solutions: http://www.g5solutions.id/
@@ -127,6 +128,7 @@ isps:
   Grifon: https://grifon.fr/
   GRNET: https://grnet.gr/
   Hetzner: https://www.hetzner.de/
+  HostedIn.NZ: https://hostedin.nz/
   iWay: https://www.iway.ch/
   Jump Networks: http://www.jump.net.uk/
   INX-ZA: https://ispa.org.za/inx/
@@ -139,6 +141,7 @@ isps:
   OSUOSL: https://osuosl.org/
   OVH: https://www.ovh.co.uk/
   prgmr.com: https://prgmr.com/
+  ProxGroup: https://www.proxgroup.fr/
   Schwarzer IT: https://twitter.com/andre_schwarzer
   szerverem.hu: https://szerverem.hu/
   Tetaneutral.net: https://tetaneutral.net/
