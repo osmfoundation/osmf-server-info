@@ -249,7 +249,7 @@ module Jekyll
     def extract_network_interfaces(ohai)
       if ohai['network'] && ohai['network']['interfaces']
         ohai['network']['interfaces']
-          .select { |_, interface| interface['encapsulation'] == 'Ethernet' }
+          .select { |_, interface| interface['encapsulation'] == 'Ethernet' && interface['addresses'] }
           .map { |name, interface| { 'name' => name, 'addresses' => extract_addresses(interface) } }
           .sort_by { |interface| interface['name'] }
       else
