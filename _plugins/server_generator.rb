@@ -69,8 +69,13 @@ module Jekyll
 
         if system_manufacturer == base_board_manufacturer &&
            system_product == base_board_product
-          system_manufacturer = nil
-          system_product = nil
+          if system_manufacturer == 'HP'
+            base_board_manufacturer = nil
+            base_board_product = nil
+          else
+            system_manufacturer = nil
+            system_product = nil
+          end
         end
 
         if system_manufacturer == 'IBM'

@@ -26,7 +26,7 @@ motherboards:
   Supermicro X9DRW: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DRW-iF.cfm
   Supermicro X9SCD: http://www.supermicro.com.tw/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
   Supermicro X9SRL-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9SRL-F.cfm
-  TYAN S7010: http://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
+  Tyan S7010: http://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
 cpus:
   AMD Opteron(TM) Processor 6238: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_6200-series_.22Interlagos.22_.2832_nm.29
   AMD Phenom(tm) II X6 1055T Processor: https://en.wikipedia.org/wiki/List_of_AMD_Phenom_microprocessors#.22Thuban.22_.28E0.2C_45_nm.2C_Hexa-core.29
@@ -41,6 +41,7 @@ cpus:
   Intel(R) Xeon(R) CPU E5-1660 v3 @ 3.00GHz: https://ark.intel.com/products/82766
   Intel(R) Xeon(R) CPU E5-2609 0 @ 2.40GHz: https://ark.intel.com/products/64588
   Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz: https://ark.intel.com/products/75789
+  Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz: https://ark.intel.com/products/92986
   Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz: https://ark.intel.com/products/64593
   Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz: https://ark.intel.com/products/75790
   Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz: https://ark.intel.com/products/83356
@@ -54,6 +55,7 @@ cpus:
   Intel(R) Xeon(R) CPU E5450 @ 3.00GHz: https://ark.intel.com/products/33083
   Intel(R) Xeon(R) CPU E5520 @ 2.27GHz: https://ark.intel.com/products/40200
   Intel(R) Xeon(R) CPU E5530 @ 2.40GHz: https://ark.intel.com/products/37103
+  Intel(R) Xeon(R) CPU E5649 @ 2.53GHz: https://ark.intel.com/products/52581
   Intel(R) Xeon(R) CPU L5410 @ 2.33GHz: https://ark.intel.com/products/33090
   Intel(R) Xeon(R) CPU L5630 @ 2.13GHz: https://ark.intel.com/products/47927
   Intel(R) Xeon(R) CPU L5639 @ 2.13GHz: https://ark.intel.com/products/47927
@@ -109,6 +111,7 @@ oobs:
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
 isps:
+  Academic Computer Club, Umeå University: https://www.acc.umu.se/
   AltaVoz: https://www.altavoz.net/
   AWS: https://aws.amazon.com/
   Blix Solutions: https://www.blix.com/
@@ -116,6 +119,7 @@ isps:
   Bytemark: https://www.bytemark.co.uk/
   CARNet: https://www.carnet.hr/en
   Catalyst: https://www.catalyst.net.nz/
+  Centro de Computação Científica e Software Livre, Universidade Federal do Paraná: https://www.c3sl.ufpr.br/
   DataHata: https://www.datahata.by/
   Delta Telecom: https://www.delta-telecom.net/
   Dorian: https://twitter.com/DorianGaliana
