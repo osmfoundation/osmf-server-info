@@ -6,6 +6,7 @@ systems:
   IBM System x3550 7978-BCG: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3550/7978
   Supermicro PDSMi: http://www.supermicro.com.tw/products/motherboard/PD/E7230/PDSMi.cfm
   Supermicro SYS-1028U-TN10RT+: http://www.supermicro.com.tw/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
+  Supermicro SYS-1029P-WTRT: https://www.supermicro.com.tw/products/system/1U/1029/SYS-1029P-WTRT.cfm
   Supermicro SYS-2028U-TN24R4T+: http://www.supermicro.com.tw/products/system/2U/2028/SYS-2028U-TN24R4T_.cfm
   HP ProLiant DL360 G5: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04284194
   HP ProLiant DL360 G6: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04284365
@@ -26,6 +27,7 @@ motherboards:
   Supermicro X9DRW: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DRW-iF.cfm
   Supermicro X9SCD: http://www.supermicro.com.tw/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
   Supermicro X9SRL-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9SRL-F.cfm
+  Supermicro X11DDW-NT: https://www.supermicro.com.tw/products/motherboard/Xeon/C620/X11DDW-NT.cfm
   Tyan S7010: http://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
 cpus:
   AMD Opteron(TM) Processor 6238: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_6200-series_.22Interlagos.22_.2832_nm.29
@@ -65,6 +67,7 @@ cpus:
   Intel(R) Xeon(R) CPU X5660 @ 2.80GHz: https://ark.intel.com/products/47921
   Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: https://ark.intel.com/products/47920
   Intel(R) Xeon(R) CPU X5675 @ 3.07GHz: https://ark.intel.com/products/52577
+  Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz: https://ark.intel.com/products/120474
 hbas:
   Adaptec Series 8 12G SAS/PCIe 3: http://www.adaptec.com/en-us/products/series/8/
   LSI MegaRAID SAS-3 3108 [Invader]: http://www.broadcom.com/products/server-storage/raid-on-chip/sas-3108
@@ -78,6 +81,7 @@ disks:
   HGST HUS156060VLS600: https://www.hgst.com/sites/default/files/resources/US15K600_DS_final.pdf
   Intel DC P3600 SSD [2.5" SFF]: https://ark.intel.com/products/series/81000
   Intel DC P3700 SSD [2.5" SFF]: https://ark.intel.com/products/series/79628
+  Intel Express Flash NVMe P4500: https://ark.intel.com/products/96937
   Intel SSDSC2BA40: https://ark.intel.com/products/71915
   Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
   Samsung SSD 860: https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_860_PRO_Data_Sheet_Rev1_1.pdf
