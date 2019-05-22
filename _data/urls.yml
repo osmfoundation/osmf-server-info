@@ -37,6 +37,7 @@ cpus:
   Intel(R) Xeon(R) CPU 3060 @ 2.40GHz: https://ark.intel.com/products/27205
   Intel(R) Xeon(R) CPU E3-1220L V2 @ 2.30GHz: https://ark.intel.com/products/65735
   Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz: https://ark.intel.com/products/80917
+  Intel(R) Xeon(R) CPU E3-1230 v6 @ 3.50GHz: https://ark.intel.com/products/97474
   Intel(R) Xeon(R) CPU E31260L @ 2.40GHz: https://ark.intel.com/products/52275
   Intel(R) Xeon(R) CPU E3-1270 v3 @ 3.50GHz: https://ark.intel.com/products/75056
   Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz: https://ark.intel.com/products/82765
@@ -115,6 +116,7 @@ oobs:
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
 isps:
+  AARNet: https://www.aarnet.edu.au/
   Academic Computer Club, Umeå University: https://www.acc.umu.se/
   AltaVoz: https://www.altavoz.net/
   AWS: https://aws.amazon.com/
