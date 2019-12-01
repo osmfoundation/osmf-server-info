@@ -6,6 +6,8 @@ layout: default
 
 {{ page.roles | server_description }}
 
+* [munin](https://munin.openstreetmap.org/openstreetmap.org/{{ page.title }}/index.html)
+
 ## Hardware
 
 {% if page.server.system.name %}
