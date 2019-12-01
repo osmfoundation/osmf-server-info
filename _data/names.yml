@@ -39,7 +39,11 @@ oobs:
   Supermicro 1576: Nuvoton WPCM450
   Supermicro 1588: Nuvoton WPCM450
   Supermicro 1797: Nuvoton WPCM450
+  Supermicro 2065: Supermicro X10
+  Supermicro 2100: Supermicro X10
   Supermicro 2116: ASPEED AST2400
+  Supermicro 2366: Supermicro X10 Redfish
+  Supermicro 2407: Supermicro X11
   Supermicro 43025: Winbond WPCM450
   Supermicro 43707: Renesas SH7757
   Tyan 7010: ASPEED AST2050
