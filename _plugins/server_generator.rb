@@ -45,6 +45,7 @@ module Jekyll
       if ohai['virtualization'] &&
          ohai['virtualization']['role'] == 'guest'
         case ohai['virtualization']['system']
+        when "openstack" then system['name'] = "OpenStack Virtual Machine"
         when "kvm" then system['name'] = "KVM Virtual Machine"
         when "vmware" then system['name'] = "VMWare Virtual Machine"
         when "xen" then system['name'] = "Xen Virtual Machine"
@@ -255,7 +256,7 @@ module Jekyll
       if ohai['network'] && ohai['network']['interfaces']
         ohai['network']['interfaces']
           .select { |_, interface| interface['encapsulation'] == 'Ethernet' && interface['addresses'] }
-          .map { |name, interface| { 'name' => name, 'addresses' => extract_addresses(interface) } }
+          .map { |name, interface| { 'name' => name, 'speed' => describe_speed(interface), 'addresses' => extract_addresses(interface) } }
           .sort_by { |interface| interface['name'] }
       else
         []
@@ -266,6 +267,34 @@ module Jekyll
       interface['addresses']
         .reject { |address, properties| properties['scope'] == 'Link' }
         .map { |address, _| address }
+    end
+
+    def describe_speed(interface)
+      if interface['state'] == 'up' || interface['state'] == 'active' || interface['state'] == 'backup'
+        speed = interface['link_speed'] || 'Virtual'
+        duplex = ''
+        if interface['state'] != 'up'
+          state = interface['state']
+        end
+        if interface['duplex'] != 'Unknown! (255)'
+          duplex = interface['duplex']
+        end
+        case interface['link_speed']
+          when 0 then speed = 'Virtual'
+          when 10 then speed = '10Mb'
+          when 100 then speed = '100Mb'
+          when 1000 then speed = '1Gb'
+          when 2000 then speed = '2Gb'
+          when 2500 then speed = '2.5Gb'
+          when 10000 then speed = '10Gb'
+          when 25000 then speed = '25Gb'
+          when 50000 then speed = '50Gb'
+          when 100000 then speed = '100Gb'
+        end
+        "#{speed} #{duplex} #{state}".strip
+      else
+        "down"
+      end
     end
 
     def extract_power(ohai)

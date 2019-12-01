@@ -64,6 +64,7 @@ layout: default
 **{{ interface.name }}**
 : {% for address in interface.addresses %}* {{ address }}
   {% endfor %}
+  ({{ interface.speed }})
 
 {% endfor %}
 
