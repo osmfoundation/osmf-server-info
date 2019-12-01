@@ -3,12 +3,3 @@ title: OSMF Server Info
 
 # Build settings
 markdown: kramdown
-
-# Repo files to not include in built site
-exclude:
-  - Dockerfile*
-  - docker-compose.*
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
