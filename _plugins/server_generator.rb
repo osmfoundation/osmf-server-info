@@ -287,7 +287,7 @@ module Jekyll
                 else interface['link_speed']
                 end
 
-        duplex = if interface['duplex'] != 'Unknown! (255)'
+        duplex = if interface['duplex'] && interface['duplex'] != 'Unknown! (255)'
                    duplex = interface['duplex'].downcase + " duplex"
                  end
       end
