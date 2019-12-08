@@ -274,7 +274,7 @@ module Jekyll
 
       if ['Up', 'Active', 'Backup'].include?(state)
         speed = case interface['link_speed']
-                when 0 then speed = 'Virtual'
+                when 0, nil then speed = 'Virtual'
                 when 10 then speed = '10Mb'
                 when 100 then speed = '100Mb'
                 when 1000 then speed = '1Gb'
