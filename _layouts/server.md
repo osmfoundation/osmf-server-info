@@ -64,9 +64,9 @@ layout: default
 
 {% for interface in page.server.network.interfaces %}
 **{{ interface.name }}**
-: {% for address in interface.addresses %}* {{ address }}
+: {{ interface.state }}
+  {% for address in interface.addresses %}* {{ address }}
   {% endfor %}
-  ({{ interface.speed }})
 
 {% endfor %}
 
