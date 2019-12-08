@@ -414,9 +414,10 @@ module Jekyll
 
     def describe_filesystem(device, details)
       size = format_size(details['kb_size'].to_i)
+      available = format_size(details['kb_available'].to_i)
       fstype = details['fs_type']
 
-      "#{size} #{fstype} on #{device}"
+      "#{size} #{fstype} on #{device} with #{available} free"
     end
 
     def device_name(device)
