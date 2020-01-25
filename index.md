@@ -4,7 +4,7 @@ layout: default
 
 {% assign sorted_nodes = site.data.nodes.rows | sort: 'name' %}
 
-## [Equinix Amsterdam](#equinix-am6)
+## [Equinix Amsterdam](#equinix-amsterdam)
 
 {% strip %}
 Server | Description | Stats | Last Contact
@@ -17,7 +17,7 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## [University College London](#ucl-slough)
+## [University College London](#university-college-london)
 
 {% strip %}
 Server | Description | Stats | Last Contact
