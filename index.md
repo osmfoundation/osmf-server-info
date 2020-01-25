@@ -4,7 +4,7 @@ layout: default
 
 {% assign sorted_nodes = site.data.nodes.rows | sort: 'name' %}
 
-## Equinix Amsterdam
+## [Equinix Amsterdam](#equinix-am6)
 
 {% strip %}
 Server | Description | Stats | Last Contact
@@ -17,7 +17,7 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## University College London
+## [University College London](#ucl-slough)
 
 {% strip %}
 Server | Description | Stats | Last Contact
@@ -30,7 +30,7 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## Bytemark
+## [Bytemark](#bytemark)
 
 {% strip %}
 Server | Description | Stats | Last Contact
@@ -43,7 +43,7 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## Tile Caches
+## [Tile Caches](#tile-caches)
 
 {% strip %}
 Server | Location | Country |Stats | Last Contact
@@ -57,7 +57,7 @@ Server | Location | Country |Stats | Last Contact
 {% endstrip %}
 
 
-## Other
+## [Other](#other)
 
 {% strip %}
 Server | Description | Location | Stats | Last Contact
