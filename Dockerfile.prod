@@ -25,7 +25,7 @@ COPY . .
 ENV JEKYLL_ENV=production
 
 # Run jekyll build site
-RUN bundle exec jekyll build --verbose
+RUN bundle exec jekyll build --verbose --trace
 
 #-------------------------------------------------
 

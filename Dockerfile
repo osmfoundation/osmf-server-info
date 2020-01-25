@@ -19,4 +19,4 @@ RUN gem install bundler -v 1.17.3 \
 COPY . .
 
 # Run jekyll serve
-CMD ["bundle","exec","jekyll","serve","--host=0.0.0.0","-wl","--trace"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host=0.0.0.0", "-wl", "--verbose", "--trace"]
