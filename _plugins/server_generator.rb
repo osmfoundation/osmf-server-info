@@ -399,7 +399,7 @@ module Jekyll
     end
 
     def extract_filesystems(ohai)
-      if ohai['filesystem']['by_device']
+      if ohai['filesystem'] && ohai['filesystem']['by_device']
         ohai['filesystem']['by_device']
           .select { |device, _| device.start_with?('/') }
           .select { |_, details| details.include?('kb_size') }
