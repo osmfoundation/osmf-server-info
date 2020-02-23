@@ -8,11 +8,10 @@ systems:
   Supermicro SYS-1028U-TN10RT+: http://www.supermicro.com.tw/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
   Supermicro SYS-1029P-WTRT: https://www.supermicro.com.tw/products/system/1U/1029/SYS-1029P-WTRT.cfm
   Supermicro SYS-2028U-TN24R4T+: http://www.supermicro.com.tw/products/system/2U/2028/SYS-2028U-TN24R4T_.cfm
-  HP ProLiant DL360 G5: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04284194
-  HP ProLiant DL360 G6: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04284365
-  HP ProLiant DL360 G7: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04284501
-  HP ProLiant DL360p Gen8: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04128242
-  HP ProLiant DL360 Gen9: https://h20195.www2.hpe.com/v2/getdocument.aspx?docname=c04375623
+  HP ProLiant DL360 G6: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c01710737
+  HP ProLiant DL360 G7: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c02206768
+  HP ProLiant DL360p Gen8: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03223744
+  HP ProLiant DL360 Gen9: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c04442953
 motherboards:
   ASUS P8H77-M PRO: https://www.asus.com/uk/Motherboards/P8H77M_PRO/
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
