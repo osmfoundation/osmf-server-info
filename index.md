@@ -69,3 +69,4 @@ Server | Description | Location | Stats | Last Contact
 {% endunless %}
 {% endfor %}
 {% endstrip %}
+Last updated: {{ site.time | date_to_rfc822 }}

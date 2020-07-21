@@ -118,3 +118,5 @@ layout: default
 ## Thanks
 
 Many thanks to {{ page.thanks_to | linkify: 'isps' }} for supporting this server. {{ page.additional_thanks }}
+
+Last updated: {{ site.time | date_to_rfc822 }}
