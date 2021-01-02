@@ -15,6 +15,7 @@ systems:
 motherboards:
   ASUS P8H77-M PRO: https://www.asus.com/uk/Motherboards/P8H77M_PRO/
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
+  Dell 02C2CP: https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/documents/dell-poweredge-r630-spec-sheet.pdf
   Gigabyte GA-880GM-USB3: http://www.gigabyte.com/products/product-page.aspx?pid=3809
   MSI B85M-G43 (MS-7823): http://www.msi.com/product/motherboard/B85M-G43.html
   Supermicro H8DGU: http://www.supermicro.com.tw/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
@@ -118,6 +119,7 @@ isps:
   AARNet: https://www.aarnet.edu.au/
   Academic Computer Club, Umeå University: https://www.acc.umu.se/
   AltaVoz: https://www.altavoz.net/
+  Appliwave: https://www.appliwave.com/
   AWS: https://aws.amazon.com/
   Blix Solutions: https://www.blix.com/
   Bluehost: https://www.bluehost.com/
