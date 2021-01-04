@@ -281,6 +281,7 @@ module Jekyll
                 when 2000 then speed = '2Gb'
                 when 2500 then speed = '2.5Gb'
                 when 10000 then speed = '10Gb'
+                when 20000 then speed = '20Gb'
                 when 25000 then speed = '25Gb'
                 when 50000 then speed = '50Gb'
                 when 100000 then speed = '100Gb'
