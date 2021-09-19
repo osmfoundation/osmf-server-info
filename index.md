@@ -10,7 +10,20 @@ layout: default
 Server | Description | Stats | Last Contact
 -------|-------------|-------|-------------
 {% for node in sorted_nodes %}
-{% if node.automatic.roles contains "equinix" %}
+{% if node.automatic.roles contains "equinix-ams" %}
+{% assign node_name = node.name | split: '.' | first %}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [munin](http://munin.openstreetmap.org/openstreetmap.org/{{ node_name }}.openstreetmap.org/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
+{% endif %}
+{% endfor %}
+{% endstrip %}
+
+## [Equinix Dublin](#equinix-dublin)
+
+{% strip %}
+Server | Description | Stats | Last Contact
+-------|-------------|-------|-------------
+{% for node in sorted_nodes %}
+{% if node.automatic.roles contains "equinix-dub" %}
 {% assign node_name = node.name | split: '.' | first %}
 [{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [munin](http://munin.openstreetmap.org/openstreetmap.org/{{ node_name }}.openstreetmap.org/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
@@ -63,7 +76,7 @@ Server | Location | Country |Stats | Last Contact
 Server | Description | Location | Stats | Last Contact
 -------|-------------|----------|-------|-------------
 {% for node in sorted_nodes %}
-{% unless node.automatic.roles contains "equinix" or node.automatic.roles contains "ucl" or node.automatic.roles contains "bytemark" or node.automatic.roles contains "tilecache" %}
+{% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" or node.automatic.roles contains "bytemark" or node.automatic.roles contains "tilecache" %}
 {% assign node_name = node.name | split: '.' | first %}
 [{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | [munin](http://munin.openstreetmap.org/openstreetmap.org/{{ node_name }}.openstreetmap.org/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endunless %}
