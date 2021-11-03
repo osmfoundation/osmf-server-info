@@ -108,7 +108,7 @@ module Jekyll
           .select { |_, cpu| cpu.is_a?(Hash) && cpu['core_id'] == '0' }
           .map { |_, cpu| { :id => cpu['physical_id'], :model => cpu['model_name'].squeeze(' ').strip, :cores => cpu['cores'] } }
           .group_by { |cpu| cpu[:model] }
-          .map { |model, cpus| { 'model' => model, 'cores' => cpus.first[:cores], 'count' => cpus.uniq.count } }
+          .map { |model, cpus| { 'model' => model, 'cores' => cpus.first[:cores], 'count' => cpus.count } }
       else
         []
       end
