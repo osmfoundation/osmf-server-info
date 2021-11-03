@@ -1,4 +1,5 @@
 chef-server: Chef server
+community: Discourse server
 db-slave: Read only database mirror for www.openstreetmap.org
 db-master: Primary database server for www.openstreetmap.org
 dev:  Development and "tool" server
@@ -12,10 +13,12 @@ mail: Mail server
 munin: Munin server
 nominatim: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
+overpass-query: Overpass server
 owl: OWL server
 piwik: Piwik server for web site statistics
 planet: Web server for planet.openstreetmap.org
 planetdump: Planet file generation server
+prometheus: Prometheus server
 subversion: Subversion server
 taginfo: Taginfo server
 tile: Tile server
