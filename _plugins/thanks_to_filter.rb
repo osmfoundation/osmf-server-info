@@ -4,13 +4,13 @@ class ThanksTo
     roles = node['automatic']['roles'] || []
     thanks_override = site.data['thanks']
 
-    if roles.include? "equinix-ams" || roles.include? "equinix"
+    if roles.include?("equinix-ams") || roles.include?("equinix")
       "Equinix Amsterdam"
-    elsif roles.include? "equinix-dub"
+    elsif roles.include?("equinix-dub")
       "Equinix Dublin"
-    elsif roles.include? "ucl"
+    elsif roles.include?("ucl")
       "University College London"
-    elsif roles.include? "bytemark"
+    elsif roles.include?("bytemark")
       "Bytemark"
     elsif thanks_override.has_key? node_name
       thanks_override[node_name]
