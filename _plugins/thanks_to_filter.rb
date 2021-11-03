@@ -4,7 +4,7 @@ class ThanksTo
     roles = node['automatic']['roles'] || []
     thanks_override = site.data['thanks']
 
-    if roles.include? "equinix-ams"
+    if roles.include? "equinix-ams" || roles.include? "equinix"
       "Equinix Amsterdam"
     elsif roles.include? "equinix-dub"
       "Equinix Dublin"
