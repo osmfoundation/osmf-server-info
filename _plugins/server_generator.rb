@@ -256,7 +256,7 @@ module Jekyll
       if ohai['network'] && ohai['network']['interfaces']
         ohai['network']['interfaces']
           .select { |_, interface| interface['encapsulation'] == 'Ethernet' && interface['addresses'] }
-          .map { |name, interface| { 'name' => name, 'state' => interface_state(interface), 'addresses' => extract_addresses(interface) } }
+          .map { |name, interface| { 'name' => name, 'state' => interface_state(ohai, name, interface), 'addresses' => extract_addresses(interface) } }
           .sort_by { |interface| interface['name'] }
       else
         []
@@ -269,7 +269,7 @@ module Jekyll
         .map { |address, _| address }
     end
 
-    def interface_state(interface)
+    def interface_state(ohai, name, interface)
       state = interface['state'][0].upcase + interface['state'][1..-1]
 
       if ['Up', 'Active', 'Backup'].include?(state)
@@ -293,7 +293,13 @@ module Jekyll
                  end
       end
 
-      [state, speed, duplex].compact.join(", ")
+      if ohai['lldp'] && ohai['lldp']['interface'] && ohai['lldp']['interface'][name]
+        port = ohai['lldp']['interface'][name]['port']['descr']
+
+        peer = "connected to #{port}"
+      end
+
+      [state, speed, duplex, peer].compact.join(", ")
     end
 
     def extract_power(ohai)
