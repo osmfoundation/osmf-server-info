@@ -1,38 +1,45 @@
 systems:
   Dell Inc. PowerEdge R230: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r230/manuals
   Dell Inc. PowerEdge R320: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r320/manuals
-  Fujitsu PRIMERGY RX300 S4: http://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
-  IBM System x3455 7986-CTO: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3455/7986
-  IBM System x3550 7978-BCG: https://www-947.ibm.com/support/entry/portal/product/system_x/system_x3550/7978
-  Supermicro PDSMi: http://www.supermicro.com.tw/products/motherboard/PD/E7230/PDSMi.cfm
-  Supermicro SYS-1028U-TN10RT+: http://www.supermicro.com.tw/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
-  Supermicro SYS-1029P-WTRT: https://www.supermicro.com.tw/products/system/1U/1029/SYS-1029P-WTRT.cfm
-  Supermicro SYS-2028U-TN24R4T+: http://www.supermicro.com.tw/products/system/2U/2028/SYS-2028U-TN24R4T_.cfm
+  Fujitsu PRIMERGY RX300 S4: https://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
+  IBM System x3455 7986-CTO: https://www.ibm.com/support/pages/overview-ibm-system-x3455
+  IBM System x3550 7978-BCG: https://www.ibm.com/support/pages/overview-ibm-system-x3550-type-7978
+  Supermicro PDSMi: https://www.supermicro.com/products/motherboard/PD/E7230/PDSMi.cfm
+  Supermicro SYS-1028U-TN10RT+: https://www.supermicro.com/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
+  Supermicro SYS-1029P-WTRT: https://www.supermicro.com/products/system/1U/1029/SYS-1029P-WTRT.cfm
+  Supermicro SYS-120U-TNR: https://www.supermicro.com/en/products/system/Ultra/1U/SYS-120U-TNR
+  Supermicro SYS-2028U-TN24R4T+: https://www.supermicro.com/products/system/2U/2028/SYS-2028U-TN24R4T_.cfm
+  Supermicro SYS-2029U-TN24R4T: https://www.supermicro.com/products/system/2U/2029/SYS-2029U-TN24R4T.cfm
   HP ProLiant DL360 G6: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c01710737
   HP ProLiant DL360 G7: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c02206768
   HP ProLiant DL360p Gen8: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03223744
   HP ProLiant DL360 Gen9: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c04442953
 motherboards:
-  ASUS P8H77-M PRO: https://www.asus.com/uk/Motherboards/P8H77M_PRO/
+  ASUS P8H77-M PRO: https://www.asus.com/us/SupportOnly/P8H77-M%20PRO/HelpDesk_Knowledge/
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
   Dell 02C2CP: https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/documents/dell-poweredge-r630-spec-sheet.pdf
-  Gigabyte GA-880GM-USB3: http://www.gigabyte.com/products/product-page.aspx?pid=3809
-  MSI B85M-G43 (MS-7823): http://www.msi.com/product/motherboard/B85M-G43.html
-  Supermicro H8DGU: http://www.supermicro.com.tw/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
-  Supermicro PDSMi+: http://www.supermicro.com.tw/products/motherboard/Xeon3000/3000/PDSMi_.cfm
-  Supermicro X10DRU-i+: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X10DRU-i_.cfm
-  Supermicro X7DBU: http://www.supermicro.com.tw/products/motherboard/Xeon1333/5000P/X7DBU.cfm
-  Supermicro X9DR3-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DR3-F.cfm
-  Supermicro X9DR7/E-(J)LN4F: http://www.supermicro.com.tw/products/motherboard/xeon/c600/X9DR7-LN4F.cfm
-  Supermicro X9DRW: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9DRW-iF.cfm
-  Supermicro X9SCD: http://www.supermicro.com.tw/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
-  Supermicro X9SRL-F: http://www.supermicro.com.tw/products/motherboard/Xeon/C600/X9SRL-F.cfm
-  Supermicro X11DDW-NT: https://www.supermicro.com.tw/products/motherboard/Xeon/C620/X11DDW-NT.cfm
-  Tyan S7010: http://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
+  Gigabyte GA-880GM-USB3: https://www.gigabyte.com/products/product-page.aspx?pid=3809
+  MSI B85M-G43 (MS-7823): https://www.msi.com/Motherboard/B85M-G43/Specification
+  Supermicro AS-1124US-TNRP: https://www.supermicro.com/en/Aplus/system/1U/1124/AS-1124US-TNRP.cfm
+  Supermicro H8DGU: https://www.supermicro.com/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
+  Supermicro H12DSU-iN: https://www.supermicro.com/en/products/motherboard/H12DSU-iN
+  Supermicro PDSMi+: https://www.supermicro.com/products/motherboard/Xeon3000/3000/PDSMi_.cfm
+  Supermicro X10DRU-i+: https://www.supermicro.com/products/motherboard/Xeon/C600/X10DRU-i_.cfm
+  Supermicro X7DBU: https://www.supermicro.com/products/motherboard/Xeon1333/5000P/X7DBU.cfm
+  Supermicro X9DR3-F: https://www.supermicro.com/products/motherboard/Xeon/C600/X9DR3-F.cfm
+  Supermicro X9DR7/E-(J)LN4F: https://www.supermicro.com/products/motherboard/xeon/c600/X9DR7-LN4F.cfm
+  Supermicro X9DRW: https://www.supermicro.com/products/motherboard/Xeon/C600/X9DRW-iF.cfm
+  Supermicro X9SCD: https://www.supermicro.com/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
+  Supermicro X9SRL-F: https://www.supermicro.com/products/motherboard/Xeon/C600/X9SRL-F.cfm
+  Supermicro X11DDW-NT: https://www.supermicro.com/en/products/motherboard/X11DDW-NT
+  Supermicro X11DPU: https://www.supermicro.com/en/products/motherboard/X11DPU
+  Supermicro X12DPU-6: https://www.supermicro.com/en/products/motherboard/X12DPU-6
+  Tyan S7010: https://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
 cpus:
   AMD Opteron(TM) Processor 6238: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_6200-series_.22Interlagos.22_.2832_nm.29
   AMD Phenom(tm) II X6 1055T Processor: https://en.wikipedia.org/wiki/List_of_AMD_Phenom_microprocessors#.22Thuban.22_.28E0.2C_45_nm.2C_Hexa-core.29
   Dual-Core AMD Opteron(tm) Processor 2216: https://en.wikipedia.org/wiki/List_of_AMD_Opteron_microprocessors#Opteron_2200-series_.22Santa_Rosa.22_.2890_nm.29
+  AMD EPYC 7453 28-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7453
   Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz: https://ark.intel.com/products/65719
   Intel(R) Xeon(R) CPU 3060 @ 2.40GHz: https://ark.intel.com/products/27205
   Intel(R) Xeon(R) CPU E3-1220L V2 @ 2.30GHz: https://ark.intel.com/products/65735
@@ -40,8 +47,9 @@ cpus:
   Intel(R) Xeon(R) CPU E3-1230 v6 @ 3.50GHz: https://ark.intel.com/products/97474
   Intel(R) Xeon(R) CPU E31260L @ 2.40GHz: https://ark.intel.com/products/52275
   Intel(R) Xeon(R) CPU E3-1270 v3 @ 3.50GHz: https://ark.intel.com/products/75056
-  Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz: https://ark.intel.com/products/82765
+  Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz: https://ark.intel.com/content/www/us/en/ark/products/82765/intel-xeon-processor-e51650-v3-15m-cache-3-50-ghz.html
   Intel(R) Xeon(R) CPU E5-1660 v3 @ 3.00GHz: https://ark.intel.com/products/82766
+  Intel(R) Xeon(R) CPU E5-2450L 0 @ 1.80GHz: https://ark.intel.com/products/64610
   Intel(R) Xeon(R) CPU E5-2609 0 @ 2.40GHz: https://ark.intel.com/products/64588
   Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz: https://ark.intel.com/products/75789
   Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz: https://ark.intel.com/products/92986
@@ -51,6 +59,7 @@ cpus:
   Intel(R) Xeon(R) CPU E5-2643 v4 @ 3.40GHz: https://ark.intel.com/products/92989
   Intel(R) Xeon(R) CPU E5-2660 v3 @ 2.60GHz: https://ark.intel.com/products/81706
   Intel(R) Xeon(R) CPU E5-2665 0 @ 2.40GHz: https://ark.intel.com/products/64597
+  Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz: https://ark.intel.com/products/91766
   Intel(R) Xeon(R) CPU E5-2690 v2 @ 3.00GHz: https://ark.intel.com/products/75279
   Intel(R) Xeon(R) CPU E5320 @ 1.86GHz: https://ark.intel.com/products/28031
   Intel(R) Xeon(R) CPU E5335 @ 2.00GHz: https://ark.intel.com/products/28443
@@ -69,51 +78,58 @@ cpus:
   Intel(R) Xeon(R) CPU X5660 @ 2.80GHz: https://ark.intel.com/products/47921
   Intel(R) Xeon(R) CPU X5670 @ 2.93GHz: https://ark.intel.com/products/47920
   Intel(R) Xeon(R) CPU X5675 @ 3.07GHz: https://ark.intel.com/products/52577
+  Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz: https://ark.intel.com/content/www/us/en/ark/products/193385/intel-xeon-silver-4214-processor-16-5m-cache-2-20-ghz.html
+  Intel(R) Xeon(R) Silver 4310 CPU @ 2.10GHz: https://ark.intel.com/content/www/us/en/ark/products/215277/intel-xeon-silver-4310-processor-18m-cache-2-10-ghz.html
   Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz: https://ark.intel.com/products/120474
 hbas:
-  Adaptec Series 8 12G SAS/PCIe 3: http://www.adaptec.com/en-us/products/series/8/
-  LSI MegaRAID SAS-3 3108 [Invader]: http://www.broadcom.com/products/server-storage/raid-on-chip/sas-3108
-  LSI MegaRAID SAS 9271-8i: http://www.broadcom.com/products/server-storage/raid-controllers/megaraid-sas-9271-8i
-  LSI MegaRAID SAS 9271-8iCC: http://www.broadcom.com/products/server-storage/raid-controllers/megaraid-sas-9271-8icc
-  LSI SAS2308 PCI-Express Fusion-MPT SAS-2: http://www.broadcom.com/products/server-storage/io-controllers/sas-2308
-  LSI SAS3008 PCI-Express Fusion-MPT SAS-3: http://www.broadcom.com/products/server-storage/io-controllers/sas-3008
+  Adaptec Series 8 12G SAS/PCIe 3: https://www.adaptec.com/en-us/products/series/8/
+  LSI MegaRAID SAS-3 3108 [Invader]: https://www.broadcom.com/products/storage/raid-on-chip/sas-3108
+  LSI MegaRAID SAS 9271-8i: https://docs.broadcom.com/doc/12353227
+  LSI MegaRAID SAS 9271-8iCC: https://docs.broadcom.com/doc/12353227
+  LSI SAS2308 PCI-Express Fusion-MPT SAS-2: https://www.broadcom.com/products/server-storage/io-controllers/sas-2308
+  LSI SAS3008 PCI-Express Fusion-MPT SAS-3: https://www.broadcom.com/products/server-storage/io-controllers/sas-3008
 disks:
-  Fujitsu MBB2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
-  Fujitsu MBC2073RC: http://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
-  HGST HUS156060VLS600: https://www.hgst.com/sites/default/files/resources/US15K600_DS_final.pdf
+  Fujitsu MBB2073RC: https://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
+  Fujitsu MBC2073RC: https://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
+  HGST HUS156060VLS600: https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/data-center-drives/ultrastar-sas-series/data-sheet-ultrastar-15k600.pdf
   Intel DC P3600 SSD [2.5" SFF]: https://ark.intel.com/products/series/81000
   Intel DC P3700 SSD [2.5" SFF]: https://ark.intel.com/products/series/79628
   Intel Express Flash NVMe P4500: https://ark.intel.com/products/96937
+  Intel NVMe Datacenter SSD [3DNAND] SE 2.5” U.2 (P4510): https://ark.intel.com/content/www/us/en/ark/products/series/122570/intel-ssd-dc-p4510-series.html
   Intel SSDSC2BA40: https://ark.intel.com/products/71915
+  Intel SSDSC2KB24: https://ark.intel.com/content/www/us/en/ark/products/66250/intel-ssd-520-series-240gb-2-5in-sata-6gbs-25nm-mlc.html
+  Intel SSDSC2KB48: https://ark.intel.com/content/www/us/en/ark/products/series/120535/intel-ssd-dc-s4500-series.html
   Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
   Samsung SSD 860: https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_860_PRO_Data_Sheet_Rev1_1.pdf
-  Seagate ST1000DM003: http://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf
-  Seagate ST240FN0021: http://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
-  Seagate ST300MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
-  Seagate ST300MP0005: http://www.seagate.com/www-content/product-content/enterprise-performance-savvio-fam/enterprise-performance-15k-hdd/en-us/enterprise-performance-15k-hdd-ds1797-3-1406us.pdf
-  Seagate ST31000524AS: http://www.seagate.com/docs/pdf/en-GB/datasheet/disc/barracuda-7200-12-ds1668-6-1101gb.pdf
-  Seagate ST3160815AS: http://www.seagate.com/docs/pdf/datasheet/disc/ds_barracuda_7200_10.pdf
-  Seagate ST3450857SS: http://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
-  Seagate ST3600057SS: http://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
-  Seagate ST4000NM0033: http://www.seagate.com/files/www-content/product-content/constellation-fam/constellation-es/constellation-es-3/en-us/docs/constellation-es-3-data-sheet-ds1769-1-1210us.pdf
-  Seagate ST400FP0021: http://www.seagate.com/files/www-content/product-content/ssd-fam/600-pro-ssd/en-us/docs/600-pro-ssd-data-sheet-ds1790-2-1305us.pdf
-  Seagate ST600MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
-  Seagate ST900MM0026: http://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
-  Seagate ST91000640NS: http://www.seagate.com/www-content/product-content/constellation-fam/constellation/constellation-2/en-us/docs/constellation2-fips-ds1719-4-1207us.pdf
+  Seagate ST1000DM003: https://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf
+  Seagate ST240FN0021: https://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
+  Seagate ST300MM0026: https://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST300MP0005: https://www.seagate.com/www-content/product-content/enterprise-performance-savvio-fam/enterprise-performance-15k-hdd/en-us/enterprise-performance-15k-hdd-ds1797-3-1406us.pdf
+  Seagate ST31000524AS: https://www.seagate.com/docs/pdf/en-GB/datasheet/disc/barracuda-7200-12-ds1668-6-1101gb.pdf
+  Seagate ST3160815AS: https://www.seagate.com/docs/pdf/datasheet/disc/ds_barracuda_7200_10.pdf
+  Seagate ST3450857SS: https://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
+  Seagate ST3600057SS: https://www.seagate.com/files/docs/pdf/datasheet/disc/cheetah-15k.7-ds1677.3-1007us.pdf
+  Seagate ST4000NM0033: https://www.seagate.com/files/www-content/product-content/constellation-fam/constellation-es/constellation-es-3/en-us/docs/constellation-es-3-data-sheet-ds1769-1-1210us.pdf
+  Seagate ST400FP0021: https://www.seagate.com/files/www-content/product-content/ssd-fam/600-pro-ssd/en-us/docs/600-pro-ssd-data-sheet-ds1790-2-1305us.pdf
+  Seagate ST600MM0026: https://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST900MM0026: https://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
+  Seagate ST91000640NS: https://www.seagate.com/www-content/product-content/constellation-fam/constellation/constellation-2/en-us/docs/constellation2-fips-ds1719-4-1207us.pdf
   Seagate ST9146852SS: https://www.seagate.com/www-content/product-content/savvio-fam/enterprise-performance-15k-hdd/savvio-15k-2/en-gb/docs/savvio-15k-2-data-sheet-ds-1665-3-1007gb.pdf
-  Western Digital WD1000CHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701282.pdf
-  Western Digital WD1000DHTZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701284.pdf
-  Western Digital WD1003FBYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
-  Western Digital WD2000FYYZ: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771444.pdf
-  Western Digital WD2003FYYS: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
-  Western Digital WD4001FYYG: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771386.pdf
-  Western Digital WD5000AAKS: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701277.pdf
-  Western Digital WD5002ABYS: http://www.wdc.com/en/library/spec/2879-701281.pdf
-  Western Digital WD5003ABYX: http://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
-  Western Digital WD10JFCX: http://products.wdc.com/library/SpecSheet/ENG/2879-800001.pdf
+  Western Digital WD1000CHTZ: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701282.pdf
+  Western Digital WD1000DHTZ: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701284.pdf
+  Western Digital WD1003FBYX: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+  Western Digital WD2000FYYZ: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771444.pdf
+  Western Digital WD2003FYYS: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+  Western Digital WD4001FYYG: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-771386.pdf
+  Western Digital WD5000AAKS: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701277.pdf
+  Western Digital WD5002ABYS: https://www.wdc.com/en/library/spec/2879-701281.pdf
+  Western Digital WD5003ABYX: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
+  Western Digital WD10JFCX: https://products.wdc.com/library/SpecSheet/ENG/2879-800001.pdf
 oobs:
-  ASPEED AST2050: http://tyan.com/manuals/AST2050_Manual_v101.pdf
-  ASPEED AST2400: http://www.aspeedtech.com/products.php?fPath=20&rId=376
+  ASPEED AST2050: https://tyan.com/manuals/AST2050_Manual_v101.pdf
+  ASPEED AST2400: https://www.aspeedtech.com/server_ast2400/
+  ASPEED AST2500: https://www.aspeedtech.com/server_ast2500/
+  ASPEED AST2600: https://www.aspeedtech.com/server_ast2600/
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
 isps:

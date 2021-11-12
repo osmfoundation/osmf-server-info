@@ -42,8 +42,11 @@ oobs:
   Supermicro 2065: Supermicro X10
   Supermicro 2100: Supermicro X10
   Supermicro 2116: ASPEED AST2400
+  Supermicro 2332: ASPEED AST2500
   Supermicro 2366: Supermicro X10 Redfish
   Supermicro 2407: Supermicro X11
+  Supermicro 6987: ASPEED AST2600
+  Supermicro 6996: ASPEED AST2500
   Supermicro 43025: Winbond WPCM450
   Supermicro 43707: Renesas SH7757
   Tyan 7010: ASPEED AST2050
