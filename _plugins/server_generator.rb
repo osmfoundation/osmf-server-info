@@ -294,9 +294,13 @@ module Jekyll
       end
 
       if ohai['lldp'] && ohai['lldp'][name]
-        port = ohai['lldp'][name]['port']['descr']
+        if ohai['lldp'][name]['port']['descr']
+          port = ohai['lldp'][name]['port']['descr']
+        elsif ohai['lldp'][name]['port']['id']['type'] == 'ifname'
+          port = ohai['lldp'][name]['port']['id']['value']
+        end
 
-        peer = "connected to #{port}"
+        peer = "connected to #{port}" if port
       end
 
       [state, speed, duplex, peer].compact.join(", ")
