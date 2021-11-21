@@ -56,20 +56,6 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## [Tile Caches](#tile-caches)
-
-{% strip %}
-Server | Location | Country |Stats | Last Contact
--------|----------|:-------:|------|-------------
-{% for node in sorted_nodes %}
-{% if node.automatic.roles contains "tilecache" %}
-{% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | <span class="flag-icon flag-icon-{{ node.override.country }}"></span> | [munin](http://munin.openstreetmap.org/openstreetmap.org/{{ node_name }}.openstreetmap.org/index.html) | {{ node.automatic.ohai_time | date_to_pretty }}
-{% endif %}
-{% endfor %}
-{% endstrip %}
-
-
 ## [Other](#other)
 
 {% strip %}
