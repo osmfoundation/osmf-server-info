@@ -12,13 +12,13 @@ Hosting OpenStreetMap wouldn't be possible without the support of many people an
 
 We would like to thank [University College London](http://www.ucl.ac.uk/) for their many years of support. They have been supporting OpenStreetMap since its beginning at the [Bartlett centre](http://www.bartlett.ucl.ac.uk/) and we are very grateful.
 
+## Fastly
+
+We would like to thank [Fastly](https://www.fastly.com/) for their support. We are very grateful for them providing the content delivery network for the tile service.
+
 ## Bytemark
 
 We would like to thank [Bytemark](https://www.bytemark.co.uk/) for their many years of support. They have been extremely helpful to us in moments of dire need, and we are very grateful.
-
-## Imperial College London
-
-We would like to thank [Imperial College London](http://www.imperial.ac.uk/) for their many years of support and donations.
 
 ## And many others...
 
