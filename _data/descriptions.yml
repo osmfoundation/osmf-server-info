@@ -12,6 +12,7 @@ logstash: Logstash server
 mail: Mail server
 munin: Munin server
 nominatim: Nominatim geocoding server
+nominatim-v4: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
 overpass-query: Overpass server
 owl: OWL server
