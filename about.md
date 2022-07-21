@@ -12,4 +12,6 @@ This project takes the information that is gathered on each Chef run, and
 parses it to gain the relevant information for the pages.
 
 The code to generate these pages can be found at
-[https://github.com/gravitystorm/osmf-server-info](https://github.com/gravitystorm/osmf-server-info)
+[https://github.com/osmfoundation/osmf-server-info](https://github.com/osmfoundation/osmf-server-info)
+
+Thank you to [https://github.com/gravitystorm](https://github.com/gravitystorm) for creating osmf-server-info.
