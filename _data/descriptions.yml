@@ -15,7 +15,7 @@ nominatim: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
 overpass-query: Overpass server
 owl: OWL server
-piwik: Piwik server for web site statistics
+matomo: Matomo server for web site statistics
 planet: Web server for planet.openstreetmap.org
 planetdump: Planet file generation server
 prometheus: Prometheus server
