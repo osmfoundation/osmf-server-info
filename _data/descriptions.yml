@@ -5,6 +5,7 @@ db-master: Primary database server for www.openstreetmap.org
 dev:  Development and "tool" server
 forum: Forum server
 foundation:  Foundation related sites
+gateway: Site gateway
 gps-tile: GPS tile server 
 imagery: Aerial imagery server
 lists: Mailing lists server
