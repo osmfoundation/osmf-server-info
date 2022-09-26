@@ -14,6 +14,7 @@ systems:
   HP ProLiant DL360 G7: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c02206768
   HP ProLiant DL360p Gen8: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03223744
   HP ProLiant DL360 Gen9: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c04442953
+  HPE ProLiant DL360 Gen10: https://www.hpe.com/psnow/doc/a00008159enw
 motherboards:
   ASUS P8H77-M PRO: https://www.asus.com/us/SupportOnly/P8H77-M%20PRO/HelpDesk_Knowledge/
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
@@ -81,6 +82,7 @@ cpus:
   Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz: https://ark.intel.com/content/www/us/en/ark/products/193385/intel-xeon-silver-4214-processor-16-5m-cache-2-20-ghz.html
   Intel(R) Xeon(R) Silver 4310 CPU @ 2.10GHz: https://ark.intel.com/content/www/us/en/ark/products/215277/intel-xeon-silver-4310-processor-18m-cache-2-10-ghz.html
   Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz: https://ark.intel.com/products/120474
+  Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz: https://ark.intel.com//products/120487
 hbas:
   Adaptec Series 8 12G SAS/PCIe 3: https://www.adaptec.com/en-us/products/series/8/
   LSI MegaRAID SAS-3 3108 [Invader]: https://www.broadcom.com/products/storage/raid-on-chip/sas-3108
@@ -101,6 +103,7 @@ disks:
   Intel SSDSC2KB48: https://ark.intel.com/content/www/us/en/ark/products/series/120535/intel-ssd-dc-s4500-series.html
   Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
   Samsung SSD 860: https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_860_PRO_Data_Sheet_Rev1_1.pdf
+  Samsung Electronics Co Ltd General DC NVMe PM9A3: https://semiconductor.samsung.com/ssd/datacenter-ssd/pm9a3/
   Seagate ST1000DM003: https://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf
   Seagate ST240FN0021: https://www.seagate.com/files/www-content/product-content/pulsar-fam/pulsar/enterprise-sata-ssd/en-us/docs/enterprise-sata-ssd-ds1775-1-1301us.pdf
   Seagate ST300MM0026: https://www.seagate.com/www-content/product-content/savvio-fam/savvio-10k/savvio-10k-6/en-us/docs/savvio-10k-6-data-sheet-ds1768-1-1210us.pdf
@@ -125,6 +128,7 @@ disks:
   Western Digital WD5002ABYS: https://www.wdc.com/en/library/spec/2879-701281.pdf
   Western Digital WD5003ABYX: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
   Western Digital WD10JFCX: https://products.wdc.com/library/SpecSheet/ENG/2879-800001.pdf
+
 oobs:
   ASPEED AST2050: https://tyan.com/manuals/AST2050_Manual_v101.pdf
   ASPEED AST2400: https://www.aspeedtech.com/server_ast2400/
@@ -132,6 +136,7 @@ oobs:
   ASPEED AST2600: https://www.aspeedtech.com/server_ast2600/
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
+  OOB 8192: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00019259en_us
 isps:
   AARNet: https://www.aarnet.edu.au/
   Academic Computer Club, Umeå University: https://www.acc.umu.se/
