@@ -70,7 +70,7 @@ module Jekyll
 
         if system_manufacturer == base_board_manufacturer &&
            system_product == base_board_product
-          if system_manufacturer == 'HP'
+          if system_manufacturer == 'HP' || system_manufacturer == 'HPE'
             base_board_manufacturer = nil
             base_board_product = nil
           else
@@ -338,7 +338,9 @@ module Jekyll
         if ohai['hardware']['mc']['manufacturer_name'] == 'Unknown'
           case ohai['hardware']['mc']['manufacturer_id']
           when '2' then vendor = 'IBM'
+          when '11' then vendor = 'HP'
           when '4163' then vendor = 'ASUS'
+          when '47196' then vendor = 'HP'
           when '47488' then vendor = 'Supermicro'
           end
         else

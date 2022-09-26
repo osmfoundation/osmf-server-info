@@ -128,7 +128,6 @@ disks:
   Western Digital WD5002ABYS: https://www.wdc.com/en/library/spec/2879-701281.pdf
   Western Digital WD5003ABYX: https://www.wdc.com/wdproducts/library/SpecSheet/ENG/2879-701338.pdf
   Western Digital WD10JFCX: https://products.wdc.com/library/SpecSheet/ENG/2879-800001.pdf
-
 oobs:
   ASPEED AST2050: https://tyan.com/manuals/AST2050_Manual_v101.pdf
   ASPEED AST2400: https://www.aspeedtech.com/server_ast2400/
@@ -136,7 +135,7 @@ oobs:
   ASPEED AST2600: https://www.aspeedtech.com/server_ast2600/
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
-  OOB 8192: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00019259en_us
+  HP 00e4: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00019259en_us
 isps:
   AARNet: https://www.aarnet.edu.au/
   Academic Computer Club, Umeå University: https://www.acc.umu.se/
