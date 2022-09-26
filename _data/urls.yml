@@ -135,7 +135,9 @@ oobs:
   ASPEED AST2600: https://www.aspeedtech.com/server_ast2600/
   ASUS ASMB4-iKVM: https://www.asus.com/uk/Commercial-Servers-Workstations/ASMB4iKVM/
   Dell iDRAC7: https://www.dell.com/support/article/uk/en/ukdhs1/sln311149/idrac7-home
-  HP 00e4: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00019259en_us
+  HP iLO 3: https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=a00044678en_us
+  HP iLO 4: https://support.hpe.com/hpesc/public/docDisplay?docId=c03255140&docLocale=en_US
+  HP iLO 5: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00019259en_us
 isps:
   AARNet: https://www.aarnet.edu.au/
   Academic Computer Club, Umeå University: https://www.acc.umu.se/
