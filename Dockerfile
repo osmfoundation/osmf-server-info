@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine as build
+FROM ruby:3.0-alpine as build
 
 # Add Gem build requirements
 RUN apk add --no-cache g++ make
@@ -10,7 +10,7 @@ WORKDIR /app
 ADD Gemfile* /app/
 
 # Install Gems
-RUN gem install bundler -v 1.17.3 \
+RUN gem install bundler -v 2.3.18 \
     && bundle config build.nokogiri --use-system-libraries \
     && bundle config --global jobs $(nproc) \
     && bundle install
