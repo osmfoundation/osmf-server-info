@@ -3,11 +3,14 @@ community: Discourse server
 db-slave: Read only database mirror for www.openstreetmap.org
 db-master: Primary database server for www.openstreetmap.org
 dev:  Development and "tool" server
+dns: DNS management server
 forum: Forum server
 foundation:  Foundation related sites
 gateway: Site gateway
+git: Git server
 gps-tile: GPS tile server 
 imagery: Aerial imagery server
+letsencrypt: Let's Encrypt certificate management server
 lists: Mailing lists server
 logstash: Logstash server
 mail: Mail server
@@ -15,6 +18,7 @@ munin: Munin server
 nominatim: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
 overpass-query: Overpass server
+oxidized: Network configuration backup server
 owl: OWL server
 matomo: Matomo server for web site statistics
 planet: Web server for planet.openstreetmap.org
