@@ -1,3 +1,4 @@
+blogs: Blog aggregator
 chef-server: Chef server
 community: Discourse server
 db-slave: Read only database mirror for www.openstreetmap.org
@@ -10,6 +11,7 @@ gateway: Site gateway
 git: Git server
 gps-tile: GPS tile server 
 imagery: Aerial imagery server
+irc: IRC redirector
 letsencrypt: Let's Encrypt certificate management server
 lists: Mailing lists server
 logstash: Logstash server
@@ -24,10 +26,11 @@ matomo: Matomo server for web site statistics
 planet: Web server for planet.openstreetmap.org
 planetdump: Planet file generation server
 prometheus: Prometheus server
-subversion: Subversion server
+subversion: Subversion redirector
 taginfo: Taginfo server
 tile: Tile server
 tilecache: Tile cache server
+trac: Trac redirector
 yournavigation: Gosmore routing server
 web-frontend: Frontend web server for www.openstreetmap.org
 web-backend: Backend application server for www.openstreetmap.org
