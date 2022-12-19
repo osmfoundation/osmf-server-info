@@ -4,7 +4,9 @@ layout: default
 
 # {{ page.title }}
 
-{{ page.roles | server_description }} ([munin](https://munin.openstreetmap.org/openstreetmap.org/{{ page.title }}/index.html))
+{% assign node_name = page.title | split: '.' | first %}
+
+{{ page.roles | server_description }} ([prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}))
 
 ## Hardware
 
