@@ -6,7 +6,7 @@ layout: default
 
 {% assign node_name = page.title | split: '.' | first %}
 
-{{ page.roles | server_description }} ([prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&refresh=1m&var-instance={{ node_name }}))
+{{ page.roles | server_description }} ([prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}))
 
 ## Hardware
 
