@@ -46,27 +46,6 @@ $on-laptop:        1000px;
     }
 }
 
-// Automatic dark mode
-@media (prefers-color-scheme: light) {
-  body {
-    color: $light-mode-text-color;
-    background-color: $light-mode-background-color;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: $dark-mode-text-color;
-    background-color: $dark-mode-background-color;
-  }
-}
-@supports not (prefers-color-scheme: dark) {
-  body {
-    color: $light-mode-text-color;
-    background-color: $light-mode-background-color;
-  }
-}
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
