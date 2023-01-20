@@ -43,26 +43,13 @@ Server | Description | Stats | Last Contact
 {% endfor %}
 {% endstrip %}
 
-## [Bytemark](#bytemark)
-
-{% strip %}
-Server | Description | Stats | Last Contact
--------|-------------|-------|-------------
-{% for node in sorted_nodes %}
-{% if node.automatic.roles contains "bytemark" %}
-{% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
-{% endif %}
-{% endfor %}
-{% endstrip %}
-
 ## [Other](#other)
 
 {% strip %}
 Server | Description | Location | Stats | Last Contact
 -------|-------------|----------|-------|-------------
 {% for node in sorted_nodes %}
-{% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" or node.automatic.roles contains "bytemark" %}
+{% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
 [{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endunless %}
