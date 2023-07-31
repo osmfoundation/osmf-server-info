@@ -7,12 +7,13 @@ layout: default
 ## [Equinix Amsterdam](#equinix-amsterdam)
 
 {% strip %}
-Server | Description | Stats | Last Contact
+Server | Description | System | Stats | Last Contact
 -------|-------------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "equinix-ams" %}
 {% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+{% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -20,12 +21,13 @@ Server | Description | Stats | Last Contact
 ## [Equinix Dublin](#equinix-dublin)
 
 {% strip %}
-Server | Description | Stats | Last Contact
+Server | Description | System | Stats | Last Contact
 -------|-------------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "equinix-dub" %}
 {% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+{% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -33,12 +35,13 @@ Server | Description | Stats | Last Contact
 ## [University College London](#university-college-london)
 
 {% strip %}
-Server | Description | Stats | Last Contact
+Server | Description | System | Stats | Last Contact
 -------|-------------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+{% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -46,12 +49,13 @@ Server | Description | Stats | Last Contact
 ## [Other](#other)
 
 {% strip %}
-Server | Description | Location | Stats | Last Contact
+Server | Description | Location | System | Stats | Last Contact
 -------|-------------|----------|-------|-------------
 {% for node in sorted_nodes %}
 {% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+{% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endunless %}
 {% endfor %}
 {% endstrip %}
