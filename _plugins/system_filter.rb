@@ -3,7 +3,8 @@ class System
     system = {}
 
     if ohai['virtualization'] &&
-       ohai['virtualization']['role'] == 'guest'
+       ohai['virtualization']['role'] == 'guest' &&
+       ohai['virtualization']['system'] != 'amazonec2' &&
       case ohai['virtualization']['system']
       when "openstack" then system['name'] = "OpenStack Virtual Machine"
       when "kvm" then system['name'] = "KVM Virtual Machine"
