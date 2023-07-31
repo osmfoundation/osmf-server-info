@@ -8,7 +8,7 @@ layout: default
 
 {% strip %}
 Server | Description | System | Stats | Last Contact
--------|-------------|-------|-------------
+-------|-------------|--------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "equinix-ams" %}
 {% assign node_name = node.name | split: '.' | first %}
@@ -22,7 +22,7 @@ Server | Description | System | Stats | Last Contact
 
 {% strip %}
 Server | Description | System | Stats | Last Contact
--------|-------------|-------|-------------
+-------|-------------|--------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "equinix-dub" %}
 {% assign node_name = node.name | split: '.' | first %}
@@ -36,7 +36,7 @@ Server | Description | System | Stats | Last Contact
 
 {% strip %}
 Server | Description | System | Stats | Last Contact
--------|-------------|-------|-------------
+-------|-------------|--------|-------|-------------
 {% for node in sorted_nodes %}
 {% if node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
@@ -50,7 +50,7 @@ Server | Description | System | Stats | Last Contact
 
 {% strip %}
 Server | Description | Location | System | Stats | Last Contact
--------|-------------|----------|-------|-------------
+-------|-------------|----------|--------|-------|-------------
 {% for node in sorted_nodes %}
 {% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
