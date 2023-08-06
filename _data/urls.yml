@@ -100,14 +100,14 @@ disks:
   Fujitsu MBB2073RC: https://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e257-02en.pdf
   Fujitsu MBC2073RC: https://www.fujitsu.com/downloads/COMP/fel/support/disk/manuals/c141-e266-01en.pdf
   HGST HUS156060VLS600: https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/data-center-drives/ultrastar-sas-series/data-sheet-ultrastar-15k600.pdf
-  Intel DC P3600 SSD [2.5" SFF]: https://ark.intel.com/products/series/81000
-  Intel DC P3700 SSD [2.5" SFF]: https://ark.intel.com/products/series/79628
-  Intel Express Flash NVMe P4500: https://ark.intel.com/products/96937
-  Intel NVMe Datacenter SSD [3DNAND] SE 2.5” U.2 (P4510): https://ark.intel.com/content/www/us/en/ark/products/series/122570/intel-ssd-dc-p4510-series.html
-  Intel SSDSC2BA40: https://ark.intel.com/products/71915
-  Intel SSDSC2KB24: https://ark.intel.com/content/www/us/en/ark/products/66250/intel-ssd-520-series-240gb-2-5in-sata-6gbs-25nm-mlc.html
-  Intel SSDSC2KB48: https://ark.intel.com/content/www/us/en/ark/products/series/120535/intel-ssd-dc-s4500-series.html
-  Intel SSDSA2CW600G3: https://ark.intel.com/products/56569
+  Intel DC P3600 SSD [2.5" SFF]: https://web.archive.org/web/20210227093235/https://ark.intel.com/content/www/us/en/ark/products/series/81000/intel-ssd-dc-p3600-series.html
+  Intel DC P3700 SSD [2.5" SFF]: https://web.archive.org/web/20190110130046/https://ark.intel.com/products/series/79628/Intel-SSD-DC-P3700-Series
+  Intel Express Flash NVMe P4500: https://web.archive.org/web/20210623222540/https://ark.intel.com/content/www/us/en/ark/products/96937/intel-ssd-dc-p4500-series-4-0tb-1-2-height-pcie-3-1-x4-3d1-tlc.html
+  Intel NVMe Datacenter SSD [3DNAND] SE 2.5” U.2 (P4510): https://web.archive.org/web/20210330103822/https://ark.intel.com/content/www/us/en/ark/products/series/122570/intel-ssd-dc-p4510-series.html
+  Intel SSDSC2BA40: https://web.archive.org/web/20210613174121/https://ark.intel.com/content/www/us/en/ark/products/71915/intel-ssd-dc-s3700-series-400gb-2-5in-sata-6gb-s-25nm-mlc.html
+  Intel SSDSC2KB24: https://web.archive.org/web/20210417025636/https://ark.intel.com/content/www/us/en/ark/products/66250/intel-ssd-520-series-240gb-2-5in-sata-6gb-s-25nm-mlc.html
+  Intel SSDSC2KB48: https://web.archive.org/web/20210228010606/https://ark.intel.com/content/www/us/en/ark/products/series/120535/intel-ssd-dc-s4500-series.html
+  Intel SSDSA2CW600G3: https://web.archive.org/web/20210501173522/https://ark.intel.com/content/www/us/en/ark/products/56569/intel-ssd-320-series-600gb-2-5in-sata-3gb-s-25nm-mlc.html
   Samsung SSD 860: https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_860_PRO_Data_Sheet_Rev1_1.pdf
   Samsung Electronics Co Ltd General DC NVMe PM9A3: https://semiconductor.samsung.com/ssd/datacenter-ssd/pm9a3/
   Seagate ST1000DM003: https://www.seagate.com/staticfiles/docs/pdf/datasheet/disc/barracuda-ds1737-1-1111us.pdf
