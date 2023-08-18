@@ -1,6 +1,8 @@
 systems:
+  Amazon EC2 m6gd.16xlarge: https://aws.amazon.com/ec2/instance-types/m6g/
   Dell Inc. PowerEdge R230: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r230/manuals
   Dell Inc. PowerEdge R320: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r320/manuals
+  Dell Inc. PowerEdge R630: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r630/manuals
   Fujitsu PRIMERGY RX300 S4: https://www.fujitsu.com/downloads/PRMRGY/b7fh-5841-01en.pdf
   IBM System x3455 7986-CTO: https://www.ibm.com/support/pages/overview-ibm-system-x3455
   IBM System x3550 7978-BCG: https://www.ibm.com/support/pages/overview-ibm-system-x3550-type-7978
@@ -10,11 +12,15 @@ systems:
   Supermicro SYS-120U-TNR: https://www.supermicro.com/en/products/system/Ultra/1U/SYS-120U-TNR
   Supermicro SYS-2028U-TN24R4T+: https://www.supermicro.com/products/system/2U/2028/SYS-2028U-TN24R4T_.cfm
   Supermicro SYS-2029U-TN24R4T: https://www.supermicro.com/products/system/2U/2029/SYS-2029U-TN24R4T.cfm
+  Supermicro AS -1124US-TNRP: https://www.supermicro.com/en/aplus/system/1u/1124/as-1124us-tnrp.cfm
+  Supermicro SYS-2028BT-HTR+: https://www.supermicro.com/en/products/system/2u/2028/sys-2028bt-htr_.cfm
   HP ProLiant DL360 G6: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c01710737
   HP ProLiant DL360 G7: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c02206768
-  HP ProLiant DL360p Gen8: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03223744
-  HP ProLiant DL360 Gen9: https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c04442953
+  HP ProLiant DL360e Gen8: https://www.hpe.com/psnow/doc/c04123219
+  HP ProLiant DL360p Gen8: https://www.hpe.com/psnow/doc/c04123167
+  HP ProLiant DL360 Gen9: https://www.hpe.com/psnow/doc/c04346229
   HPE ProLiant DL360 Gen10: https://www.hpe.com/psnow/doc/a00008159enw
+  HPE ProLiant DL360 Gen11: https://www.hpe.com/psnow/doc/a50004306enw
 motherboards:
   ASUS P8H77-M PRO: https://www.asus.com/us/SupportOnly/P8H77-M%20PRO/HelpDesk_Knowledge/
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
