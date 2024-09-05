@@ -9,10 +9,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    ffi (1.17.0)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.16.3)
     forwardable-extended (2.6.0)
     google-protobuf (3.25.4)
     google-protobuf (3.25.4-aarch64-linux)
@@ -81,6 +78,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  ffi (< 1.17.0)
   jekyll (~> 4.3.3)
   sass-embedded (< 1.69.6)
   webrick (~> 1.8)
