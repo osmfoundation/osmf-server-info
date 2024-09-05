@@ -10,7 +10,7 @@ forum: Forum server
 foundation:  Foundation related sites
 gateway: Site gateway
 git: Git server
-gps-tile: GPS tile server 
+gps-tile: GPS tile server
 imagery: Aerial imagery server
 irc: IRC redirector
 letsencrypt: Let's Encrypt certificate management server
@@ -22,7 +22,6 @@ nominatim: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
 overpass-query: Overpass server
 oxidized: Network configuration backup server
-owl: OWL server
 matomo: Matomo server for web site statistics
 planet: Web server for planet.openstreetmap.org
 planetdump: Planet file generation server
@@ -32,7 +31,6 @@ taginfo: Taginfo server
 tile: Tile server
 tilecache: Tile cache server
 trac: Trac redirector
-yournavigation: Gosmore routing server
 web-frontend: Frontend web server for www.openstreetmap.org
 web-backend: Backend application server for www.openstreetmap.org
 web-storage: NFS storage server for www.openstreetmap.org
