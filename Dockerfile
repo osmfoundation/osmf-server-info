@@ -1,4 +1,4 @@
-FROM ruby:3.1 as build
+FROM ruby:3.1 AS build
 
 # Add Gem build requirements
 RUN apt-get update && apt-get install -y \
