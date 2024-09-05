@@ -46,8 +46,10 @@ module Jekyll
     def extract_cpus(ohai)
       if ohai['cpu']
         ohai['cpu']
-          .select { |_, cpu| cpu.is_a?(Hash) && cpu['core_id'] == '0' }
-          .map { |_, cpu| { :id => cpu['physical_id'], :model => cpu['model_name'].squeeze(' ').strip, :cores => cpu['cores'] } }
+          .select { |_, cpu| cpu.is_a?(Hash) && cpu.key?('physical_id') }
+          .map { |_, cpu| { :physical_id => cpu['physical_id'], :core_id => cpu['core_id'], :model => cpu['model_name'].squeeze(' ').strip, :cores => cpu['cores'] } }
+          .sort_by { |cpu| [cpu[:physical_id], cpu[:core_id]] }
+          .uniq { |cpu| cpu[:physical_id] }
           .group_by { |cpu| cpu[:model] }
           .map { |model, cpus| { 'model' => model, 'cores' => cpus.first[:cores], 'count' => cpus.count } }
       else
