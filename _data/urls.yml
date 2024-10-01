@@ -19,6 +19,7 @@ systems:
   HP ProLiant DL360e Gen8: https://www.hpe.com/psnow/doc/c04123219
   HP ProLiant DL360p Gen8: https://www.hpe.com/psnow/doc/c04123167
   HP ProLiant DL360 Gen9: https://www.hpe.com/psnow/doc/c04346229
+  HP ProLiant DL380 Gen9: https://www.hpe.com/psnow/doc/c04346247
   HPE ProLiant DL360 Gen10: https://www.hpe.com/psnow/doc/a00008159enw
   HPE ProLiant DL360 Gen11: https://www.hpe.com/psnow/doc/a50004306enw
 motherboards:
@@ -73,6 +74,7 @@ cpus:
   Intel(R) Xeon(R) CPU E5-2690 v2 @ 3.00GHz: https://ark.intel.com/products/75279
   Intel(R) Xeon(R) CPU E5-2695 v2 @ 2.40GHz: https://ark.intel.com/products/75281
   Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz: https://ark.intel.com/products/91755
+  Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz: https://ark.intel.com/products/91767
   Intel(R) Xeon(R) CPU E5320 @ 1.86GHz: https://ark.intel.com/products/28031
   Intel(R) Xeon(R) CPU E5335 @ 2.00GHz: https://ark.intel.com/products/28443
   Intel(R) Xeon(R) CPU E5405 @ 2.00GHz: https://ark.intel.com/products/33079
