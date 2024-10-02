@@ -12,6 +12,7 @@ vendors:
   Gigabyte Technology Co., Ltd.: Gigabyte
   Hewlett-Packard: HP
   Hewlett-Packard Company: HP
+  Hewlett Packard Enterprise: HPE
   HITACHI: HGST
   INTEL: Intel
   Intel Corporation: Intel
@@ -33,6 +34,7 @@ oobs:
   HP 3309: HP iLO 3
   HP 3381: HP iLO 4
   HP 00e4: HP iLO 5
+  HPE 8192: HP iLO 5
   IBM 18: IBM H8S2166
   IBM 192: IBM H82166
   ASUS 2371: ASUS ASMB4-iKVM
