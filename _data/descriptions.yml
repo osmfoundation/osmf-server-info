@@ -2,8 +2,8 @@ backup: Backup server
 blogs: Blog aggregator
 chef-server: Chef server
 community: Discourse server
-db-slave: Read only database mirror for www.openstreetmap.org
 db-master: Primary database server for www.openstreetmap.org
+db-slave: Read only database mirror for www.openstreetmap.org
 dev:  Development and "tool" server
 dns: DNS management server
 forum: Forum server
@@ -17,12 +17,12 @@ letsencrypt: Let's Encrypt certificate management server
 lists: Mailing lists server
 logstash: Logstash server
 mail: Mail server
+matomo: Matomo server for web site statistics
 munin: Munin server
 nominatim: Nominatim geocoding server
 osqa: OSQA server for help.openstreetmap.org
 overpass-query: Overpass server
 oxidized: Network configuration backup server
-matomo: Matomo server for web site statistics
 planet: Web server for planet.openstreetmap.org
 planetdump: Planet file generation server
 prometheus: Prometheus server
@@ -31,7 +31,8 @@ taginfo: Taginfo server
 tile: Tile server
 tilecache: Tile cache server
 trac: Trac redirector
-web-frontend: Frontend web server for www.openstreetmap.org
+vectortile: Vector tile server
 web-backend: Backend application server for www.openstreetmap.org
+web-frontend: Frontend web server for www.openstreetmap.org
 web-storage: NFS storage server for www.openstreetmap.org
 wiki: Wiki server
