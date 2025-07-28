@@ -1,5 +1,7 @@
 systems:
   Amazon EC2 m6gd.16xlarge: https://aws.amazon.com/ec2/instance-types/m6g/
+  Amazon EC2 m7gd.16xlarge: https://aws.amazon.com/ec2/instance-types/m7g/
+  Amazon EC2 m8gd.16xlarge: https://aws.amazon.com/ec2/instance-types/m8g/
   Dell PowerEdge R230: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r230/manuals
   Dell PowerEdge R320: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r320/manuals
   Dell PowerEdge R630: https://www.dell.com/support/home/uk/en/ukbsdt1/product-support/product/poweredge-r630/manuals
