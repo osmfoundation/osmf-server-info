@@ -228,6 +228,7 @@ module Jekyll
                 when 25000 then speed = '25Gb'
                 when 50000 then speed = '50Gb'
                 when 100000 then speed = '100Gb'
+                when 200000 then speed = '200Gb'
                 else interface['link_speed']
                 end
 
