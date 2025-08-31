@@ -1,0 +1,22 @@
+@use "./settings" as *;
+
+// Media query mixin
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+// Clearfix placeholder
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Vertical rhythm placeholder
+%vertical-rhythm {
+  margin-bottom: calc($spacing-unit / 2);
+}

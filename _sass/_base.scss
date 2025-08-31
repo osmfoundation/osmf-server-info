@@ -1,3 +1,7 @@
+@use "./settings" as *;
+@use "./utilities" as *;
+@use "sass:color";
+
 /**
  * Reset some basic elements
  */
@@ -30,8 +34,7 @@ body {
  */
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
+ul, ol, dl, figure {
     margin-bottom: calc($spacing-unit / 2);
 }
 
@@ -93,7 +96,7 @@ a {
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+    color: color.adjust($brand-color, $lightness: -15%);
     }
 
     &:hover {
@@ -172,17 +175,7 @@ pre {
 
 
 
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
+// Clearfix placeholder now provided by utilities
 
 
 
