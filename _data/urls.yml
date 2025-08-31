@@ -101,7 +101,6 @@ cpus:
   Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz: https://ark.intel.com/products/120474
   Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz: https://ark.intel.com/products/120487
   Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz: https://ark.intel.com/products/120489
-  Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz: https://ark.intel.com/products/120505
   Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz: https://ark.intel.com/content/www/us/en/ark/products/193385/intel-xeon-silver-4214-processor-16-5m-cache-2-20-ghz.html
   Intel(R) Xeon(R) Silver 4310 CPU @ 2.10GHz: https://ark.intel.com/content/www/us/en/ark/products/215277/intel-xeon-silver-4310-processor-18m-cache-2-10-ghz.html
 hbas:
