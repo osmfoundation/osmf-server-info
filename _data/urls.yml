@@ -17,6 +17,7 @@ systems:
   HPE ProLiant DL360 Gen11: https://www.hpe.com/psnow/doc/a50004306enw
   IBM System x3455 7986-CTO: https://www.ibm.com/support/pages/overview-ibm-system-x3455
   IBM System x3550 7978-BCG: https://www.ibm.com/support/pages/overview-ibm-system-x3550-type-7978
+  Lenovo ThinkSystem HR630X: https://datacentersupport.lenovo.com/us/en/products/servers/thinksystem-hyperscale/hr630x
   Supermicro AS -1124US-TNRP: https://www.supermicro.com/en/aplus/system/1u/1124/as-1124us-tnrp.cfm
   Supermicro PDSMi: https://www.supermicro.com/products/motherboard/PD/E7230/PDSMi.cfm
   Supermicro SYS-1028U-TN10RT+: https://www.supermicro.com/products/system/1U/1028/SYS-1028U-TN10RT_.cfm
@@ -30,21 +31,22 @@ motherboards:
   ASUS Z8NR-D12: https://www.asus.com/Commercial-Servers-Workstations/Z8NRD12/
   Dell 02C2CP: https://i.dell.com/sites/doccontent/shared-content/data-sheets/en/documents/dell-poweredge-r630-spec-sheet.pdf
   Gigabyte GA-880GM-USB3: https://www.gigabyte.com/products/product-page.aspx?pid=3809
+  Lenovo HR630X: https://datacentersupport.lenovo.com/us/en/products/servers/thinksystem-hyperscale/hr630x
   MSI B85M-G43 (MS-7823): https://www.msi.com/Motherboard/B85M-G43/Specification
   Supermicro AS-1124US-TNRP: https://www.supermicro.com/en/Aplus/system/1U/1124/AS-1124US-TNRP.cfm
   Supermicro H12DSU-iN: https://www.supermicro.com/en/products/motherboard/H12DSU-iN
   Supermicro H8DGU: https://www.supermicro.com/Aplus/motherboard/Opteron6000/SR56x0/H8DGU-F.cfm
   Supermicro PDSMi+: https://www.supermicro.com/products/motherboard/Xeon3000/3000/PDSMi_.cfm
+  Supermicro X10DRU-i+: https://www.supermicro.com/products/motherboard/Xeon/C600/X10DRU-i_.cfm
+  Supermicro X11DDW-NT: https://www.supermicro.com/en/products/motherboard/X11DDW-NT
+  Supermicro X11DPU: https://www.supermicro.com/en/products/motherboard/X11DPU
+  Supermicro X12DPU-6: https://www.supermicro.com/en/products/motherboard/X12DPU-6
   Supermicro X7DBU: https://www.supermicro.com/products/motherboard/Xeon1333/5000P/X7DBU.cfm
   Supermicro X9DR3-F: https://www.supermicro.com/products/motherboard/Xeon/C600/X9DR3-F.cfm
   Supermicro X9DR7/E-(J)LN4F: https://www.supermicro.com/products/motherboard/xeon/c600/X9DR7-LN4F.cfm
   Supermicro X9DRW: https://www.supermicro.com/products/motherboard/Xeon/C600/X9DRW-iF.cfm
   Supermicro X9SCD: https://www.supermicro.com/products/motherboard/Xeon/C202_C204/X9SCD-F.cfm
   Supermicro X9SRL-F: https://www.supermicro.com/products/motherboard/Xeon/C600/X9SRL-F.cfm
-  Supermicro X10DRU-i+: https://www.supermicro.com/products/motherboard/Xeon/C600/X10DRU-i_.cfm
-  Supermicro X11DDW-NT: https://www.supermicro.com/en/products/motherboard/X11DDW-NT
-  Supermicro X11DPU: https://www.supermicro.com/en/products/motherboard/X11DPU
-  Supermicro X12DPU-6: https://www.supermicro.com/en/products/motherboard/X12DPU-6
   Tyan S7010: https://www.tyan.com/Motherboards_S7010_S7010AGM2NRF
 cpus:
   AMD EPYC 7453 28-Core Processor: https://www.amd.com/en/products/processors/server/epyc/7003-series/amd-epyc-7453.html
@@ -99,6 +101,7 @@ cpus:
   Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz: https://ark.intel.com/products/120474
   Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz: https://ark.intel.com/products/120487
   Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz: https://ark.intel.com/products/120489
+  Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz: https://ark.intel.com/products/120505
   Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz: https://ark.intel.com/content/www/us/en/ark/products/193385/intel-xeon-silver-4214-processor-16-5m-cache-2-20-ghz.html
   Intel(R) Xeon(R) Silver 4310 CPU @ 2.10GHz: https://ark.intel.com/content/www/us/en/ark/products/215277/intel-xeon-silver-4310-processor-18m-cache-2-10-ghz.html
 hbas:
@@ -178,6 +181,7 @@ isps:
   OVH: https://www.ovh.co.uk/
   PixelDeck: https://pixeldeck.net/
   Scaleway: https://www.scaleway.com/
+  Taiwan Digital Streaming Co: https://www.twds.com.tw/en/
   Teleservice Skåne AB: https://www.teleservice.net/
   TeraSwitch Networks: https://teraswitch.com/
   Université de Pau et des Pays de l'Adour: https://www.univ-pau.fr/
