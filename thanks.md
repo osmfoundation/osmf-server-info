@@ -12,8 +12,8 @@ Hosting OpenStreetMap wouldn't be possible without the support of many people an
 
 We would like to thank [Equinix](https://www.equinix.com/) for their exceptional support. Equinix kindly provides us with colocation and high-capacity Internet connectivity, and the majority of OpenStreetMap.org runs thanks to [Equinix facilities](https://www.equinix.com/data-centers).
 
-* [AM6](https://www.equinix.com/data-centers/europe-colocation/netherlands-colocation/amsterdam-data-centers/am6) – Amsterdam, Amsterdam Data Centers | [Premium Colocation Provider and Internet Exchange Point by Equinix](https://www.equinix.com/data-centers/europe-colocation/netherlands-colocation/amsterdam-data-centers)
-* [DB4](https://www.equinix.com/data-centers/europe-colocation/ireland-colocation/dublin-data-centers/db4) – Dublin, Dublin Data Centers | [Premium Colocation Provider and Internet Exchange Point by Equinix](https://www.equinix.com/data-centers/europe-colocation/ireland-colocation/dublin-data-centers)
+* [AM6](https://www.equinix.com/data-centers/europe-colocation/netherlands-colocation/amsterdam-data-centers/am6) – Amsterdam, Amsterdam Data Centers - [Premium Colocation Provider and Internet Exchange Point by Equinix](https://www.equinix.com/data-centers/europe-colocation/netherlands-colocation/amsterdam-data-centers)
+* [DB4](https://www.equinix.com/data-centers/europe-colocation/ireland-colocation/dublin-data-centers/db4) – Dublin, Dublin Data Centers - [Premium Colocation Provider and Internet Exchange Point by Equinix](https://www.equinix.com/data-centers/europe-colocation/ireland-colocation/dublin-data-centers)
 
 ## University College London
 
