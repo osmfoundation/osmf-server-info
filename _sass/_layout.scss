@@ -263,26 +263,25 @@ table {
 /**
  * Server pages
  */
-dl {
-  padding: 0.5em 0;
 
-  dt {
-    float: left;
-    clear: left;
-    width: 220px;
-    font-weight: bold;
-  }
-
-  dd {
-    margin: 0 0 0 220px;
-    padding: 0 0 0.5em 0;
-
+ .server-table {
+  td {
     ul {
-      margin: 0;
+       margin: 0;
 
-      li {
-        list-style: none;
-      }
+       li {
+         list-style: none;
+       }
     }
   }
-}
+
+  caption {
+    text-align: left;
+    padding-bottom: 16px;
+    font-size: 26px;
+
+    @include media-query($on-laptop) {
+        font-size: 22px;
+    }
+  }
+ }
