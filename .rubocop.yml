@@ -1,0 +1,55 @@
+plugins:
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - '_site/**/*'
+    - 'vendor/**/*'
+    - '.bundle/**/*'
+    - '.jekyll-cache/**/*'
+    - 'Gemfile.lock'
+
+Layout/LineLength:
+  Max: 120
+
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+Layout/HeredocIndentation:
+  Enabled: true
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/CommandLiteral:
+  EnforcedStyle: percent_x
+
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+Style/NumericPredicate:
+  EnforcedStyle: predicate
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '[]'
+    '%I': '[]'
+    '%w': '[]'
+    '%W': '[]'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
