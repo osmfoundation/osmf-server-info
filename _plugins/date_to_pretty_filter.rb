@@ -1,24 +1,21 @@
+# frozen_string_literal: true
+
+require "date"
+
 module Jekyll
   module DateToPrettyFilter
     def date_to_pretty(input)
-      if input.nil?
-        ""
-      else
-        date = Time.at(input)
-        now = Time.now
+      return "" if input.nil?
 
-        if now - date <= 43200
-          date.strftime("%H:%M")
-        elsif now.year == date.year && now.month == date.month && now.day == date.day
-          date.strftime("%H:%M")
-        elsif now.year == date.year && now.month == date.month && now.day == date.day + 1
-          "Yesterday"
-        elsif now.year == date.year
-          date.strftime("%e %B")
-        else
-          date.strftime("%e %B %Y")
-        end
-      end
+      date = Time.at(input)
+      today = Date.today
+      date_day = date.to_date
+
+      return date.strftime("%H:%M") if date_day == today
+      return "Yesterday" if date_day == today - 1
+      return date.strftime("%e %B") if date_day.year == today.year
+
+      date.strftime("%e %B %Y")
     end
   end
 end

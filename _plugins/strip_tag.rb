@@ -1,14 +1,14 @@
-# Replaces multiple newlines and whitespace 
+# frozen_string_literal: true
+
+# Replaces multiple newlines and whitespace
 # between them with one newline
 
 module Jekyll
   class StripTag < Liquid::Block
-
     def render(context)
-      super.gsub /\n\s*\n/, "\n"
+      super.gsub(/\n\s*\n/, "\n")
     end
-
   end
 end
 
-Liquid::Template.register_tag('strip', Jekyll::StripTag)
+Liquid::Template.register_tag("strip", Jekyll::StripTag)
