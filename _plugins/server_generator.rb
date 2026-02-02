@@ -51,10 +51,7 @@ module Jekyll
       if ohai["cpu"]
         ohai["cpu"]
           .select { |_, cpu| cpu.is_a?(Hash) && cpu.key?("physical_id") }
-          .map do |_, cpu|
-          { :physical_id => cpu["physical_id"], :core_id => cpu["core_id"],
-            :model => cpu["model_name"].squeeze(" ").strip, :cores => cpu["cores"] }
-        end
+          .map { |_, cpu| extract_cpu(cpu) }
           .sort_by { |cpu| [cpu[:physical_id], cpu[:core_id]] }
           .uniq { |cpu| cpu[:physical_id] }
           .group_by { |cpu| cpu[:model] }
@@ -62,6 +59,15 @@ module Jekyll
       else
         []
       end
+    end
+
+    def extract_cpu(cpu)
+      {
+        :physical_id => cpu["physical_id"],
+        :core_id => cpu["core_id"],
+        :model => cpu["model_name"].squeeze(" ").strip,
+        :cores => cpu["cores"]
+      }
     end
 
     def extract_memory(ohai)
@@ -124,7 +130,7 @@ module Jekyll
     def extract_disk_controllers(ohai)
       if ohai["hardware"]
         ohai["hardware"]["pci"]
-          .select { |_, device| is_disk_controller(device) }
+          .select { |_, device| disk_controller?(device) }
           .map { |_, device| device_name(device) }
           .sort
       else
@@ -132,7 +138,7 @@ module Jekyll
       end
     end
 
-    def is_disk_controller(device)
+    def disk_controller?(device)
       ["SATA controller", "RAID bus controller", "SCSI storage controller", "Serial Attached SCSI controller",
        "Non-Volatile memory controller"].include?(device["class_name"])
     end
@@ -201,14 +207,19 @@ module Jekyll
       if ohai["network"] && ohai["network"]["interfaces"]
         ohai["network"]["interfaces"]
           .select { |_, interface| interface["encapsulation"] == "Ethernet" && interface["addresses"] }
-          .map do |name, interface|
-          { "name" => name, "state" => interface_state(ohai, name, interface),
-            "addresses" => extract_addresses(interface) }
-        end
+          .map { |name, interface| extract_network_interface(ohai, name, interface) }
           .sort_by { |interface| interface["name"] }
       else
         []
       end
+    end
+
+    def extract_network_interface(ohai, name, interface)
+      {
+        "name" => name,
+        "state" => interface_state(ohai, name, interface),
+        "addresses" => extract_addresses(interface)
+      }
     end
 
     def extract_addresses(interface)
@@ -289,9 +300,8 @@ module Jekyll
       if ohai["hardware"]["mc"]["manufacturer_name"] == "Unknown"
         case ohai["hardware"]["mc"]["manufacturer_id"]
         when "2" then vendor = "IBM"
-        when "11" then vendor = "HP"
+        when "11", "47196" then vendor = "HP"
         when "4163" then vendor = "ASUS"
-        when "47196" then vendor = "HP"
         when "47488" then vendor = "Supermicro"
         end
       else
@@ -362,14 +372,18 @@ module Jekyll
         ohai["filesystem"]["by_device"]
           .select { |device, _| device.start_with?("/") }
           .select { |_, details| details.include?("kb_size") }
-          .map do |device, details|
-          { "mountpoint" => details["mounts"],
-            "description" => describe_filesystem(device, details) }
-        end
+          .map { |device, details| extract_filesystem(device, details) }
           .sort_by { |filesystem| filesystem["mountpoint"] || "xxx" }
       else
         []
       end
+    end
+
+    def extract_filesystem(device, details)
+      {
+        "mountpoint" => details["mounts"],
+        "description" => describe_filesystem(device, details)
+      }
     end
 
     def describe_filesystem(device, details)
