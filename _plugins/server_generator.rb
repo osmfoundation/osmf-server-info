@@ -52,8 +52,8 @@ module Jekyll
         ohai["cpu"]
           .select { |_, cpu| cpu.is_a?(Hash) && cpu.key?("physical_id") }
           .map do |_, cpu|
-            { :physical_id => cpu["physical_id"], :core_id => cpu["core_id"],
-              :model => cpu["model_name"].squeeze(" ").strip, :cores => cpu["cores"] }
+          { :physical_id => cpu["physical_id"], :core_id => cpu["core_id"],
+            :model => cpu["model_name"].squeeze(" ").strip, :cores => cpu["cores"] }
         end
           .sort_by { |cpu| [cpu[:physical_id], cpu[:core_id]] }
           .uniq { |cpu| cpu[:physical_id] }
@@ -202,8 +202,8 @@ module Jekyll
         ohai["network"]["interfaces"]
           .select { |_, interface| interface["encapsulation"] == "Ethernet" && interface["addresses"] }
           .map do |name, interface|
-            { "name" => name, "state" => interface_state(ohai, name, interface),
-              "addresses" => extract_addresses(interface) }
+          { "name" => name, "state" => interface_state(ohai, name, interface),
+            "addresses" => extract_addresses(interface) }
         end
           .sort_by { |interface| interface["name"] }
       else
@@ -363,8 +363,8 @@ module Jekyll
           .select { |device, _| device.start_with?("/") }
           .select { |_, details| details.include?("kb_size") }
           .map do |device, details|
-            { "mountpoint" => details["mounts"],
-              "description" => describe_filesystem(device, details) }
+          { "mountpoint" => details["mounts"],
+            "description" => describe_filesystem(device, details) }
         end
           .sort_by { |filesystem| filesystem["mountpoint"] || "xxx" }
       else
