@@ -1,0 +1,28 @@
+# frozen_string_literal: true
+
+class ThanksTo
+  def self.thanks_to(node, site)
+    node_name = node["name"].split(".")[0]
+    roles = node["automatic"]["roles"] || []
+    thanks_override = site.data["thanks"]
+
+    if roles.include?("equinix-ams") || roles.include?("equinix")
+      "Equinix Amsterdam"
+    elsif roles.include?("equinix-dub")
+      "Equinix Dublin"
+    elsif roles.include?("ucl")
+      "University College London"
+    elsif roles.include?("bytemark")
+      "Bytemark"
+    elsif thanks_override.key? node_name
+      thanks_override[node_name]
+    else
+      node["default"]["hosted_by"]
+    end
+  end
+
+  def self.additional_thanks(node, site)
+    node_name = node["name"].split(".")[0]
+    site.data["additional_thanks"][node_name]
+  end
+end
