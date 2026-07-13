@@ -439,7 +439,7 @@ module Jekyll
       elsif kblog2 >= 10
         format "%dMB", (2**(kblog2 - 10)).round
       else
-        format "%dKB", (2**(kblog2 - 0)).round
+        format "%dKB", (2**kblog2).round
       end
     end
 
