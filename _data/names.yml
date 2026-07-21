@@ -1,55 +1,27 @@
 vendors:
   Advanced Micro Devices, Inc. [AMD/ATI]: AMD
-  Areca Technology Corp.: Areca
-  ASUSTeK Computer INC.: ASUS
-  Broadcom Corporation: Broadcom
-  CRUCIAL: Crucial
+  Advanced Micro Devices, Inc. [AMD]: AMD
   Dell Inc.: Dell
-  Fujitsu Siemens: Fujitsu
-  FUJITSU SIEMENS: Fujitsu
-  FUJITSU: Fujitsu
   Gigabyte Technology Co., Ltd: Gigabyte
   Gigabyte Technology Co., Ltd.: Gigabyte
   Hewlett Packard Enterprise: HPE
   Hewlett-Packard Company: HP
   Hewlett-Packard: HP
-  HITACHI: HGST
   Intel Corporation: Intel
   INTEL: Intel
-  LSI Logic / Symbios Logic: LSI
-  Marvell Technology Group Ltd.: Marvell
   Realtek Semiconductor Co., Ltd.: Realtek
   SEAGATE: Seagate
   Super Micro Computer Inc: Supermicro
   Super Micro Computer Inc.: Supermicro
   SUPERMICRO: Supermicro
-  TOSHIBA: Toshiba
-  Tyan Computer Corporation: Tyan
-  TYAN: Tyan
-  WD: Western Digital
-  WDC: Western Digital
 oobs:
-  ASUS 2371: ASUS ASMB4-iKVM
-  DELL Inc 256: Dell iDRAC7
-  Fujitsu 547: Fujitsu iRMC2
-  HP 00e4: HP iLO 5
+  Dell 256: Dell iDRAC
   HP 3305: HP iLO 2
-  HP 3309: HP iLO 3
   HP 3381: HP iLO 4
   HPE 8192: HP iLO 5
-  IBM 18: IBM H8S2166
-  IBM 192: IBM H82166
-  Peppercon AG 4: Supermicro AOC-SIMSO
-  Supermicro 1576: Nuvoton WPCM450
-  Supermicro 1588: Nuvoton WPCM450
-  Supermicro 1797: Nuvoton WPCM450
-  Supermicro 2065: Supermicro X10
-  Supermicro 2100: Supermicro X10
   Supermicro 2116: ASPEED AST2400
   Supermicro 2332: ASPEED AST2500
-  Supermicro 2366: Supermicro X10 Redfish
   Supermicro 2407: Supermicro X11
-  Supermicro 43025: Winbond WPCM450
   Supermicro 43707: Renesas SH7757
   Supermicro 6987: ASPEED AST2600
   Supermicro 6996: ASPEED AST2500
