@@ -62,7 +62,7 @@ layout: default
 </table>
 
 <table class="server-table">
-  <caption>Roles</caption>
+  <caption><a href="{{ site.baseurl }}/roles/">Roles</a></caption>
   <tbody>
   {% for role in page.server.roles %}
     <tr><th scope="row">{{ role.name }}</th><td>{{ role.description }}</td></tr>
