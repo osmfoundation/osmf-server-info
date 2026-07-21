@@ -291,7 +291,7 @@ module Jekyll
 
       vendor = @site.data["names"]["vendors"][vendor] || vendor
 
-      "#{vendor} #{model}"
+      @site.data["names"]["psus"]["#{vendor} #{model}"] || "#{vendor} #{model}"
     end
 
     def extract_oob(ohai)

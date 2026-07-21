@@ -12,29 +12,29 @@ layout: default
   <caption>Hardware</caption>
   <tbody>
     {% if page.server.system.name %}
-    <tr><th scope="row">System</th><td>{{ page.server.system.name | linkify: 'systems' }}</td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/systems/">System</a></th><td>{{ page.server.system.name | linkify: 'systems' }}</td></tr>
     {% endif %}
     {% if page.server.system.motherboard %}
-    <tr><th scope="row">Motherboard</th><td>{{ page.server.system.motherboard | linkify: 'motherboards' }}</td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/motherboards/">Motherboard</a></th><td>{{ page.server.system.motherboard | linkify: 'motherboards' }}</td></tr>
     {% endif %}
     {% if page.server.cpus != empty %}
-    <tr><th scope="row">CPU</th><td><ul>{% for cpu in page.server.cpus %}<li>{{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model | linkify: 'cpus' }}</li>{% endfor %}</ul></td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/cpus/">CPU</a></th><td><ul>{% for cpu in page.server.cpus %}<li>{{ cpu.count }} x {{ cpu.cores }} core {{ cpu.model | linkify: 'cpus' }}</li>{% endfor %}</ul></td></tr>
     {% endif %}
     <tr><th scope="row">Memory</th><td><div>{{ page.server.memory.total }} Total</div>{% if page.server.memory.devices != empty %}<ul>{% for device in page.server.memory.devices %}<li>{{ device.count }} x {{ device.type }}</li>{% endfor %}</ul>{% endif %}</td></tr>
     {% if page.server.disk.controllers != empty %}
-    <tr><th scope="row">Disk Controllers</th><td><ul>{% for controller in page.server.disk.controllers %}<li>{{ controller | linkify: 'hbas' }}</li>{% endfor %}</ul></td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/disk-controllers/">Disk Controllers</a></th><td><ul>{% for controller in page.server.disk.controllers %}<li>{{ controller | linkify: 'hbas' }}</li>{% endfor %}</ul></td></tr>
     {% endif %}
     {% if page.server.disk.disks != empty %}
-    <tr><th scope="row">Disks</th><td><ul>{% for disk in page.server.disk.disks %}<li>{{ disk.count }} x {{ disk.size }} {{ disk.type | linkify: 'disks' }}</li>{% endfor %}</ul></td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/disks/">Disks</a></th><td><ul>{% for disk in page.server.disk.disks %}<li>{{ disk.count }} x {{ disk.size }} {{ disk.type | linkify: 'disks' }}</li>{% endfor %}</ul></td></tr>
     {% endif %}
     {% if page.server.network.controllers != empty %}
-    <tr><th scope="row">Network Controllers</th><td><ul>{% for controller in page.server.network.controllers %}<li>{{ controller }}</li>{% endfor %}</ul></td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/network-controllers/">Network Controllers</a></th><td><ul>{% for controller in page.server.network.controllers %}<li>{{ controller }}</li>{% endfor %}</ul></td></tr>
     {% endif %}
     {% if page.server.power.psus != empty %}
-    <tr><th scope="row">Power Supplies</th><td><ul>{% for psu in page.server.power.psus %}<li>{{ psu.count }} x {{ psu.capacity }}W {{ psu.type }}</li>{% endfor %}</ul></td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/psus/">Power Supplies</a></th><td><ul>{% for psu in page.server.power.psus %}<li>{{ psu.count }} x {{ psu.capacity }}W {{ psu.type }}</li>{% endfor %}</ul></td></tr>
     {% endif %}
     {% if page.server.oob %}
-    <tr><th scope="row">Out-of-band Management</th><td>{{ page.server.oob | linkify: 'oobs' }}</td></tr>
+    <tr><th scope="row"><a href="{{ site.baseurl }}/oobs/">Out-of-band Management</a></th><td>{{ page.server.oob | linkify: 'oobs' }}</td></tr>
     {% endif %}
   </tbody>
 </table>

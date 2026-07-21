@@ -54,3 +54,19 @@ oobs:
   Supermicro 6987: ASPEED AST2600
   Supermicro 6996: ASPEED AST2500
   Tyan 7010: ASPEED AST2050
+psus:
+  HP 656362-B21: HP Common Slot Platinum Plus PSU (656362-B21) - G6/G7
+  HP 720478-B21: HPE Flex Slot Platinum PSU (720478-B21) - Gen9
+  HP 720479-B21: HPE Flex Slot Platinum PSU (720479-B21) - Gen9
+  HP 720482-B21: HPE Flex Slot Titanium PSU (720482-B21) - Gen9
+  HP 865408-B21: HPE Flex Slot Platinum Low Halogen PSU (865408-B21) - Gen10+
+  HP 865414-B21: HPE Flex Slot Platinum Low Halogen PSU (865414-B21) - Gen10+
+  HP 865438-B21: HPE Flex Slot Titanium Low Halogen PSU (865438-B21) - Gen10+
+  HP P38995-B21: HPE Flex Slot Platinum Low Halogen PSU (P38995-B21) - Gen10+
+  HPE 720478-B21: HPE Flex Slot Platinum PSU (720478-B21) - Gen9
+  HPE 720479-B21: HPE Flex Slot Platinum PSU (720479-B21) - Gen9
+  HPE 720482-B21: HPE Flex Slot Titanium PSU (720482-B21) - Gen9
+  HPE 865408-B21: HPE Flex Slot Platinum Low Halogen PSU (865408-B21) - Gen10+
+  HPE 865414-B21: HPE Flex Slot Platinum Low Halogen PSU (865414-B21) - Gen10+
+  HPE 865438-B21: HPE Flex Slot Titanium Low Halogen PSU (865438-B21) - Gen10+
+  HPE P38995-B21: HPE Flex Slot Platinum Low Halogen PSU (P38995-B21) - Gen10+
