@@ -2,7 +2,7 @@
 
 module Jekyll
   class ServerPage < Page
-    # rubocop:disable Lint/MissingSuper
+    # rubocop:disable-next Lint/MissingSuper
     def initialize(site, base, dir, attributes)
       @site = site
       @base = base
@@ -17,7 +17,6 @@ module Jekyll
       data["thanks_to"] = ThanksTo.thanks_to(attributes, @site)
       data["additional_thanks"] = ThanksTo.additional_thanks(attributes, @site)
     end
-    # rubocop:enable Lint/MissingSuper
 
     KB = 1024
     MB = KB * 1024

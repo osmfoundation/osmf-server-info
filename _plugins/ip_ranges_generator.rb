@@ -12,14 +12,13 @@ module Jekyll
       super(site, base, dir, name)
     end
 
-    # rubocop:disable Naming/PredicateMethod
+    # rubocop:disable-next Naming/PredicateMethod
     def write(dest)
       dest_path = destination(dest)
       FileUtils.mkdir_p(File.dirname(dest_path))
       File.write(dest_path, @content)
       true
     end
-    # rubocop:enable Naming/PredicateMethod
   end
 
   class IPRangesGenerator < Generator
