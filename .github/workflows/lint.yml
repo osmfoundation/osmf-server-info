@@ -1,0 +1,27 @@
+name: Lint
+on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+      - translatewiki
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+env:
+  ruby: '3.4'
+jobs:
+  rubocop:
+    name: RuboCop
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Check out code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: Setup ruby
+      uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+      with:
+        ruby-version: ${{ env.ruby }}
+        bundler-cache: true
+    - name: Run rubocop
+      run: bundle exec rubocop --format fuubar
